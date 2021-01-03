@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "/static/js/main.6d7f6e05.chunk.js",
+    "main.js.map": "/static/js/main.6d7f6e05.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6a771f16.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6a771f16.js.map",
+    "static/css/2.18fb2ca0.chunk.css": "/static/css/2.18fb2ca0.chunk.css",
+    "static/js/2.d11aacc1.chunk.js": "/static/js/2.d11aacc1.chunk.js",
+    "static/js/2.d11aacc1.chunk.js.map": "/static/js/2.d11aacc1.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2bcd787d71370069e827e9e33d391e19.js": "/precache-manifest.2bcd787d71370069e827e9e33d391e19.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.18fb2ca0.chunk.css.map": "/static/css/2.18fb2ca0.chunk.css.map",
+    "static/js/2.d11aacc1.chunk.js.LICENSE.txt": "/static/js/2.d11aacc1.chunk.js.LICENSE.txt",
+    "static/media/exams.svg": "/static/media/exams.6e98631b.svg",
+    "static/media/professional.svg": "/static/media/professional.34409398.svg",
+    "static/media/student.svg": "/static/media/student.4cb5b349.svg",
+    "static/media/teacher.svg": "/static/media/teacher.87ff362e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6a771f16.js",
+    "static/css/2.18fb2ca0.chunk.css",
+    "static/js/2.d11aacc1.chunk.js",
+    "static/js/main.6d7f6e05.chunk.js"
+  ]
+}

@@ -1,0 +1,39 @@
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import MainLayout from 'src/layouts/MainLayout';
+import NotFoundView from 'src/views/errors/NotFoundView';
+// import ProductListView from 'src/views/product/ProductListView';
+// import RegisterView from 'src/views/auth/RegisterView';
+import EventsView from 'src/views/events/EventsView';
+import HomeView from 'src/views/home/HomeView';
+
+const routes = [
+  // {
+  //   path: 'app',
+  //   element: <DashboardLayout />,
+  //   children: [
+  //     { path: 'account', element: <AccountView /> },
+  //     { path: 'customers', element: <CustomerListView /> },
+  //     { path: 'dashboard', element: <DashboardView /> },
+  //     { path: 'products', element: <ProductListView /> },
+  //     { path: 'settings', element: <SettingsView /> },
+  //     { path: '*', element: <Navigate to="/404" /> }
+  //   ]
+  // },
+  {
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      // { path: 'login', element: <LoginView /> },
+      // { path: 'register', element: <RegisterView /> },
+      { path: 'home', element: <HomeView /> },
+      { path: 'events', element: <EventsView /> },
+      { path: '404', element: <NotFoundView /> },
+      { path: '/', element: <Navigate to="/home" /> },
+      // { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
+  }
+];
+
+export default routes;
