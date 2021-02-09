@@ -1,6 +1,6 @@
 import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardMedia, CardActions, CardContent, CardActionArea} from '@material-ui/core';
+import {Card, Avatar,CardHeader,CardContent ,CardActions} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
  const Courses = () => {
   const classes = useStyles();
+  const tilte = '';
   const data = [{
     index:1,
     title:"Python",
@@ -61,31 +62,29 @@ const useStyles = makeStyles((theme) => ({
 
   const [courses] = useState(data);
   return (
-    <Fragment className={classes.root}>
-      <Typography className={classes.title} variant="h4"> 
-          Popular Courses
-      </Typography>     
-      <Grid className={classes.gridContainer} container
-      direction="row" justify="space-between center" spacing={3} >   
+    <Fragment>
+      <div className={classes.root}>
+        <Typography className={classes.title} variant="h4"> 
+            Popular Courses
+        </Typography>     
+        <Grid className={classes.gridContainer} container spacing={3} >   
           
           {
           
             courses.map((course,index) =>(    
-            <Grid item xs={12} sm={4} md={3}   key={courses.index} >
-              <Card className={classes.Card1}  variant="elevation" >
-                <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image={course.image}                        
-                        title={course.name}
-                      />
-                </CardActionArea>
+            <Grid item xs={12} sm={4} md={3}   key={index} >
+              <Card className={classes.Card1} variant="elevation" >
+              <CardHeader
+                  avatar={
+                   <Avatar aria-label="recipe" className={classes.avatar}>
+                    {/* <img url={course.image} /> */}
+                    {course.title.substr(0,1).toUpperCase()}
+                    </Avatar>
+                  }
+                  title={course.title}
+                /> 
                 <CardContent>
-                    <Typography variant="h4"  >
-                        {course.title}
-                    </Typography>
-
-                    <Typography variant="body2" >
+                    <Typography variant="body2" color="inherit">
                         {course.desc}
                     </Typography>
                 </CardContent>    
@@ -103,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
         
         
     </Grid>
-  </Fragment>
+    </div>
+    </Fragment>
   );
 }
 export default Courses;

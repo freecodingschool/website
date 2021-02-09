@@ -24,6 +24,28 @@ const useStyles = makeStyles((theme) =>({
 
 const TopBar = ({ className, ...rest }) => {
   const classes = useStyles();
+  const menus = [
+    {
+      name:'About Us',
+      path:'/about',      
+    },
+    {
+      name:'Courses',
+      path:'/courses'
+    },
+    {
+      name:'Volunteers',
+      path:'/volunteers'
+    },
+    {
+      name:'Students',
+      path:'/students'
+    },
+    {
+      name:'Events',
+      path:'/events'
+    },
+  ]
   return (
     <AppBar
       className={clsx(classes.root, className)}
@@ -33,7 +55,11 @@ const TopBar = ({ className, ...rest }) => {
         <RouterLink to="/"  className={classes.flexGrow}>
           <Logo />
         </RouterLink>
-        <Button component={RouterLink} to={'/events'} color="primary">Events</Button> 
+        {
+          menus.map((menu,index) => (
+            <Button component={RouterLink} to={menu.path} color="primary" key={index}>{menu.name}</Button> 
+          ))        
+        }
       </Toolbar>
     </AppBar>
   );

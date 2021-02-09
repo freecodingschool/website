@@ -31,17 +31,14 @@ const useStyles = makeStyles((theme) => ({
  const News = () => {
   const classes = useStyles();
   const data = [{
-    index:1,
     desc:" quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
     image:image1
   },
 {
-  index:2,
   desc:"quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
   image:image2,
 },
 {
-  index:3,
   desc:"quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
   image:image3,
 },
@@ -58,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
                  {
                 
                     news.map((newsObj,index) =>(    
-                    <Grid item xs={12} sm={4} md={3}   key={news.index} >
+                    <Grid item xs={12} sm={4} md={3}   key={index} >
                     <Card className={classes.card}  variant="elevation" >
                         <CardActionArea>
                             <CardMedia
