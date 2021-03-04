@@ -86,7 +86,7 @@ const Community = () => {
                 </Button> 
             </Grid>
             <Grid item xs={12} md={5}>
-              <img src={banner} width="100%"/>
+              <img src={banner} width="100%"  alt={banner}/>
             </Grid>
             </Grid>
         </Container>
@@ -97,7 +97,7 @@ const Community = () => {
                 volunteers.map((volunteer,i) => (
                   <Grid item xs={12} md={3} key={i}>
                     <div className={classes.imgWrapper}>
-                      <img src={volunteer.image} width="100%" />
+                      <img src={volunteer.image} width="100%" alt={volunteer.image}/>
                     </div>
                   </Grid>
                 ))       

@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
  const Courses = () => {
   const classes = useStyles();
+  const tilte = '';
   const data = [{
     index:1,
     title:"Python",
