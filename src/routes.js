@@ -4,6 +4,7 @@ import MainLayout from 'src/layouts/MainLayout';
 import NotFoundView from 'src/views/errors/NotFoundView';
 // import ProductListView from 'src/views/product/ProductListView';
 // import RegisterView from 'src/views/auth/RegisterView';
+import SchoolRegisterView from 'src/views/auth/SchoolView';
 import EventsView from 'src/views/events/EventsView';
 import HomeView from 'src/views/home/HomeView';
 
@@ -26,6 +27,7 @@ const routes = [
     children: [
       // { path: 'login', element: <LoginView /> },
       // { path: 'register', element: <RegisterView /> },
+      { path: 'school-register', element: <SchoolRegisterView /> },
       { path: 'home', element: <HomeView /> },
       { path: 'events', element: <EventsView /> },
       { path: '404', element: <NotFoundView /> },
