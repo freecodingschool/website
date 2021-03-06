@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   return (
    
           
-        <Grid className={classes.gridContainer} container direction="row" justify="center" spacing={3} >   
+        <Grid className={classes.gridContainer} container direction="row" justify="center" >   
                 
                  {
                 

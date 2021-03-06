@@ -25,21 +25,25 @@ const useStyles = makeStyles((theme) =>({
 const TopBar = ({ className, ...rest }) => {
   const classes = useStyles();
   const menus = [
-    {
-      name:'About Us',
-      path:'/about',      
-    },
-    {
-      name:'Courses',
-      path:'/courses'
-    },
+    // {
+    //   name:'About Us',
+    //   path:'/about',      
+    // },
+    // {
+    //   name:'Courses',
+    //   path:'/courses'
+    // },
     {
       name:'Volunteers',
-      path:'/volunteers'
+      path:'/school-register'
     },
+    // {
+    //   name:'Students',
+    //   path:'/register'
+    // },
     {
-      name:'Students',
-      path:'/students'
+      name:'Registration',
+      path:'/register'
     },
     {
       name:'Events',

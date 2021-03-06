@@ -2,11 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Community from './Community';
 // import FreeCoding from './FreeCoding';
-// import Programs from './Programs';
+import Events from './Events';
 import Courses from './Courses';
 import News from './News';
 import Volunteers from './Volunteers';
-// import Introduction from './Introduction';
+import OurCommunities from './OurCommunities';
 import JoinUs from './JoinUs';
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,12 +19,12 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Community />
-      <Courses />
+      {/* <Courses /> */}
       {/* <Volunteers /> */}
       {/* <FreeCoding /> */}
-      <News />
-      {/* <Programs /> */}
-      {/* <Introduction /> */}
+      {/* <News /> */}
+      <OurCommunities />
+      <Events />
       <JoinUs />
     </div>
   );

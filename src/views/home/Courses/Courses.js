@@ -1,17 +1,17 @@
 import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, Avatar,CardHeader,CardContent ,CardActions} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-
+import {Card, Avatar,CardHeader,CardContent ,
+  CardActions,Container,Typography,Grid,
+  Button} from '@material-ui/core';
 import python from './images/img-python.png';
 import scratch from './images/img-scratch.jpg';
 import HTML from './images/img-html.png';
 import Basics from './images/img-basics.jpg';
 
 const useStyles = makeStyles((theme) => ({
-  
+  root:{
+    backgroundColor:'#efefef'
+  },
   gridContainer: {
      padding:'50px',
   },
@@ -63,11 +63,12 @@ const useStyles = makeStyles((theme) => ({
   const [courses] = useState(data);
   return (
     <Fragment>
-      <div className={classes.root}>
+      <Container maxWidth="lg">
+        <div className={classes.root}>
         <Typography className={classes.title} variant="h4"> 
             Popular Courses
         </Typography>     
-        <Grid className={classes.gridContainer} container spacing={3} >   
+        <Grid className={classes.gridContainer} container>   
           
           {
           
@@ -103,6 +104,7 @@ const useStyles = makeStyles((theme) => ({
         
     </Grid>
     </div>
+      </Container>
     </Fragment>
   );
 }

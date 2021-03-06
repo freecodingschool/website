@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import {
   Grid,
   Button,
-  Typography
+  Typography,
+  Container
 } from '@material-ui/core';
 import banner from './images/banner.png';
 import vit from './images/vit.png';
@@ -14,9 +15,6 @@ const useStyles = makeStyles(theme => ({
   title:{
     fontSize:'3.2em',
     lineHeight:'1.2em'  
-  },
-  leftSection:{
-    paddingLeft:50
   },
   volunteerTitle:{
     alignItems:'center',
@@ -71,41 +69,42 @@ const Community = () => {
   ]
   return (
     <Fragment>
-      <Grid
-        className={classes.section} container style={{minHeight: 'calc(100vh - 65px)'}}>
-        <Grid item xs={12} md={8} className={classes.leftSection} >
-          <Typography className={classes.title} variant="h2">
-            Creating A Local Community <br/> To Empower High
-            School Students <br/>To Learn Programming
-          </Typography>
-          <Typography className={classes.subtitle} variant="h5">
-            A Simple Mission To Close The Computer Science Gap In High Schools And <br/>Local Communities.
-          </Typography>
-          <Grid item xs={12}>
-              <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
-                href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
-                Learn More 
-              </Button>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <img src={banner} width="100%"/>
-        </Grid>
-    </Grid>
-    <Grid className={classes.section} container>
-      <Typography className={classes.volunteerTitle} variant="h3">WE ARE FROM</Typography>
-      <Grid item xs={12} container>
-        {
-          volunteers.map((volunteer,i) => (
-            <Grid item xs={12} md={3} key={i}>
-              <div className={classes.imgWrapper}>
-                <img src={volunteer.image} width="100%" height="100"/>
-              </div>
+      <div className={classes.section} style={{minHeight: 'calc(100vh - 65px)'}}>
+          <Container maxWidth="lg">
+            <Grid container direction="row" justify="space-evenly" alignItems="center">
+              <Grid item xs={12} md={7}>
+                <Typography className={classes.title} variant="h1">
+                  Creating A Local Community <br/> To Empower High
+                  School Students <br/>To Learn Programming
+                </Typography>
+                <Typography className={classes.subtitle} variant="h5">
+                  A Simple Mission To Close The Computer Science Gap In High Schools And <br/>Local Communities.
+                </Typography>
+                <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
+                  href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                  Learn More 
+                </Button> 
             </Grid>
-          ))       
-        }
-       </Grid>
-    </Grid>
+            <Grid item xs={12} md={5}>
+              <img src={banner} width="100%"  alt={banner}/>
+            </Grid>
+            </Grid>
+        </Container>
+        <Container maxWidth="lg">
+          <Typography className={classes.volunteerTitle} variant="h2">WE ARE FROM</Typography>
+            <Grid container direction="row" justify="space-evenly" alignItems="center">
+              {
+                volunteers.map((volunteer,i) => (
+                  <Grid item xs={12} md={3} key={i}>
+                    <div className={classes.imgWrapper}>
+                      <img src={volunteer.image} width="100%" alt={volunteer.image}/>
+                    </div>
+                  </Grid>
+                ))       
+              }
+            </Grid>
+        </Container>
+    </div>   
     </Fragment>
   );
 };
