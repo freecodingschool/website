@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {
   Grid,
-  Button,
   Typography,
   Container,
   Paper
@@ -21,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     color:'#333'
   },
   section:{
-    backgroundColor:'#efefef',
+    backgroundColor:'#fff',
     padding: theme.spacing(2),
   },
   paper:{
@@ -42,14 +41,11 @@ const useStyles = makeStyles(theme => ({
   },
   paperTitle:{
     marginBottom: theme.spacing(2),
-    marginTop: theme.spacing(2),
-  },
-  learnMoreBtn:{
     marginTop: theme.spacing(2)
   }
 }));
 
-const Programs = () => {
+  const Testimonials = () => {
   const classes = useStyles();
   const data = [    
   {
@@ -58,7 +54,7 @@ const Programs = () => {
     date:'23',
     month:'Dec',
     time:'10 AM - 2 PM',
-    desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit",
+    desc:"Nisi cumque in necessitatibus molestiae eaque excepturi ab. Laboriosam ipsam voluptatem voluptatibus labore quam nihil. Quasi occaecati quos ratione quia aut molestiae velit et. Voluptatem id ea dicta inventore et quo impedit repudiandae. Qui officia aperiam atque qui occaecati est. Magnam voluptatem earum excepturi qui quae ea qui.",
   },
   {
     index:1,
@@ -74,17 +70,10 @@ const Programs = () => {
     time:'10 AM - 2 PM',
     title:"HTML",
     desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit",
-  },
-  {
-    index:4,
-    date:'23',
-    month:'Dec',
-    title:"Basics",
-    time:'10 AM - 2 PM',
-    desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit",
   }];
   
-  const [events] = useState(data);
+  
+  const [testimonials] = useState(data);
   return (
     <div className={classes.section}>
       <Container maxWidth="lg">       
@@ -98,30 +87,19 @@ const Programs = () => {
         </div>
         <Grid container direction="row" justify="space-between" alignItems="center">
           {
-            events.map((event,index) => (
+            testimonials.map((testimonial,index) => (
               <Grid item lg={3} xs={12} key={index} className={classes.paper}>
                 <Paper elevation={0} className={classes.paper}>
                   <div className={classes.eventHead}>
                     <div className={classes.dateBox}>
-                      <div>{event.date}</div>
-                      <div>{event.month}</div>
+                      <div>{testimonial.date}</div>
+                      <div>{testimonial.month}</div>
                     </div>
                     <div className={classes.eventHead}>
-                      <Typography variant="h5" className={classes.paperTitle}>{event.title}</Typography>
+                      <Typography variant="h5" className={classes.paperTitle}>{testimonial.title}</Typography>
                     </div>
                   </div>                 
-                  <Typography variant="subtitle1"  className={classes.subtitle}>{event.desc}</Typography>
-                  <Grid item xs={12} container direction="row" justify="center" alignItems="center">
-                    <Grid item xs={6}>
-                      <Button color="primary" size="large" className={classes.learnMoreBtn}
-                      href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank" >
-                        Learn more
-                      </Button>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography variant="h5" className={classes.paperTitle}>{event.time}</Typography>
-                    </Grid>
-                  </Grid>
+                  <Typography variant="subtitle1"  className={classes.subtitle}>{testimonial.desc}</Typography>
                 </Paper>
               </Grid>
             ))
@@ -132,4 +110,4 @@ const Programs = () => {
   );
 };
 
-export default Programs;
+export default Testimonials;
