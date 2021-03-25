@@ -1,14 +1,12 @@
 import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardMedia, CardContent, CardActionArea} from '@material-ui/core';
+import {Card, CardContent} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Image from 'material-ui-image';
 
-const useStyles = makeStyles((theme) => ({
-  
+const useStyles = makeStyles((theme) => ({  
     gridContainer: {
-     // padding: '20px 0',  
      padding:'50px',
     },
     Card1:{
@@ -17,17 +15,12 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
       height:0,
-      
-      paddingTop: '56.25%', // 16:9
-      
+      paddingTop: '56.25%', // 16:9      
     },
     gridItem:{
         alignItems:'center',
         justify:'center',
-    },
-    
-    
-  }));
+    }}));
   const Volunteers = () => {
     const classes = useStyles();
     const data = [{

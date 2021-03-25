@@ -6,10 +6,11 @@ import {
   Container,
   Paper
 } from '@material-ui/core';
-
+import testimonialImg from './testmonial.png';
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
+    padding:'20px 0',
     textAlign:'center'
   },
   title:{
@@ -32,15 +33,16 @@ const useStyles = makeStyles(theme => ({
     width:'100%'
   },
   dateBox:{
-    padding:'6px 16px',
-    marginRight: theme.spacing(2),
-    borderRadius:4,
-    backgroundColor:'#d5d8fc',
-    height: '60px',
-    fontSize:20    
+    // padding:'6px 16px', 
+     marginRight: theme.spacing(2),
+    // borderRadius:4,
+    // backgroundColor:'#d5d8fc',
+    // height: '60px',
+    // fontSize:20   
   },
   paperTitle:{
-    marginBottom: theme.spacing(2),
+    color:"#333",
+    marginBottom: '0.5px',
     marginTop: theme.spacing(2)
   }
 }));
@@ -49,28 +51,24 @@ const useStyles = makeStyles(theme => ({
   const classes = useStyles();
   const data = [    
   {
-    index:2,
-    title:"Introduction to Scratch Programming",
-    date:'23',
-    month:'Dec',
-    time:'10 AM - 2 PM',
-    desc:"Nisi cumque in necessitatibus molestiae eaque excepturi ab. Laboriosam ipsam voluptatem voluptatibus labore quam nihil. Quasi occaecati quos ratione quia aut molestiae velit et. Voluptatem id ea dicta inventore et quo impedit repudiandae. Qui officia aperiam atque qui occaecati est. Magnam voluptatem earum excepturi qui quae ea qui.",
+    title:"Mohit R",  
+    designation:"Student",  
+    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
+    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
   },
   {
-    index:1,
-    title:"Python for High School Students",
-    date:'23',
-    month:'Dec',
-    desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit",
+    title:"Mohit R",  
+    designation:"Student",  
+    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
+    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
   },
   {
-    index:3,
-    date:'23',
-    month:'Dec',
-    time:'10 AM - 2 PM',
-    title:"HTML",
-    desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit",
-  }];
+    title:"Mohit R",  
+    designation:"Student",  
+    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
+    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
+  }
+];
   
   
   const [testimonials] = useState(data);
@@ -79,24 +77,24 @@ const useStyles = makeStyles(theme => ({
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
             <Typography className={classes.title} variant="h4">
-              Upcoming Freecoding School Events
+            Testimonial
             </Typography>
             <Typography className={classes.subtitle} variant="h6">
-              Freecoding School is powered by collaboration of students, teachers and technology professionals.
+              minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-between" alignItems="center">
+        <Grid container direction="row" justify="space-between" alignItems="center" spacing={2}>
           {
             testimonials.map((testimonial,index) => (
-              <Grid item lg={3} xs={12} key={index} className={classes.paper}>
-                <Paper elevation={0} className={classes.paper}>
+              <Grid item lg={4} xs={12} key={index} className={classes.paper}>
+                <Paper elevation={1} className={classes.paper}>
                   <div className={classes.eventHead}>
                     <div className={classes.dateBox}>
-                      <div>{testimonial.date}</div>
-                      <div>{testimonial.month}</div>
+                      <img src={testimonialImg} />
                     </div>
-                    <div className={classes.eventHead}>
-                      <Typography variant="h5" className={classes.paperTitle}>{testimonial.title}</Typography>
+                    <div>
+                      <Typography variant="h4" className={classes.paperTitle}>{testimonial.title}</Typography>
+                      <Typography variant="h6">{testimonial.designation}</Typography>
                     </div>
                   </div>                 
                   <Typography variant="subtitle1"  className={classes.subtitle}>{testimonial.desc}</Typography>

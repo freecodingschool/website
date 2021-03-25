@@ -6,6 +6,7 @@ import {
   AppBar,
   Toolbar,
   makeStyles,
+  Container,
   Button
 } from '@material-ui/core';
 import Logo from 'src/components/Logo';
@@ -15,7 +16,8 @@ const useStyles = makeStyles((theme) =>({
     backgroundColor: theme.palette.background.default
   },
   toolbar: {
-    height: 64
+    height: 64,
+    padding:0
   },
   flexGrow: {
     flexGrow: 1
@@ -55,16 +57,18 @@ const TopBar = ({ className, ...rest }) => {
       className={clsx(classes.root, className)}
       elevation={1}
       {...rest}>
-      <Toolbar className={classes.toolbar}>
-        <RouterLink to="/"  className={classes.flexGrow}>
-          <Logo />
-        </RouterLink>
-        {
-          menus.map((menu,index) => (
-            <Button component={RouterLink} to={menu.path} color="primary" key={index}>{menu.name}</Button> 
-          ))        
-        }
-      </Toolbar>
+        <Container maxWidth="lg">
+          <Toolbar className={classes.toolbar}>
+              <RouterLink to="/"  className={classes.flexGrow}>
+                <Logo />
+              </RouterLink>
+              {
+                menus.map((menu,index) => (
+                  <Button component={RouterLink} to={menu.path} color="primary" key={index}>{menu.name}</Button> 
+                ))        
+              }
+            </Toolbar>
+        </Container>          
     </AppBar>
   );
 };

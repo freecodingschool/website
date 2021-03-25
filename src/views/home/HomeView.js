@@ -20,12 +20,12 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Community />
-      {/* <Courses /> */}
+      <Courses />
       {/* <Volunteers /> */}
       {/* <FreeCoding /> */}
       {/* <News /> */}
+      {/* <Events /> */}
       <OurCommunities />
-      <Events />
       <Testimonials/>
       <JoinUs />
     </div>
