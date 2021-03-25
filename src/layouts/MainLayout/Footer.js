@@ -1,14 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Link,Grid ,Container} from '@material-ui/core';
-import {Twitter,Instagram} from '@material-ui/icons';
 const useStyles = makeStyles(theme => ({
   root: {
     display:'flex',
     backgroundColor:'#6962ff',
     color:'#fff',
     padding: theme.spacing(4),
-    marginBottom: "10px"
+    // marginBottom: "10px"
   }, 
   footerTitle:{
     letterSpacing:'0.5em',

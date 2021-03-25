@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     color:'#333',
   },
   section:{
+    background:'#efefef',
     alignItems:'center',
     justifyContent:'center',
     textAlign:'center',    
@@ -28,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     alignItems:'center',
     justifyContent:'center',
     textAlign:'center',
-    minHeight:'200px'
+    minHeight:'200px',
+    borderRadius:20
   },
   paperTitle:{
     marginBottom: theme.spacing(2)
@@ -61,9 +63,10 @@ const OurCommunities = () => {
             Torquatos nostros? quos tu paulo ante cum teneam sententiam, quid bonum esse vult.
             </Typography>
         </div>
-          <Grid item xs={12} container direction="row" justify="space-evenly" alignItems="center">    {                
+          <Grid item xs={12} container direction="row" justify="space-evenly" alignItems="center" spacing={2}>    
+            {                
               news.map((newsObj,index) =>(    
-                <Grid item xs={12} md={3} key={index} >
+                <Grid item xs={12} md={4} key={index} >
                     <Paper className={classes.paper} elevation={0}>
                       <img src={newsObj.image} className={classes.imgWidth} alt={newsObj.image} />
                       <div className={classes.paperWrapper}>

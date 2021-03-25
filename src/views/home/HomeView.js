@@ -8,6 +8,7 @@ import News from './News';
 import Volunteers from './Volunteers';
 import OurCommunities from './OurCommunities';
 import JoinUs from './JoinUs';
+import Testimonials from './Testimonials'
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default
@@ -19,12 +20,13 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Community />
-      {/* <Courses /> */}
+      <Courses />
       {/* <Volunteers /> */}
       {/* <FreeCoding /> */}
       {/* <News /> */}
+      {/* <Events /> */}
       <OurCommunities />
-      <Events />
+      <Testimonials/>
       <JoinUs />
     </div>
   );

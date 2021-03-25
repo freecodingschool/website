@@ -9,11 +9,17 @@ import HTML from './images/img-html.png';
 import Basics from './images/img-basics.jpg';
 
 const useStyles = makeStyles((theme) => ({
-  root:{
-    backgroundColor:'#efefef'
+  titleWrapper:{
+    alignItems:'center',
+    textAlign:'center',
+    padding:'20px 0'
+  },
+  section:{
+    backgroundColor:'#fff',
+    padding: theme.spacing(2),
   },
   gridContainer: {
-     padding:'50px',
+    //  padding:'50px',
   },
   Card1:{
     minWidth:200,
@@ -21,18 +27,17 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height:0,
     paddingTop: '56.25%', // 16:9
-    
+
   },
   title:{
     paddingTop: '20px',
     paddingLeft:'20px',
   },
-  
+
 }));
 
  const Courses = () => {
   const classes = useStyles();
-  const tilte = '';
   const data = [{
     index:1,
     title:"Python",
@@ -58,53 +63,47 @@ const useStyles = makeStyles((theme) => ({
   image:Basics,
 },
 ];
-
-
   const [courses] = useState(data);
   return (
     <Fragment>
-      <Container maxWidth="lg">
-        <div className={classes.root}>
-        <Typography className={classes.title} variant="h4"> 
-            Popular Courses
-        </Typography>     
-        <Grid className={classes.gridContainer} container>   
-          
-          {
-          
-            courses.map((course,index) =>(    
-            <Grid item xs={12} sm={4} md={3}   key={index} >
-              <Card className={classes.Card1} variant="elevation" >
-              <CardHeader
-                  avatar={
-                   <Avatar aria-label="recipe" className={classes.avatar}>
-                    {/* <img url={course.image} /> */}
-                    {course.title.substr(0,1).toUpperCase()}
-                    </Avatar>
-                  }
-                  title={course.title}
-                /> 
-                <CardContent>
-                    <Typography variant="body2" color="inherit">
-                        {course.desc}
-                    </Typography>
-                </CardContent>    
-                <CardActions>
-                      <Button variant="contained" color="primary" href="#contained-buttons">
-                        Learn More
-                      </Button>
-                </CardActions>            
-              </Card>
-              
-                  
+      <div className={classes.section}>
+        <Container maxWidth="lg">
+          <div className={classes.titleWrapper}>
+            <Typography className={classes.title} variant="h4">
+              Popular Courses
+            </Typography>
+          </div>
+          <Grid className={classes.gridContainer} container direction="row" justify="space-evenly" alignItems="center"  spacing={2}>
+            {
+              courses.map((course,index) =>(
+                <Grid item xs={12} sm={4} md={3} key={index} >
+                  <Card className={classes.Card1} variant="elevation" >
+                    <CardHeader
+                        avatar={
+                        <Avatar aria-label="recipe" className={classes.avatar}>
+                          {/* <img url={course.image} /> */}
+                          {course.title.substr(0,1).toUpperCase()}
+                          </Avatar>
+                        }
+                        title={course.title}
+                      />
+                      <CardContent>
+                          <Typography variant="body2" color="inherit">
+                              {course.desc}
+                          </Typography>
+                      </CardContent>
+                      <CardActions>
+                            <Button variant="contained" color="primary" href="#contained-buttons">
+                              Learn More
+                            </Button>
+                      </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            }
           </Grid>
-                ))
-          }
-        
-        
-    </Grid>
-    </div>
-      </Container>
+        </Container>
+      </div>
     </Fragment>
   );
 }
