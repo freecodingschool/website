@@ -7,9 +7,9 @@ import {
   Container
 } from '@material-ui/core';
 import banner from './images/banner.png';
-import vit from './images/vit1.jpg';
+import vit from './images/viit.png';
 import illinois from './images/illinois.png';
-import comcast from './images/comcast.png';
+import comcast from './images/comcasts.png';
 import cts from './images/cts.png';
 const useStyles = makeStyles(theme => ({
   title:{
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     width:200
   },
   imgWrapper:{
-    width:'80%',
+    width:'70%',
     margin: '0 auto'
   }
 }));
