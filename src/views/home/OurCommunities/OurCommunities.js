@@ -1,26 +1,20 @@
 import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {Grid,Typography,Paper,Container} from '@material-ui/core';
-import Chennai from './images/Chennai.png';
-import Pune from './images/Pune.png';
-import Bangalore from './images/Bangalore.png';
 const useStyles = makeStyles(theme => ({
-  title:{
-    lineHeight:'1.5em'
-  },
   subtitle:{
-    margin: theme.spacing(2),
-    color:'#333',
+    margin: theme.spacing(0)
   },
-  section:{
-    background:'#efefef',
+  titleWrapper:{
+    padding:4% 0,
     alignItems:'center',
     justifyContent:'center',
-    textAlign:'center',    
-    padding: theme.spacing(2),
+    textAlign:'center',  
   },
   paperWrapper:{
-    padding: theme.spacing(2)
+    paddingTop: theme.spacing(2),
+    color: '#000',
+    textAlign:'left'
   },
   imgWidth:{
     width:'100%'
@@ -29,48 +23,54 @@ const useStyles = makeStyles(theme => ({
     alignItems:'center',
     justifyContent:'center',
     textAlign:'center',
-    minHeight:'200px',
-    borderRadius:20
+    minHeight:'220px',
+    borderRadius:20,
+    // background: '#efefef'
   },
   paperTitle:{
+    textAlign:'left',
+    color:'#000',
     marginBottom: theme.spacing(2)
   }
 }));
 const OurCommunities = () => {
   const classes = useStyles();
   const data = [{
-    desc:"quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
-    image:Chennai
+    title:'Volunteers',
+    desc:"Volunteers with a strong background in computer science and programming build sustainable CS courses at their local school and community. We welcome both computer science graduate students and Tech professionals, and Academic professionals to help foster the next generation of innovators and programmers.",
+    image:'/static/images/communities/Pune.png'
   },
 {
-  desc:"quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
-  image:Pune,
+  title:'Teachers and Schools',
+  desc:"We help high schools to build CS courses for free. FreecodingSchool works with teachers and students at their school to offer two levels of engagement based on each school’s requirements: co-teach model, technical course content support",
+  image:'/static/images/communities/Chennai.png',
 },
 {
-  desc:"quia voluptas sit, aspernatur aut odit aut fugit, sed quia learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
-  image:Bangalore,
+  title:'Students and Parents',
+  desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
+  image:'/static/images/communities/Bangalore.png'
 }];
   const [news] = useState(data);  
   return (
-    <div className={classes.section}>
+    <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
-            <Typography className={classes.title} variant="h4">
-              Our Communities
+            <Typography className={`section-title`} variant="h2">
+                Bring Computer Science to your local schools and community
             </Typography>
-            <Typography className={classes.subtitle} variant="h6">
-            Sunt autem nusquam hoc epicurus in gravissimo bello animadversionis metu degendae praesidia firmissima.
-            Torquatos nostros? quos tu paulo ante cum teneam sententiam, quid bonum esse vult.
+            <Typography className={`secondary-color section-2 ${classes.subtitle}`} variant="h5">
+            FreecodingSchool is powered by collaboration of students, teachers and technology professionals.
             </Typography>
         </div>
-          <Grid item xs={12} container direction="row" justify="space-evenly" alignItems="center" spacing={2}>    
+        <Grid container direction="row" justify="space-evenly" spacing={6}>    
             {                
               news.map((newsObj,index) =>(    
                 <Grid item xs={12} md={4} key={index} >
                     <Paper className={classes.paper} elevation={0}>
                       <img src={newsObj.image} className={classes.imgWidth} alt={newsObj.image} />
                       <div className={classes.paperWrapper}>
-                        <Typography variant="subtitle1">{newsObj.desc}</Typography>
+                        <Typography variant="subtitle1" className={classes.paperTitle}>{newsObj.title}</Typography>
+                        <Typography variant="body2">{newsObj.desc}</Typography>
                       </div>
                   </Paper>
                 </Grid>

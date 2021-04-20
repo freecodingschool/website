@@ -27,30 +27,30 @@ const useStyles = makeStyles((theme) =>({
 const TopBar = ({ className, ...rest }) => {
   const classes = useStyles();
   const menus = [
-    // {
-    //   name:'About Us',
-    //   path:'/about',      
-    // },
-    // {
-    //   name:'Courses',
-    //   path:'/courses'
-    // },
+    {
+      name:'About Us',
+      path:'/about',      
+    },
+    {
+      name:'Courses',
+      path:'/courses'
+    },
     {
       name:'Volunteers',
       path:'/school-register'
     },
-    // {
-    //   name:'Students',
-    //   path:'/register'
-    // },
+    {
+      name:'Students',
+      path:'/register'
+    },
     {
       name:'Registration',
       path:'/register'
     },
-    {
-      name:'Events',
-      path:'/events'
-    },
+    // {
+    //   name:'Events',
+    //   path:'/events'
+    // },
   ]
   return (
     <AppBar

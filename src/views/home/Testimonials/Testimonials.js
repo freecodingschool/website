@@ -20,13 +20,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight:'400',
     color:'#333'
   },
-  section:{
-    backgroundColor:'#fff',
-    padding: theme.spacing(2),
+  primarySection:{
   },
   paper:{
     minHeight:'200px',
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    borderRadius: 20,
+    boxShadow:'0px 0px 77px #0000000F'
   },
   eventHead:{
     display:'inline-flex',
@@ -51,42 +51,40 @@ const useStyles = makeStyles(theme => ({
   const classes = useStyles();
   const data = [    
   {
-    title:"Mohit R",  
-    designation:"Student",  
-    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
-    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
+    title:"Roshini",  
+    designation:"Computer Science Professor",  
+    desc:`Our son had  been with FreecodingSchool for a few months now and absolutely enjoys it. He has advanced basic coding skills using Scratch  Programming  quickly and is  now about to start  Python.  The instructors at FreecodingSchool are incredibly talented, kind, and so patient with the students. Its been an amazing experience for my family seeing my 10 years old son skillfully building logical blocks and games that he enjoys playing in his free time. I also like FreecodingSchool empowering message for high school students and their effort to teach high-quality coding classes for free in local schools and communities.
+    Thank you FreecodingSchool!`
   },
   {
-    title:"Mohit R",  
-    designation:"Student",  
-    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
-    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
+    title:"Kusuma",  
+    designation:"Software Engineer at Cognizant",  
+    desc:`I’ve been volunteering here for a year now, I find this is an amazing platform to help kids learn to code. Teaching high school students to study computer science is always challenging, but the amazing co-volunteers have made my life easy by helping with well-designed course content and sharing interesting ideas to ignite kids’ curiosity. I am impressed with the team and how everyone is here motivated to help high school students in local communities by creating a fun, engaging, and safe environment. I’m happy to see students in my class using GitHub, GoogleColoborate, Online learning platforms like KhanAcademy, Coursera, and more, which are used by CS grads or professional software engineers in their daily work. I wish I had the same opportunity when I was a kid!`
   },
   {
-    title:"Mohit R",  
-    designation:"Student",  
-    desc:`Aut consectetur voluptas. Voluptatem minus quo voluptas in nulla iste. Fugiat alias sit sed dolorem quo. Qui praesentium et doloribus 
-    minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.`
+    title:"Rakhib",  
+    designation:"Student, Grade 5",  
+    desc:`FreecodingSchool opened up a new world of what I can do when I grow up. I think I can be part of this digital change and help to improve the lives of people with digital transformation across my country.`
   }
 ];
   
   
   const [testimonials] = useState(data);
   return (
-    <div className={classes.section}>
+    <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
             <Typography className={classes.title} variant="h4">
             Testimonial
             </Typography>
             <Typography className={classes.subtitle} variant="h6">
-              minima neque. Facere debitis sed est suscipit velit reprehenderit. Dolores aliquid dolore consequuntur ex.Torquem detraxit hosti et quidem faciunt, ut et negent satis esse appetendum, alterum. Si sine causa? quae fuerit causa, mox videro; interea hoc epicurus in liberos.
+            FreecodingSchool provides a network of volunteers from top companies and universities to help high schools create sustainable CS and digital education programs in their local community. We connect claasroom teachers with our generous volunteers, through remote and classroom learning.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-between" alignItems="center" spacing={2}>
+        <Grid container direction="row" justify="space-between" spacing={6}>
           {
             testimonials.map((testimonial,index) => (
-              <Grid item lg={4} xs={12} key={index} className={classes.paper}>
+              <Grid item lg={4} xs={12} key={index}>
                 <Paper elevation={1} className={classes.paper}>
                   <div className={classes.eventHead}>
                     <div className={classes.dateBox}>

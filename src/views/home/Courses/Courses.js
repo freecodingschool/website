@@ -12,14 +12,10 @@ const useStyles = makeStyles((theme) => ({
   titleWrapper:{
     alignItems:'center',
     textAlign:'center',
-    padding:'20px 0'
+    paddingBottom:'20px'
   },
-  section:{
-    backgroundColor:'#fff',
-    padding: theme.spacing(2),
-  },
-  gridContainer: {
-    //  padding:'50px',
+  primarySection:{
+    backgroundColor:'#fff'
   },
   Card1:{
     minWidth:200,
@@ -39,53 +35,50 @@ const useStyles = makeStyles((theme) => ({
  const Courses = () => {
   const classes = useStyles();
   const data = [{
-    index:1,
     title:"Python",
-    desc:"Learn the most trending language Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
+    desc:"Introduction to Computer Science",
     image:python
   },
 {
-  index:2,
   title:"Scratch",
-  desc:"Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
+  desc:"Introduction to Scratch Programming",
   image:scratch,
 },
 {
-  index:3,
   title:"HTML",
-  desc:"Help you make some cool websites Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
+  desc:"Introduction to Python",
   image:HTML,
 },
 {
-  index:4,
   title:"Basics",
-  desc:"Get involved into some interesting classes one per week Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam",
+  desc:"Mathematics for Computer Science",
   image:Basics,
 },
+//  {
+//    title:"Basics",
+//    desc:"Communication Skills",
+//    image:Basics,
+//  }
 ];
   const [courses] = useState(data);
   return (
     <Fragment>
-      <div className={classes.section}>
+      <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
         <Container maxWidth="lg">
-          <div className={classes.titleWrapper}>
-            <Typography className={classes.title} variant="h4">
-              Popular Courses
-            </Typography>
-          </div>
+          <Typography className={`section-title`} variant="h2">
+            Popular Courses
+          </Typography>
           <Grid className={classes.gridContainer} container direction="row" justify="space-evenly" alignItems="center"  spacing={2}>
             {
               courses.map((course,index) =>(
-                <Grid item xs={12} sm={4} md={3} key={index} >
+                <Grid item sm={4} md={3} key={index} >
                   <Card className={classes.Card1} variant="elevation" >
                     <CardHeader
                         avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>
-                          {/* <img url={course.image} /> */}
                           {course.title.substr(0,1).toUpperCase()}
                           </Avatar>
                         }
-                        title={course.title}
                       />
                       <CardContent>
                           <Typography variant="body2" color="inherit">
@@ -94,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
                       </CardContent>
                       <CardActions>
                             <Button variant="contained" color="primary" href="#contained-buttons">
-                              Learn More
+                              Course
                             </Button>
                       </CardActions>
                   </Card>

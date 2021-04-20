@@ -7,21 +7,27 @@ import {
   Container
 } from '@material-ui/core';
 import {Twitter,Instagram,ArrowRightAlt} from '@material-ui/icons';
-import banner from './images/banner.png';
-import vit from './images/vit.jpg';
-import illinois from './images/illinois.png';
-import comcast from './images/comcast.png';
-import cts from './images/cts.png';
+import { divide } from 'lodash';
 const useStyles = makeStyles(theme => ({
+  primarySection:{
+    alignItems:'center',
+    justifyContent:'center',
+    textAlign:'left',
+    backgroundPosition: 'right bottom',
+    background:"url(./static/images/banner.png) no-repeat",
+    backgroundSize: '45% 80%'
+  },
   title:{
     fontSize:'3em',
-    lineHeight:'1.5em'  
+    lineHeight:'1.52m'  
   },
   volunteerTitle:{
     alignItems:'center',
     justifyContent:'center',
     textAlign:'center',
-    padding: theme.spacing(2),
+    textTransform:'uppercase',
+    padding: theme.spacing(4),
+    opacity: 0.7
   },
   subtitle:{
     fontSize:'1.2em',
@@ -29,16 +35,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1.5),
     marginBottom: theme.spacing(1.5),
     fontWeight:'400',
-    color:'#333',
-  },
-  secondaryWrapper:{
-    background:'#efefef'
-  },
-  section:{
-    alignItems:'center',
-    justifyContent:'center',
-    textAlign:'left',
-    color:'#333'
+    color:'#7D7D7D',
   },
   learnMoreBtn:{
     fontSize:'2em',
@@ -54,76 +51,62 @@ const useStyles = makeStyles(theme => ({
   iconWrapper:{
     marginTop:10,
     width:200
-  },
-  imgWrapper:{
-    width:'80%',
-    margin: '0 auto'
   }
 }));
 const Community = () => {
   const classes = useStyles();
   const volunteers = [
-    {
-      image:vit
-    }, 
-    {
-      image:illinois
-    }, 
-    {
-      image:cts
-    }, 
-    {
-      image:comcast
-    }
+    './static/images/volunteers/illinois.png',
+    './static/images/volunteers/vit1.jpg',
+    './static/images/volunteers/cts.png',
+    './static/images/volunteers/comcast.png',
+   // './static/images/volunteers/vit1.jpg',
   ]
   return (
     <Fragment>
-      <div className={classes.section} style={{minHeight: 'calc(100vh - 65px)'}}>
-        <Container maxWidth="lg">
-            <Grid container direction="row" justify="space-evenly" alignItems="center">
-              <Grid item xs={12} md={7}>
-                <Typography className={classes.title} variant="h1">
-                  Creating A Local Community To Empower High
-                  School Students To Learn Programming
-                </Typography>
-                <Typography className={classes.subtitle} variant="h5">
-                  A Simple Mission To Close The Computer Science Gap In High Schools And <br/>Local Communities.
-                </Typography>
-                <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
-                  href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
-                  Learn More <ArrowRightAlt />
-                </Button> 
-                <div className={classes.iconWrapper}>
-                  <IconButton aria-label="twitter" color="secondary">
-                    <Twitter/>
-                  </IconButton>
-                  <IconButton aria-label="instagram" color="secondary">
-                    <Instagram  />
-                  </IconButton>
-                </div>                
-            </Grid>
-            <Grid item xs={12} md={5}>
-              <img src={banner} width="100%"  alt={banner}/>
-            </Grid>
-            </Grid>
-        </Container>
-        <div  className={classes.secondaryWrapper}>
+        <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>  
+            <Container maxWidth="lg">
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={7}>
+                    <Typography className={classes.title} variant="h1">
+                      Creating A Local Community To Empower High
+                      School Students To Learn Programming
+                    </Typography>
+                    <Typography className={`${classes.subtitle} section-4`} variant="h5">
+                      A Simple Mission To Close The Computer Science Gap In High Schools And <br/>Local Communities.
+                    </Typography>
+                    <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
+                      href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      Learn More <ArrowRightAlt />
+                    </Button> 
+                    <div className={`${classes.iconWrapper} section-2`}>
+                      <IconButton aria-label="twitter" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                        <Twitter/>
+                      </IconButton>
+                      <IconButton aria-label="instagram" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                        <Instagram  />
+                      </IconButton>
+                    </div>                
+                </Grid>                  
+              </Grid>  
+            </Container>          
+        </div>   
+        <div  className={`section-2 secondary-bg`}>
           <Container maxWidth="lg">
-            <Typography className={classes.volunteerTitle} variant="h2">We are from</Typography>
+            <Typography className={`secondary-color ${classes.volunteerTitle}`} variant="h3">We are from</Typography>
               <Grid container direction="row" justify="space-evenly" alignItems="center">
                 {
                   volunteers.map((volunteer,i) => (
                     <Grid item xs={12} md={3} key={i}>
                       <div className={classes.imgWrapper}>
-                        <img src={volunteer.image} width="100%" alt={volunteer.image}/>
+                        <img src={volunteer} width="200px" alt={volunteer.image}/>
                       </div>
                     </Grid>
                   ))       
                 }
               </Grid>
           </Container>
-        </div>        
-    </div>   
+        </div> 
     </Fragment>
   );
 };
