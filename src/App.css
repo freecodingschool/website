@@ -21,3 +21,6 @@ body{
 .secondary-color{
     color:#373737
 }
+.desc{
+    line-height:2em !important;
+}

@@ -12,8 +12,7 @@ const useStyles = makeStyles(theme => ({
     textAlign:'center',  
   },
   paperWrapper:{
-    paddingTop: theme.spacing(2),
-    color: '#000',
+    padding: `${theme.spacing(2)}px`,
     textAlign:'left'
   },
   imgWidth:{
@@ -25,12 +24,12 @@ const useStyles = makeStyles(theme => ({
     textAlign:'center',
     minHeight:'220px',
     borderRadius:20,
-    // background: '#efefef'
-  },
+     background: 'inherit'
+  }, 
   paperTitle:{
     textAlign:'left',
     color:'#000',
-    marginBottom: theme.spacing(2)
+    marginBottom:`${theme.spacing(1)}px`
   }
 }));
 const OurCommunities = () => {
@@ -39,20 +38,20 @@ const OurCommunities = () => {
     title:'Volunteers',
     desc:"Volunteers with a strong background in computer science and programming build sustainable CS courses at their local school and community. We welcome both computer science graduate students and Tech professionals, and Academic professionals to help foster the next generation of innovators and programmers.",
     image:'/static/images/communities/Pune.png'
+    },
+  {
+    title:'Teachers and Schools',
+    desc:"We help high schools to build CS courses for free. FreecodingSchool works with teachers and students at their school to offer two levels of engagement based on each school’s requirements: co-teach model, technical course content support",
+    image:'/static/images/communities/Chennai.png',
   },
-{
-  title:'Teachers and Schools',
-  desc:"We help high schools to build CS courses for free. FreecodingSchool works with teachers and students at their school to offer two levels of engagement based on each school’s requirements: co-teach model, technical course content support",
-  image:'/static/images/communities/Chennai.png',
-},
-{
-  title:'Students and Parents',
-  desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
-  image:'/static/images/communities/Bangalore.png'
-}];
+  {
+    title:'Students and Parents',
+    desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
+    image:'/static/images/communities/Bangalore.png'
+  }];
   const [news] = useState(data);  
   return (
-    <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
+    <div className={`section-5 secondary-bg ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
             <Typography className={`section-title`} variant="h2">
@@ -66,11 +65,11 @@ const OurCommunities = () => {
             {                
               news.map((newsObj,index) =>(    
                 <Grid item xs={12} md={4} key={index} >
-                    <Paper className={classes.paper} elevation={0}>
+                    <Paper className={classes.paper} elevation={0} >
                       <img src={newsObj.image} className={classes.imgWidth} alt={newsObj.image} />
                       <div className={classes.paperWrapper}>
-                        <Typography variant="subtitle1" className={classes.paperTitle}>{newsObj.title}</Typography>
-                        <Typography variant="body2">{newsObj.desc}</Typography>
+                        <Typography variant="h4" className={classes.paperTitle}>{newsObj.title}</Typography>
+                        <Typography variant="body2" className={`desc secondary-color`}>{newsObj.desc}</Typography>
                       </div>
                   </Paper>
                 </Grid>

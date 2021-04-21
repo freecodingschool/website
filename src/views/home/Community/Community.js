@@ -7,7 +7,6 @@ import {
   Container
 } from '@material-ui/core';
 import {Twitter,Instagram,ArrowRightAlt} from '@material-ui/icons';
-import { divide } from 'lodash';
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',

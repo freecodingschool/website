@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     alignItems:'center',
     justifyContent:'center',
     textAlign:'center',
-    minHeight:'370px',
+    minHeight:'415px',
     boxShadow:'0px 6px 42px #0000001A',
     borderRadius:20,
     marginTop:'25px'
@@ -77,7 +77,7 @@ const Curriculum = () => {
                       </div>
                       <div className={classes.paperWrapper}>
                         <Typography variant="h4" className={classes.paperTitle}>{newsObj.title}</Typography>
-                        <Typography variant="body2" className={classes.description}>{newsObj.desc}</Typography>
+                        <Typography variant="body2" className={`${classes.description} desc`}>{newsObj.desc}</Typography>
                       </div>
                   </Paper>
                 </Grid>

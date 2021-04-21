@@ -25,13 +25,13 @@ const useStyles = makeStyles(theme => ({
     marginTop:'20px',
     color:'#333'
   },
-  section:{
-    backgroundColor:'#efefef',
-    padding: theme.spacing(2),
+  primarySection:{
+
   },
   paper:{
     minHeight:'200px',
     padding: theme.spacing(2),
+    // boxShadow:'0px 6px 42px #0000001A',
     marginRight:theme.spacing(2)
   },
   eventHead:{
@@ -116,14 +116,15 @@ const Programs = () => {
   const [events] = useState(data);
   const [slideToShow] = useState(2); 
   return (
-    <div className={classes.section}>
+    <div  className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
-            <Typography className={classes.title} variant="h4">
+            <Typography className={`section-title`} variant="h2">
               Upcoming Freecoding School Events
             </Typography>
-            <Typography className={classes.subtitle} variant="h6">
-              Freecoding School is powered by collaboration of students, teachers and technology professionals.
+            <Typography className={`secondary-color section-2 desc ${classes.subtitle}`} variant="h5">
+              Sunt autem nusquam hoc epicurus in gravissimo bello animadversionis metu degendae praesidia firmissima. 
+              Torquatos nostros? quos tu paulo ante cum teneam sententiam, quid bonum esse vult.
             </Typography>
         </div>
         <Grid container direction="row" justify="space-evenly" alignItems="center">
@@ -140,7 +141,7 @@ const Programs = () => {
                   {
                     events.map((event,index) => (
                       <Slide key={index}>
-                        <Paper elevation={0} className={classes.paper}>
+                        <Paper elevation={2} className={classes.paper}>
                             <div className={classes.eventHead}>
                               <div className={classes.dateBox}>
                                 <div>{event.date}</div>

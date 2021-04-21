@@ -5,7 +5,7 @@ import Community from './Community';
 import Events from './Events';
 import Courses from './Courses';
 import News from './News';
-import Volunteers from './Volunteers';
+// import Volunteers from './Volunteers';
 import Curriculum from './Curriculum';
 import OurCommunities from './OurCommunities';
 import JoinUs from './JoinUs';
@@ -23,10 +23,12 @@ const Home = () => {
       <Community />
       <Courses />
       <Curriculum/>
-      {/* <Volunteers /> */}
+      <Events />
+      
+      
       {/* <FreeCoding /> */}
       {/* <News /> */}
-      {/* <Events /> */}
+     
       <OurCommunities />
       <Testimonials/>
       <JoinUs />
