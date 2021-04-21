@@ -5,7 +5,8 @@ import Community from './Community';
 import Events from './Events';
 import Courses from './Courses';
 import News from './News';
-import Volunteers from './Volunteers';
+// import Volunteers from './Volunteers';
+import Curriculum from './Curriculum';
 import OurCommunities from './OurCommunities';
 import JoinUs from './JoinUs';
 import Testimonials from './Testimonials'
@@ -21,10 +22,13 @@ const Home = () => {
     <div className={classes.root}>
       <Community />
       <Courses />
-      {/* <Volunteers /> */}
+      <Curriculum/>
+      <Events />
+      
+      
       {/* <FreeCoding /> */}
       {/* <News /> */}
-      {/* <Events /> */}
+     
       <OurCommunities />
       <Testimonials/>
       <JoinUs />
