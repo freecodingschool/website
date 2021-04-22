@@ -16,7 +16,7 @@ body{
     padding:2% 0;
 }
 .secondary-bg{
-    background-color: #F3F2F7;
+    background-color: #F3F2F7 !important;
 }
 .secondary-color{
     color:#373737

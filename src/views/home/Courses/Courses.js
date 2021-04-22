@@ -1,13 +1,8 @@
 import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, Avatar,CardHeader,CardContent ,CardActions,
-    Container,Typography,Grid,IconButton, Button} from '@material-ui/core';
-import Image from 'material-ui-image';
+import {Container,Typography,Grid,Button,Paper, Box} from '@material-ui/core';
 import SchoolIcon from '@material-ui/icons/School';
-import python from './images/img-python.png';
-import scratch from './images/img-scratch.jpg';
-import HTML from './images/img-html.png';
-import Basics from './images/img-basics.jpg';
+
 const useStyles = makeStyles((theme) => ({
   titleWrapper:{
     alignItems:'center',
@@ -17,50 +12,64 @@ const useStyles = makeStyles((theme) => ({
   primarySection:{
     backgroundColor:'#fff'
   },
-  Card1:{
-    minWidth:200,
-  },
   media: {
-    height:0,
-    paddingTop: '56.25%', // 16:9
-
+    margin:'0 auto'
   },
   title:{
     paddingTop: '20px',
     paddingLeft:'20px',
   },
-
+  courseWrapper:{
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'row'
+  },
+  courseBody:{
+    height:110,
+    padding:8
+  },
+  courseCard:{
+    margin:8,
+    padding:8,
+    color:'#2F2F2F',
+    width:'calc(25% - 8px)',
+    [theme.breakpoints.between("sm", "xs")]: {
+      width:'calc(100%)',
+    }
+  },  
+  courseCardHeader:{
+    padding:theme.spacing(1)
+  },
+  voluteerCard:{
+    padding:theme.spacing(2)
+  },
+  imgWrapper:{
+    textAlign:'center'
+  }
 }));
-
- const Courses = () => {
+const Courses = () => {
   const classes = useStyles();
   const data = [{
-    title:"Python",
-    desc:"Introduction to Computer Science",
-    image:python
+    title:"Introduction to Computer Science",
+    image:'./static/images/courses/img-python.png'
   },
-{
-  title:"Scratch",
-  desc:"Introduction to Scratch Programming",
-  image:scratch,
-},
-{
-  title:"HTML",
-  desc:"Introduction to Python",
-  image:HTML,
-},
-{
-  title:"Basics",
-  desc:"Mathematics for Computer Science",
-  image:Basics,
-},
-//  {
-//    title:"Basics",
-//    desc:"Communication Skills",
-//    image:Basics,
-//  }
+  {
+    title:"Introduction to Scratch Programming",
+    image:'./static/images/courses/img-scratch.jpg'
+  },
+  {
+    title:"Introduction to Python",
+    image:'./static/images/courses/img-html.png'
+  },
+  {
+    title:"Mathematics for Computer Science",
+    image:'./static/images/courses/img-math.jpg'
+  },{
+    title:'Communication Skills',
+    image:'./static/images/courses/kidoo.jpg'
+  }
 ];
-  const item = [{
+const item = [{
     index:1,
     title:"STUDENTS",
     desc:" Become a FreecodingSchool Student to learn how to code.",
@@ -88,59 +97,51 @@ const [cards] = useState(item);
             <Typography className={`section-title`} variant="h2">
               Popular Courses
             </Typography>
-            <Grid className={classes.gridContainer} container direction="row" justify="space-evenly" alignItems="center"  spacing={2}>
+            <Box component="div" m={1} className={`${classes.courseWrapper}`}>
               {
                 courses.map((course,index) =>(
-                  <Grid item sm={4} md={3} key={index} >
-                    <Card className={classes.Card1} variant="elevation" >
-                      <CardHeader
-                          avatar={
-                          <Avatar aria-label="recipe" className={classes.avatar}>
-                            {course.title.substr(0,1).toUpperCase()}
-                            </Avatar>
-                          }
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="inherit">
-                                {course.desc}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                              <Button variant="contained" color="primary" href="#contained-buttons">
-                                Course
-                              </Button>
-                        </CardActions>
-                    </Card>
-                  </Grid>
+                  <Paper elevation={3} key={index} className={`secondary-bg ${classes.courseCard}`}>    
+                      <div className={`${classes.courseCardHeader}`}>                        
+                        <img src={course.image} width="50" alt={course.title}/>
+                      </div> 
+                      <div className={classes.courseBody}>
+                        <Typography variant="body2" color="inherit">
+                            {course.title}
+                        </Typography>                      
+                      </div>         
+                      <Button href="#contained-buttons" color="inherit">
+                        Course
+                      </Button>
+                  </Paper>
                 ))
               }
-            </Grid>
+            </Box>
         </div>
         <div  className={`section-2`}>        
         <Grid className={`${classes.gridContainer} ${classes.gridItem}`}  container
              direction="row" alignItems="center" justify="center"> 
-            <Grid item md={6} sm={12}>            
-              <img src="./static/images/course-teaching.png" width="50%"/>          
+            <Grid item md={7} sm={12}  className={classes.imgWrapper}>            
+              <img src="./static/images/course-teaching.png" width="70%" alt="course teaching"/>          
             </Grid>
-            <Grid item md={6} sm={12} container direction="column" justify="space-between" spacing={2}>        
+            <Grid item md={5} sm={12} container direction="column" justify="space-between" spacing={2}>        
               {cards.map((card,index) =>(    
-                <Grid item md={12} key={index} direction="column" justify="center" alignItems="baseline" spacing={1} className={classes.gridItem}>
-                    <Card className={classes.Card1} variant="elevation" >
-                        <CardContent>
-                            <IconButton >
-                            <SchoolIcon/>
-                            </IconButton>
-
-                            <Typography variant="h4"  >
+                <Grid item md={12} key={index} 
+                  direction="column" justify="center" spacing={1}>
+                    <Paper elevation={3} className={`secondary-bg ${classes.voluteerCard}`}>
+                        <Grid container>
+                          <Grid item xs={2}>
+                            <SchoolIcon/>   
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Typography variant="h4">
                                 {card.title}
                             </Typography>
-                            <Typography variant="body1" >
+                            <Typography variant="body1" className={`secondary-color section-4 desc`}>
                                 {card.desc}
                             </Typography>
-                        </CardContent> 
-                          
-                    </Card>
-                            
+                          </Grid>
+                        </Grid>
+                    </Paper>
                 </Grid>
               )) }
             </Grid>
