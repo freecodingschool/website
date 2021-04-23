@@ -30,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     height: '60px',
     fontSize:20   
   },
+  description:{
+    maxHeight:140,
+    overflow:'hidden'
+  },
   paperTitle:{
     color:"#333",
     marginBottom: '0.5px',
@@ -88,7 +92,7 @@ const useStyles = makeStyles(theme => ({
                       <Typography variant="h6">{testimonial.designation}</Typography>
                     {/* </div>
                   </div>                  */}
-                  <Typography  variant="body2" className={`desc secondary-color`}>{testimonial.desc}</Typography>
+                  <Typography  variant="body2" className={`desc secondary-color ${classes.description}`}>{testimonial.desc}</Typography>
                 </Paper>
               </Grid>
             ))

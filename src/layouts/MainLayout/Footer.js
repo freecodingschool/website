@@ -6,8 +6,7 @@ const useStyles = makeStyles(theme => ({
     display:'flex',
     backgroundColor:'#6962ff',
     color:'#fff',
-    padding: theme.spacing(4),
-    // marginBottom: "10px"
+    padding: theme.spacing(4)
   }, 
   footerTitle:{
     letterSpacing:'0.5em',
@@ -75,7 +74,7 @@ const Footer = props => {
            <Grid item lg={12} xs={12}>
               <Grid container direction="column" justify="space-evenly">
                   <Typography variant="body1">
-                    &copy;{' '} Freecoding School Not for Profit Organization
+                    &copy;{' '} 2021 Freecoding School Not for Profit Organization
                   </Typography>
               </Grid>
             </Grid>
