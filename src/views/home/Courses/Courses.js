@@ -2,7 +2,8 @@ import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Container,Typography,Grid,Button,Paper, Box} from '@material-ui/core';
 import SchoolIcon from '@material-ui/icons/School';
-
+import PanToolIcon from '@material-ui/icons/PanTool';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
 const useStyles = makeStyles((theme) => ({
   titleWrapper:{
     alignItems:'center',
@@ -51,41 +52,38 @@ const Courses = () => {
   const classes = useStyles();
   const data = [{
     title:"Introduction to Computer Science",
-    image:'./static/images/courses/img-python.png'
+    image:'./static/images/courses/icon-code.png'
   },
   {
     title:"Introduction to Scratch Programming",
-    image:'./static/images/courses/img-scratch.jpg'
+    image:'./static/images/courses/computer-programming.png'
   },
   {
     title:"Introduction to Python",
-    image:'./static/images/courses/img-html.png'
+    image:'./static/images/courses/icon-python.png'
   },
   {
     title:"Mathematics for Computer Science",
-    image:'./static/images/courses/img-math.jpg'
+    image:'./static/images/courses/icon-mathworks.png'
   },{
     title:'Communication Skills',
-    image:'./static/images/courses/kidoo.jpg'
+    image:'./static/images/courses/icon-communication.png'
   }
 ];
 const item = [{
     index:1,
     title:"STUDENTS",
     desc:" Become a FreecodingSchool Student to learn how to code.",
-    
   },
 {
   index:2,
   title:"VOLUNTEERS",
   desc:" Make an impact while continuing your studies/day job.",
-  
 },
 {
   index:3,
   title:"SCHOOLS",
-  desc:" Bring computer science to your school and community.",
-  
+  desc:" Bring computer science to your school and community.",  
 }];
 
 const [cards] = useState(item);
@@ -102,7 +100,7 @@ const [cards] = useState(item);
                 courses.map((course,index) =>(
                   <Paper elevation={3} key={index} className={`secondary-bg ${classes.courseCard}`}>    
                       <div className={`${classes.courseCardHeader}`}>                        
-                        <img src={course.image} width="50" alt={course.title}/>
+                        <img src={course.image} width="40" alt={course.title}/>
                       </div> 
                       <div className={classes.courseBody}>
                         <Typography variant="body2" color="inherit">
@@ -129,8 +127,8 @@ const [cards] = useState(item);
                   direction="column" justify="center" spacing={1}>
                     <Paper elevation={3} className={`secondary-bg ${classes.voluteerCard}`}>
                         <Grid container>
-                          <Grid item xs={2}>
-                            <SchoolIcon/>   
+                          <Grid item xs={2}>.
+                            {(index === 0)? <SchoolIcon/>:(index === 1)?<PanToolIcon />:<LocationCityIcon />}
                           </Grid>
                           <Grid item xs={10}>
                             <Typography variant="h4">
