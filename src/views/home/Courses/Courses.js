@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '20px',
     paddingLeft:'20px',
   },
+  primaryBg:{
+    backgroundColor:theme.palette.primary.main,
+    color:'#fff !important'
+  },
   courseWrapper:{
     display: 'flex',
     width: '100%',
@@ -38,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
       width:'calc(100%)',
     }
   },  
+  studentCard:{
+    padding:0
+  },
   courseCardHeader:{
     padding:theme.spacing(1)
   },
@@ -98,7 +105,7 @@ const [cards] = useState(item);
             <Box component="div" m={1} className={`${classes.courseWrapper}`}>
               {
                 courses.map((course,index) =>(
-                  <Paper elevation={3} key={index} className={`secondary-bg ${classes.courseCard}`}>    
+                  <Paper elevation={3} key={index} className={`${classes.courseCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'}`}>    
                       <div className={`${classes.courseCardHeader}`}>                        
                         <img src={course.image} width="40" alt={course.title}/>
                       </div> 
@@ -121,27 +128,30 @@ const [cards] = useState(item);
             <Grid item md={7} sm={12}  className={classes.imgWrapper}>            
               <img src="./static/images/course-teaching.png" width="70%" alt="course teaching"/>          
             </Grid>
-            <Grid item md={5} sm={12} container direction="column" justify="space-between" spacing={2}>        
-              {cards.map((card,index) =>(    
-                <Grid item md={12} key={index} 
-                  direction="column" justify="center" spacing={1}>
-                    <Paper elevation={3} className={`secondary-bg ${classes.voluteerCard}`}>
-                        <Grid container>
-                          <Grid item xs={2}>.
-                            {(index === 0)? <SchoolIcon/>:(index === 1)?<PanToolIcon />:<LocationCityIcon />}
-                          </Grid>
-                          <Grid item xs={10}>
-                            <Typography variant="h4">
-                                {card.title}
-                            </Typography>
-                            <Typography variant="body1" className={`secondary-color section-4 desc`}>
-                                {card.desc}
-                            </Typography>
-                          </Grid>
-                        </Grid>
-                    </Paper>
+            <Grid item md={5} sm={12}>   
+              <Grid container direction="column" justify="space-between" spacing={2}>     
+                  {
+                    cards.map((card,index) =>(    
+                      <Grid item md={10} key={index}>
+                          <Paper elevation={3}  className={`${classes.studentCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'} ${classes.voluteerCard}`}>
+                              <Grid container>
+                                <Grid item xs={2}>.
+                                  {(index === 0)? <SchoolIcon style={{ fontSize: 32 }} />:(index === 1)?<PanToolIcon style={{ fontSize: 32 }} />:<LocationCityIcon style={{ fontSize: 32 }} />}
+                                </Grid>
+                                <Grid item xs={10}>
+                                  <Typography variant="h4">
+                                      {card.title}
+                                  </Typography>
+                                  <Typography variant="subtitle1" className={`secondary-color section-4 ${index === 1 ? classes.primaryBg : 'desc'}`}>
+                                      {card.desc}
+                                  </Typography>
+                                </Grid>
+                              </Grid>
+                          </Paper>
+                      </Grid>
+                    )) 
+                  }
                 </Grid>
-              )) }
             </Grid>
         </Grid>
   </div>

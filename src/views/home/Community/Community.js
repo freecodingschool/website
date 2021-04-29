@@ -6,7 +6,7 @@ import {
   Typography,IconButton,
   Container
 } from '@material-ui/core';
-import {Twitter,Instagram,ArrowRightAlt} from '@material-ui/icons';
+import {Twitter,Instagram,ArrowRightAlt,Facebook} from '@material-ui/icons';
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: '45% 80%'
   },
   title:{
-    fontSize:'3em',
+    fontSize:'2.5em',
     lineHeight:'1.52m'  
   },
   volunteerTitle:{
@@ -56,10 +56,9 @@ const Community = () => {
   const classes = useStyles();
   const volunteers = [
     './static/images/volunteers/illinois.png',
-    './static/images/volunteers/vit1.jpg',
+    './static/images/volunteers/vit.png',
     './static/images/volunteers/cts.png',
-    './static/images/volunteers/comcast.png',
-   // './static/images/volunteers/vit1.jpg',
+    './static/images/volunteers/comcast.png'
   ]
   return (
     <Fragment>
@@ -79,10 +78,15 @@ const Community = () => {
                       Learn More <ArrowRightAlt />
                     </Button> 
                     <div className={`${classes.iconWrapper} section-2`}>
-                      <IconButton aria-label="twitter" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="twitter" color="secondary" 
+                        href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                        <Facebook/>
+                      </IconButton>     
+                      <IconButton aria-label="twitter" color="secondary"
+                       href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
                         <Twitter/>
                       </IconButton>
-                      <IconButton aria-label="instagram" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="instagram" color="secondary" href="https://www.instagram.com/freecoding_school/" target="_blank">
                         <Instagram  />
                       </IconButton>
                     </div>                

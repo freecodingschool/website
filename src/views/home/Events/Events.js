@@ -31,8 +31,9 @@ const useStyles = makeStyles(theme => ({
   paper:{
     minHeight:'200px',
     padding: theme.spacing(2),
+    boxShadow: '0px 0px 77px #0000000f',
     // boxShadow:'0px 6px 42px #0000001A',
-    marginRight:theme.spacing(2)
+    // marginRight:theme.spacing(2)
   },
   eventHead:{
     display:'inline-flex',
@@ -53,14 +54,12 @@ const useStyles = makeStyles(theme => ({
     color:'#333',
     marginTop: theme.spacing(2),
   },
-  eventTime:{
-    marginBottom: theme.spacing(2),
+  eventTimeWrapper:{
     color:'#333',
     marginTop: theme.spacing(2),
-    textALign:'right'
-  },
-  eventTimeWrapper:{
-    display:'inline-flex'
+    justifyContent:'flex-end',
+    alignItems:'flex-end',
+    display:'flex'
   },
   learnMoreBtn:{
     marginTop: theme.spacing(2)
@@ -71,48 +70,46 @@ const Programs = () => {
   const classes = useStyles();
   const data = [    
   {
-    title:"Introduction to Scratch Programming",
+    title:"Intro to Scratch Programming",
     date:'23',
     month:'Dec',
-    time:'10 AM - 2 PM',
-    desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
+    time:'7.30 AM - 8.30 PM',
+    desc:`In this course, we introduce computer science fundamentals using Scratch’s block-based
+     programming environment. This course focuses on event listeners, 
+    loops, conditional statements, user input, Cartesian coordinates, variables, and message broadcasting.`,
   },
   {
-    title:"Introduction to Scratch Programming",
-    date:'23',
-    month:'Dec',
-    time:'10 AM - 2 PM',
-    desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
+    title:"Intro to Python",
+    date:'17',
+    month:'Jan',
+    time:'8.30 AM - 9.30 PM',
+    desc:`In this course, students dive deeper into Python fundamentals with loops, variables,
+     conditional statements, and functions, while also introducing more advanced topics such as lists, sets, 
+     dictionaries, and error checking.
+     Students practice integrating these concepts in building a series of complex projects `,
   },
-  {
-    title:"Introduction to Scratch Programming",
-    date:'23',
-    month:'Dec',
-    time:'10 AM - 2 PM',
-    desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
-  },{
-    title:"Introduction to Scratch Programming",
-    date:'23',
-    month:'Dec',
-    time:'10 AM - 2 PM',
-    desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
-    Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
-  }];  
+  // {
+  //   title:"Introduction to Scratch Programming",
+  //   date:'23',
+  //   month:'Dec',
+  //   time:'10 AM - 2 PM',
+  //   desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
+  // },{
+  //   title:"Introduction to Scratch Programming",
+  //   date:'23',
+  //   month:'Dec',
+  //   time:'10 AM - 2 PM',
+  //   desc:`Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit
+  //   Explore the entire scratch programming Nemo enim ipsam voluptatem, quia voluptas sit`,
+  // }
+  ];  
   const [events] = useState(data);
   const [slideToShow] = useState(2); 
   return (
@@ -120,28 +117,28 @@ const Programs = () => {
       <Container maxWidth="lg">       
         <div className={classes.titleWrapper}>
             <Typography className={`section-title`} variant="h2">
-              Upcoming Freecoding School Events
+              Freecoding School Calendar
             </Typography>
             <Typography className={`secondary-color section-2 desc ${classes.subtitle}`} variant="h5">
-              Sunt autem nusquam hoc epicurus in gravissimo bello animadversionis metu degendae praesidia firmissima. 
-              Torquatos nostros? quos tu paulo ante cum teneam sententiam, quid bonum esse vult.
+            This calendar applies to those who are attending our classes.
+            If you are attending our classes from your school, then we follow the school calendar.
             </Typography>
         </div>
         <Grid container direction="row" justify="space-evenly" alignItems="center">
           <Grid item xs={12} lg={12}>
             <CarouselProvider
-              naturalSlideWidth={200}
-              naturalSlideHeight={120}
+              naturalSlideWidth={300}
+              naturalSlideHeight={175}
               totalSlides={events.length}
               visibleSlides={slideToShow}
               interval="5000"
-              isPlaying="false"
-              step={slideToShow}>
+              isPlaying="true"
+              step="0">
               <Slider className="eventsUl">
                   {
                     events.map((event,index) => (
                       <Slide key={index}>
-                        <Paper elevation={2} className={classes.paper}>
+                        <Paper elevation={0} className={classes.paper}>
                             <div className={classes.eventHead}>
                               <div className={classes.dateBox}>
                                 <div>{event.date}</div>
@@ -160,7 +157,7 @@ const Programs = () => {
                                   <ArrowRightAlt />
                                 </Button>
                               </Grid>
-                              <Grid item xs={6}  className={classes.eventTime}>
+                              <Grid item xs={6}>
                                 <div className={classes.eventTimeWrapper}>
                                     <AccessTime /> 
                                     <Typography variant="h5">{event.time}</Typography>
