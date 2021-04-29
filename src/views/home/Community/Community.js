@@ -14,7 +14,10 @@ const useStyles = makeStyles(theme => ({
     textAlign:'left',
     backgroundPosition: 'right bottom',
     background:"url(./static/images/banner.png) no-repeat",
-    backgroundSize: '45% 80%'
+    backgroundSize: '45% 80%',
+    [theme.breakpoints.down("md")]: {
+      backgroundSize: '100%'
+    }
   },
   title:{
     fontSize:'2.5em',
@@ -47,6 +50,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1.5),
     width:200
   },
+  imgWrapper:{
+      display:'flex',
+      [theme.breakpoints.down("md")]: {
+        justifyContent: 'center',
+        marginBottom: theme.spacing(2),
+        alignItems:'center'
+    }
+  },
   iconWrapper:{
     marginTop:10,
     width:200
@@ -78,12 +89,12 @@ const Community = () => {
                       Learn More <ArrowRightAlt />
                     </Button> 
                     <div className={`${classes.iconWrapper} section-2`}>
-                      <IconButton aria-label="twitter" color="secondary" 
-                        href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="facebook" color="secondary" 
+                        href="https://facebook.com/Freecodingschool-100491288733049" target="_blank">
                         <Facebook/>
                       </IconButton>     
                       <IconButton aria-label="twitter" color="secondary"
-                       href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                       href="https://twitter.com/freecodingsch?s=11" target="_blank">
                         <Twitter/>
                       </IconButton>
                       <IconButton aria-label="instagram" color="secondary" href="https://www.instagram.com/freecoding_school/" target="_blank">

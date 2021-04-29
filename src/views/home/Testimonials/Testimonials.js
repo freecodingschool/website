@@ -78,20 +78,20 @@ const useStyles = makeStyles(theme => ({
             FreecodingSchool provides a network of volunteers from top companies and universities to help high schools create sustainable CS and digital education programs in their local community. We connect claasroom teachers with our generous volunteers, through remote and classroom learning.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-between" spacing={6}>
+        <Grid container justify="space-between" spacing={6}>
           {
             testimonials.map((testimonial,index) => (
               <Grid item lg={4} xs={12} key={index}>
                 <Paper elevation={1} className={classes.paper}>
-                  {/* <div className={classes.eventHead}>
-                    <div className={classes.dateBox}>
-                      <img src={testimonial.image} width="100%"/>
-                    </div>
-                    <div> */}
-                      <Typography variant="h4" className={classes.paperTitle}>{testimonial.title}</Typography>
-                      <Typography variant="h6">{testimonial.designation}</Typography>
-                    {/* </div>
-                  </div>                  */}
+                    <Grid container justify="space-between" alignItems="center" spacing={2} >
+                      <Grid item xs={2}>
+                        <img src={testimonial.image} alt={testimonial.title} width="100%"/>
+                      </Grid>
+                      <Grid item xs={10}>
+                        <Typography variant="h4" className={classes.paperTitle}>{testimonial.title}</Typography>
+                        <Typography variant="h6">{testimonial.designation}</Typography>
+                      </Grid>
+                    </Grid>     
                   <Typography  variant="body2" className={`desc secondary-color ${classes.description}`}>{testimonial.desc}</Typography>
                 </Paper>
               </Grid>
