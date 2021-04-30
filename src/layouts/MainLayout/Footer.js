@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
     color:'#fff',
     justifyContent:'flex-end',
     display:'flex'
+  },
+  btnColor:{
+    color:'#fff'
   }
 }));
 
@@ -86,13 +89,13 @@ const Footer = props => {
                   </Grid>
                   <Grid item md={6} xs={12}>
                     <div className={classes.mediaLinks}>
-                    <IconButton aria-label="facebook" color="primary" variant="contained" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                    <IconButton aria-label="facebook" className={classes.btnColor}  href="https://facebook.com/Freecodingschool-100491288733049" target="_blank">
                       <Facebook/>
                     </IconButton>                
-                      <IconButton aria-label="twitter" color="primary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="twitter" className={classes.btnColor} href="https://twitter.com/freecodingsch?s=11" target="_blank">
                         <Twitter/>
                       </IconButton>
-                      <IconButton aria-label="instagram" color="primary" href="https://www.instagram.com/freecoding_school/" target="_blank">
+                      <IconButton aria-label="instagram" className={classes.btnColor} href="https://www.instagram.com/freecoding_school/" target="_blank">
                         <Instagram  />
                       </IconButton>
                     </div>

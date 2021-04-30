@@ -7,9 +7,9 @@ import {
   Container,
   Paper
 } from '@material-ui/core';
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
+// import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import { ArrowRightAlt, AccessTime } from '@material-ui/icons';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+// import 'pure-react-carousel/dist/react-carousel.es.css'; 
 
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
@@ -124,9 +124,9 @@ const Programs = () => {
             If you are attending our classes from your school, then we follow the school calendar.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-evenly" alignItems="center">
-          <Grid item xs={12} lg={12}>
-            <CarouselProvider
+        <Grid container alignItems="center" spacing={2}>
+          {/* <Grid item xs={12} lg={12}> */}
+            {/* <CarouselProvider
               naturalSlideWidth={300}
               naturalSlideHeight={175}
               totalSlides={events.length}
@@ -134,10 +134,11 @@ const Programs = () => {
               interval="5000"
               isPlaying="true"
               step="0">
-              <Slider className="eventsUl">
+              <Slider className="eventsUl"> */}
                   {
                     events.map((event,index) => (
-                      <Slide key={index}>
+                      // <Slide key={index}>
+                      <Grid item xs={12} lg={6} key={index}> 
                         <Paper elevation={0} className={classes.paper}>
                             <div className={classes.eventHead}>
                               <div className={classes.dateBox}>
@@ -165,13 +166,14 @@ const Programs = () => {
                               </Grid>
                             </Grid>
                         </Paper>
-                      </Slide>
+                      {/* </Slide> */}
+                      </Grid>
                     ))
                   } 
-              </Slider>
-            </CarouselProvider>
+              {/* </Slider>
+            </CarouselProvider> */}
           </Grid>
-        </Grid>
+        {/* </Grid> */}
     </Container>
     </div>
   );
