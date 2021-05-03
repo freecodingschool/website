@@ -40,14 +40,16 @@ const useStyles = makeStyles(theme => ({
     width:'100%'
   },
   dateBox:{
-    padding:'10px 16px',
+    padding:'15px 16px',
     marginRight: theme.spacing(2),
     borderRadius:11,
     backgroundColor:'#d5d8ff',
     textAlign:'center',
-    height: '76px',
-    width:'76px',
-    fontSize:23    
+    height:70,
+    width:140,
+    fontSize:'1.2rem',
+    display: 'flex',
+    alignItems: 'center'    
   },
   paperTitle:{
     marginBottom: theme.spacing(2),
@@ -71,18 +73,18 @@ const Programs = () => {
   const data = [    
   {
     title:"Intro to Scratch Programming",
-    date:'23',
+    date:'Mon - Fri',
     month:'Dec',
-    time:'7.30 AM - 8.30 PM',
+    time:'7.30 PM - 8.30 PM',
     desc:`In this course, we introduce computer science fundamentals using Scratch’s block-based
      programming environment. This course focuses on event listeners, 
     loops, conditional statements, user input, Cartesian coordinates, variables, and message broadcasting.`,
   },
   {
     title:"Intro to Python",
-    date:'17',
+    date:'Mon - Fri',
     month:'Jan',
-    time:'8.30 AM - 9.30 PM',
+    time:'8.30 PM - 9.30 PM',
     desc:`In this course, students dive deeper into Python fundamentals with loops, variables,
      conditional statements, and functions, while also introducing more advanced topics such as lists, sets, 
      dictionaries, and error checking.
@@ -143,7 +145,7 @@ const Programs = () => {
                             <div className={classes.eventHead}>
                               <div className={classes.dateBox}>
                                 <div>{event.date}</div>
-                                <div>{event.month}</div>
+                                {/* <div>{event.month}</div> */}
                               </div>
                               <div className={classes.eventHead}>
                                 <Typography variant="h5" className={classes.paperTitle}>{event.title}</Typography>

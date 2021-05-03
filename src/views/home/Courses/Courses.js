@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center'
   },
   image:{
-    width:'70%',
+    width:'100%',
     [theme.breakpoints.down("md")]: {
       width:'calc(100%)',
     }
@@ -132,11 +132,11 @@ const [cards] = useState(item);
         </div>
         <div  className={`section-2`}>        
         <Grid className={`${classes.gridContainer} ${classes.gridItem}`}  container
-             direction="row" alignItems="center" justify="center"> 
-            <Grid item md={7} sm={12}  className={classes.imgWrapper}>            
+             alignItems="center" justify="center" spacing={5}> 
+            <Grid item md={6} sm={12}  className={classes.imgWrapper}>            
               <img src="./static/images/course-teaching.png" className={classes.image} alt="course teaching"/>          
             </Grid>
-            <Grid item md={5} sm={12}>   
+            <Grid item md={6} sm={12}>   
               <Grid container direction="column" justify="space-between" spacing={2}>     
                   {
                     cards.map((card,index) =>(    

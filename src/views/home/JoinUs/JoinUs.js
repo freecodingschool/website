@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
      <div  className={`section-5 secondary-bg`}>
         <Container maxWidth="lg" className={classes.gridContainer}>
         <Typography variant="h2">
-            Really to become a FreeCoding School Volunteer ?
+            Ready to become a FreeCoding School Volunteer ?
         </Typography>
         <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
             href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
