@@ -6,7 +6,7 @@ import {
   Typography,IconButton,
   Container
 } from '@material-ui/core';
-import {Twitter,Instagram,ArrowRightAlt} from '@material-ui/icons';
+import {Twitter,Instagram,ArrowRightAlt,Facebook} from '@material-ui/icons';
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',
@@ -14,10 +14,13 @@ const useStyles = makeStyles(theme => ({
     textAlign:'left',
     backgroundPosition: 'right bottom',
     background:"url(./static/images/banner.png) no-repeat",
-    backgroundSize: '45% 80%'
+    backgroundSize: '45% 80%',
+    [theme.breakpoints.down("md")]: {
+      backgroundSize: '100%'
+    }
   },
   title:{
-    fontSize:'3em',
+    fontSize:'2.5em',
     lineHeight:'1.52m'  
   },
   volunteerTitle:{
@@ -47,6 +50,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1.5),
     width:200
   },
+  imgWrapper:{
+      display:'flex',
+      [theme.breakpoints.down("md")]: {
+        justifyContent: 'center',
+        marginBottom: theme.spacing(2),
+        alignItems:'center'
+    }
+  },
   iconWrapper:{
     marginTop:10,
     width:200
@@ -56,10 +67,9 @@ const Community = () => {
   const classes = useStyles();
   const volunteers = [
     './static/images/volunteers/illinois.png',
-    './static/images/volunteers/vit1.jpg',
+    './static/images/volunteers/vit.png',
     './static/images/volunteers/cts.png',
-    './static/images/volunteers/comcast.png',
-   // './static/images/volunteers/vit1.jpg',
+    './static/images/volunteers/comcast.png'
   ]
   return (
     <Fragment>
@@ -79,10 +89,15 @@ const Community = () => {
                       Learn More <ArrowRightAlt />
                     </Button> 
                     <div className={`${classes.iconWrapper} section-2`}>
-                      <IconButton aria-label="twitter" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="facebook" color="secondary" 
+                        href="https://facebook.com/Freecodingschool-100491288733049" target="_blank">
+                        <Facebook/>
+                      </IconButton>     
+                      <IconButton aria-label="twitter" color="secondary"
+                       href="https://twitter.com/freecodingsch?s=11" target="_blank">
                         <Twitter/>
                       </IconButton>
-                      <IconButton aria-label="instagram" color="secondary" href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+                      <IconButton aria-label="instagram" color="secondary" href="https://www.instagram.com/freecoding_school/" target="_blank">
                         <Instagram  />
                       </IconButton>
                     </div>                

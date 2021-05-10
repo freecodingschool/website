@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Link,Grid ,Container} from '@material-ui/core';
+import { Typography, Link,Grid ,Container,IconButton} from '@material-ui/core';
+import {Twitter,Instagram,Facebook} from '@material-ui/icons';
 const useStyles = makeStyles(theme => ({
   root: {
     display:'flex',
@@ -23,6 +24,14 @@ const useStyles = makeStyles(theme => ({
     marginRight:'10px',
     position: 'relative',
     top: '5px'
+  },
+  mediaLinks:{
+    color:'#fff',
+    justifyContent:'flex-end',
+    display:'flex'
+  },
+  btnColor:{
+    color:'#fff'
   }
 }));
 
@@ -72,11 +81,26 @@ const Footer = props => {
               </Grid>
            </Grid>
            <Grid item lg={12} xs={12}>
-              <Grid container direction="column" justify="space-evenly">
-                  <Typography variant="body1">
-                    &copy;{' '} 2021 Freecoding School Not for Profit Organization
-                  </Typography>
-              </Grid>
+              <Grid container direction="row" justify="space-evenly">
+                  <Grid item md={6} xs={12} >
+                    <Typography variant="body1">
+                      &copy;{' '} 2021 Freecoding School Not for Profit Organization
+                    </Typography>
+                  </Grid>
+                  <Grid item md={6} xs={12}>
+                    <div className={classes.mediaLinks}>
+                    <IconButton aria-label="facebook" className={classes.btnColor}  href="https://facebook.com/Freecodingschool-100491288733049" target="_blank">
+                      <Facebook/>
+                    </IconButton>                
+                      <IconButton aria-label="twitter" className={classes.btnColor} href="https://twitter.com/freecodingsch?s=11" target="_blank">
+                        <Twitter/>
+                      </IconButton>
+                      <IconButton aria-label="instagram" className={classes.btnColor} href="https://www.instagram.com/freecoding_school/" target="_blank">
+                        <Instagram  />
+                      </IconButton>
+                    </div>
+                  </Grid>
+              </Grid>  
             </Grid>
        </Grid>      
         </Grid>

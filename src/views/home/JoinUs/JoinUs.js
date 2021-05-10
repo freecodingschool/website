@@ -9,12 +9,18 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: { 
     display:'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    [theme.breakpoints.down("md")]: {
+      flexDirection:'column'
+    }
   }, 
   homeBtn:{
     width:200,
     marginLeft:20,
-    padding: theme.spacing(1.5)
+    padding: theme.spacing(1.5),
+    [theme.breakpoints.down("md")]: {
+      marginLeft:0
+    }
   },
 }));
 
@@ -25,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
      <div  className={`section-5 secondary-bg`}>
         <Container maxWidth="lg" className={classes.gridContainer}>
         <Typography variant="h2">
-            Really to become a FreeCodingSchool Volunteer ?
+            Ready to become a FreeCoding School Volunteer ?
         </Typography>
         <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
             href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
