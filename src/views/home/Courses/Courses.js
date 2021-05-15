@@ -1,6 +1,6 @@
 import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Container,Typography,Grid,Button,Paper, Box} from '@material-ui/core';
+import {Container,Typography,Grid,Paper, Box} from '@material-ui/core';
 import SchoolIcon from '@material-ui/icons/School';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     padding:8,
     color:'#2F2F2F',
     width:'calc(25% - 8px)',
+    height:220,
     [theme.breakpoints.down("md")]: {
       width:'calc(100%)',
     }
@@ -57,24 +58,25 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center'
   },
   image:{
-    width:'100%',
+    width:'90%',
+    marginRight:'auto',
     [theme.breakpoints.down("md")]: {
-      width:'calc(100%)',
+      width:'calc(95%)',
     }
   }
 }));
 const Courses = () => {
   const classes = useStyles();
   const data = [{
-    title:"Introduction to Computer Science",
+    title:"Intro to Computer Science",
     image:'./static/images/courses/icon-code.png'
   },
   {
-    title:"Introduction to Scratch Programming",
+    title:"Intro to Scratch Programming",
     image:'./static/images/courses/computer-programming.png'
   },
   {
-    title:"Introduction to Python",
+    title:"Intro to Python",
     image:'./static/images/courses/icon-python.png'
   },
   {
@@ -121,10 +123,7 @@ const [cards] = useState(item);
                         <Typography variant="subtitle1" color="inherit">
                             {course.title}
                         </Typography>                      
-                      </div>         
-                      <Button href="#contained-buttons" color="inherit">
-                        Course
-                      </Button>
+                      </div>   
                   </Paper>
                 ))
               }
@@ -133,14 +132,14 @@ const [cards] = useState(item);
         <div  className={`section-2`}>        
         <Grid className={`${classes.gridContainer} ${classes.gridItem}`}  container
              alignItems="center" justify="center" spacing={5}> 
-            <Grid item md={6} sm={12}  className={classes.imgWrapper}>            
+            <Grid item md={7} sm={12}  className={classes.imgWrapper}>            
               <img src="./static/images/course-teaching.png" className={classes.image} alt="course teaching"/>          
             </Grid>
-            <Grid item md={6} sm={12}>   
+            <Grid item md={5} sm={12}>   
               <Grid container direction="column" justify="space-between" spacing={2}>     
                   {
                     cards.map((card,index) =>(    
-                      <Grid item md={10} key={index}>
+                      <Grid item md={12} key={index}>
                           <Paper elevation={3}  className={`${classes.studentCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'} ${classes.voluteerCard}`}>
                               <Grid container>
                                 <Grid item xs={2}>.
