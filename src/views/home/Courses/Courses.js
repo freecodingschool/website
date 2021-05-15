@@ -4,6 +4,8 @@ import {Container,Typography,Grid,Button,Paper, Box} from '@material-ui/core';
 import SchoolIcon from '@material-ui/icons/School';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
+import Carousel from "react-elastic-carousel";
+
 const useStyles = makeStyles((theme) => ({
   titleWrapper:{
     alignItems:'center',
@@ -39,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
     margin:8,
     padding:8,
     color:'#2F2F2F',
-    width:'calc(25% - 8px)',
-    [theme.breakpoints.down("md")]: {
-      width:'calc(100%)',
-    }
+     width:'100%'
+    //[theme.breakpoints.between("sm", "xs")]: {
+      //width:'calc(100%)',
+    //}
   },  
   studentCard:{
     padding:0
@@ -101,16 +103,25 @@ const item = [{
   desc:" Bring computer science to your school and community.",  
 }];
 
+const breakPoints = [
+  
+  { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: false },
+  { width: 762 ,itemsToShow: 4, itemToScroll: 4 },
+  { width: 1024 ,itemsToShow: 5, itemToScroll: 5,pagination:true},
+];
+
 const [cards] = useState(item);
   const [courses] = useState(data);
   return (
     <Fragment>
       <Container maxWidth="lg" style={{minHeight: 'calc(100vh - 65px)'}}>
         <div className={`section-5 ${classes.primarySection}`}>
+          
             <Typography className={`section-title`} variant="h2">
               Popular Courses
             </Typography>
             <Box component="div" m={1} className={`${classes.courseWrapper}`}>
+            <Carousel breakPoints={breakPoints}>
               {
                 courses.map((course,index) =>(
                   <Paper elevation={3} key={index} className={`${classes.courseCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'}`}>    
@@ -128,7 +139,9 @@ const [cards] = useState(item);
                   </Paper>
                 ))
               }
+            </Carousel>
             </Box>
+            
         </div>
         <div  className={`section-2`}>        
         <Grid className={`${classes.gridContainer} ${classes.gridItem}`}  container
@@ -163,6 +176,7 @@ const [cards] = useState(item);
             </Grid>
         </Grid>
   </div>
+
       </Container>        
       
     </Fragment>
