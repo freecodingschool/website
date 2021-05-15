@@ -7,9 +7,9 @@ import {
   Container,
   Paper
 } from '@material-ui/core';
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
+// import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import { ArrowRightAlt, AccessTime } from '@material-ui/icons';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+// import 'pure-react-carousel/dist/react-carousel.es.css'; 
 
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
@@ -40,14 +40,16 @@ const useStyles = makeStyles(theme => ({
     width:'100%'
   },
   dateBox:{
-    padding:'10px 16px',
+    padding:'15px 16px',
     marginRight: theme.spacing(2),
     borderRadius:11,
     backgroundColor:'#d5d8ff',
     textAlign:'center',
-    height: '76px',
-    width:'76px',
-    fontSize:23    
+    height:70,
+    width:140,
+    fontSize:'1.2rem',
+    display: 'flex',
+    alignItems: 'center'    
   },
   paperTitle:{
     marginBottom: theme.spacing(2),
@@ -71,18 +73,18 @@ const Programs = () => {
   const data = [    
   {
     title:"Intro to Scratch Programming",
-    date:'23',
+    date:'Mon - Fri',
     month:'Dec',
-    time:'7.30 AM - 8.30 PM',
+    time:'7.30 PM - 8.30 PM',
     desc:`In this course, we introduce computer science fundamentals using Scratch’s block-based
      programming environment. This course focuses on event listeners, 
     loops, conditional statements, user input, Cartesian coordinates, variables, and message broadcasting.`,
   },
   {
     title:"Intro to Python",
-    date:'17',
+    date:'Mon - Fri',
     month:'Jan',
-    time:'8.30 AM - 9.30 PM',
+    time:'8.30 PM - 9.30 PM',
     desc:`In this course, students dive deeper into Python fundamentals with loops, variables,
      conditional statements, and functions, while also introducing more advanced topics such as lists, sets, 
      dictionaries, and error checking.
@@ -124,9 +126,9 @@ const Programs = () => {
             If you are attending our classes from your school, then we follow the school calendar.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-evenly" alignItems="center">
-          <Grid item xs={12} lg={12}>
-            <CarouselProvider
+        <Grid container alignItems="center" spacing={2}>
+          {/* <Grid item xs={12} lg={12}> */}
+            {/* <CarouselProvider
               naturalSlideWidth={300}
               naturalSlideHeight={175}
               totalSlides={events.length}
@@ -134,15 +136,16 @@ const Programs = () => {
               interval="5000"
               isPlaying="true"
               step="0">
-              <Slider className="eventsUl">
+              <Slider className="eventsUl"> */}
                   {
                     events.map((event,index) => (
-                      <Slide key={index}>
+                      // <Slide key={index}>
+                      <Grid item xs={12} lg={6} key={index}> 
                         <Paper elevation={0} className={classes.paper}>
                             <div className={classes.eventHead}>
                               <div className={classes.dateBox}>
                                 <div>{event.date}</div>
-                                <div>{event.month}</div>
+                                {/* <div>{event.month}</div> */}
                               </div>
                               <div className={classes.eventHead}>
                                 <Typography variant="h5" className={classes.paperTitle}>{event.title}</Typography>
@@ -165,13 +168,14 @@ const Programs = () => {
                               </Grid>
                             </Grid>
                         </Paper>
-                      </Slide>
+                      {/* </Slide> */}
+                      </Grid>
                     ))
                   } 
-              </Slider>
-            </CarouselProvider>
+              {/* </Slider>
+            </CarouselProvider> */}
           </Grid>
-        </Grid>
+        {/* </Grid> */}
     </Container>
     </div>
   );
