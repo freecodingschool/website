@@ -37,17 +37,17 @@ const OurCommunities = () => {
   const data = [{
     title:'Volunteers',
     desc:"Volunteers with a strong background in computer science and programming build sustainable CS courses at their local school and community. We welcome both computer science graduate students and Tech professionals, and Academic professionals to help foster the next generation of innovators and programmers.",
-    image:'/static/images/communities/Pune.png'
+    image:'/static/images/communities/volunteer.png'
     },
   {
     title:'Teachers and Schools',
     desc:"We help high schools to build CS courses for free. FreecodingSchool works with teachers and students at their school to offer two levels of engagement based on each school’s requirements: co-teach model, technical course content support",
-    image:'/static/images/communities/Chennai.png',
+    image:'/static/images/communities/teacher.png',
   },
   {
     title:'Students and Parents',
     desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
-    image:'/static/images/communities/Bangalore.png'
+    image:'/static/images/communities/Students.png'
   }];
   const [news] = useState(data);  
   return (
