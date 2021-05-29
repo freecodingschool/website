@@ -41,10 +41,8 @@ const useStyles = makeStyles((theme) => ({
     margin:8,
     padding:8,
     color:'#2F2F2F',
-     width:'100%'
-    //[theme.breakpoints.between("sm", "xs")]: {
-      //width:'calc(100%)',
-    //}
+    width:'100%',
+    height:200   
   },  
   studentCard:{
     padding:0
@@ -68,50 +66,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Courses = () => {
   const classes = useStyles();
-  const data = [{
-    title:"Intro to Computer Science",
-    image:'./static/images/courses/icon-code.png'
-  },
-  {
-    title:"Intro to Scratch Programming",
-    image:'./static/images/courses/computer-programming.png'
-  },
-  {
-    title:"Intro to Python",
-    image:'./static/images/courses/icon-python.png'
-  },
-  {
-    title:"Mathematics for Computer Science",
-    image:'./static/images/courses/icon-mathworks.png'
-  },{
-    title:'Communication Skills',
-    image:'./static/images/courses/icon-communication.png'
-  }
-];
-const item = [{
-    index:1,
-    title:"STUDENTS",
-    desc:" Become a FreecodingSchool Student to learn how to code.",
-  },
-{
-  index:2,
-  title:"VOLUNTEERS",
-  desc:" Make an impact while continuing your studies/day job.",
-},
-{
-  index:3,
-  title:"SCHOOLS",
-  desc:" Bring computer science to your school and community.",  
-}];
-
-const breakPoints = [
-  
-  { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: false },
-  { width: 762 ,itemsToShow: 4, itemToScroll: 4 },
-  { width: 1024 ,itemsToShow: 5, itemToScroll: 5,pagination:true},
-];
-
-const [cards] = useState(item);
+  const data = [
+    {
+      title:"Intro to Computer Science",
+      image:'./static/images/courses/icon-code.png'
+    },
+    {
+      title:"Intro to Scratch Programming",
+      image:'./static/images/courses/computer-programming.png'
+    },
+    {
+      title:"Intro to Python",
+      image:'./static/images/courses/icon-python.png'
+    },
+    {
+      title:"Mathematics for Computer Science",
+      image:'./static/images/courses/icon-mathworks.png'
+    },{
+      title:'Communication Skills',
+      image:'./static/images/courses/icon-communication.png'
+    }
+  ];
+  const item = [
+    {
+      index:1,
+      title:"STUDENTS",
+      desc:" Become a FreecodingSchool Student to learn how to code.",
+    },
+    {
+      index:2,
+      title:"VOLUNTEERS",
+      desc:" Make an impact while continuing your studies/day job.",
+    },
+    {
+      index:3,
+      title:"SCHOOLS",
+      desc:" Bring computer science to your school and community.",  
+    }
+  ];
+  const breakPoints = [  
+    { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: (data.length > 1) },
+    { width: 762 ,itemsToShow: 4, itemToScroll: 4,pagination:(data.length > 4) },
+    { width: 1024 ,itemsToShow: 5, itemToScroll: 5,pagination:(data.length > 5)},
+  ];
+  const showArrows = false;
+  const [cards] = useState(item);
   const [courses] = useState(data);
   return (
     <Fragment>
@@ -122,7 +121,7 @@ const [cards] = useState(item);
               Popular Courses
             </Typography>
             <Box component="div" m={1} className={`${classes.courseWrapper}`}>
-            <Carousel breakPoints={breakPoints}>
+            <Carousel breakPoints={breakPoints} showArrows={showArrows}>
               {
                 courses.map((course,index) =>(
                   <Paper elevation={3} key={index} className={`${classes.courseCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'}`}>    

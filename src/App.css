@@ -24,3 +24,9 @@ body{
 .desc{
     line-height:2em !important;
 }
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+.rec.rec-arrow:hover{
+    background-color:#6962ff;
+}
