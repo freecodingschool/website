@@ -1,9 +1,11 @@
 import React,{useState,Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Container,Typography,Grid,Button,Paper, Box} from '@material-ui/core';
+import {Container,Typography,Grid,Paper, Box} from '@material-ui/core';
 import SchoolIcon from '@material-ui/icons/School';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
+import Carousel from "react-elastic-carousel";
+
 const useStyles = makeStyles((theme) => ({
   titleWrapper:{
     alignItems:'center',
@@ -39,10 +41,8 @@ const useStyles = makeStyles((theme) => ({
     margin:8,
     padding:8,
     color:'#2F2F2F',
-    width:'calc(25% - 8px)',
-    [theme.breakpoints.down("md")]: {
-      width:'calc(100%)',
-    }
+    width:'100%',
+    height:200   
   },  
   studentCard:{
     padding:0
@@ -57,60 +57,71 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center'
   },
   image:{
-    width:'100%',
+    width:'90%',
+    marginRight:'auto',
     [theme.breakpoints.down("md")]: {
-      width:'calc(100%)',
+      width:'calc(95%)',
     }
   }
 }));
 const Courses = () => {
   const classes = useStyles();
-  const data = [{
-    title:"Introduction to Computer Science",
-    image:'./static/images/courses/icon-code.png'
-  },
-  {
-    title:"Introduction to Scratch Programming",
-    image:'./static/images/courses/computer-programming.png'
-  },
-  {
-    title:"Introduction to Python",
-    image:'./static/images/courses/icon-python.png'
-  },
-  {
-    title:"Mathematics for Computer Science",
-    image:'./static/images/courses/icon-mathworks.png'
-  },{
-    title:'Communication Skills',
-    image:'./static/images/courses/icon-communication.png'
-  }
-];
-const item = [{
-    index:1,
-    title:"STUDENTS",
-    desc:" Become a FreecodingSchool Student to learn how to code.",
-  },
-{
-  index:2,
-  title:"VOLUNTEERS",
-  desc:" Make an impact while continuing your studies/day job.",
-},
-{
-  index:3,
-  title:"SCHOOLS",
-  desc:" Bring computer science to your school and community.",  
-}];
-
-const [cards] = useState(item);
+  const data = [
+    {
+      title:"Intro to Computer Science",
+      image:'./static/images/courses/icon-code.png'
+    },
+    {
+      title:"Intro to Scratch Programming",
+      image:'./static/images/courses/computer-programming.png'
+    },
+    {
+      title:"Intro to Python",
+      image:'./static/images/courses/icon-python.png'
+    },
+    {
+      title:"Mathematics for Computer Science",
+      image:'./static/images/courses/icon-mathworks.png'
+    },{
+      title:'Communication Skills',
+      image:'./static/images/courses/icon-communication.png'
+    }
+  ];
+  const item = [
+    {
+      index:1,
+      title:"STUDENTS",
+      desc:" Become a FreecodingSchool Student to learn how to code.",
+    },
+    {
+      index:2,
+      title:"VOLUNTEERS",
+      desc:" Make an impact while continuing your studies/day job.",
+    },
+    {
+      index:3,
+      title:"SCHOOLS",
+      desc:" Bring computer science to your school and community.",  
+    }
+  ];
+  const breakPoints = [  
+    { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: (data.length > 1) },
+    { width: 762 ,itemsToShow: 4, itemToScroll: 4,pagination:(data.length > 4) },
+    { width: 1024 ,itemsToShow: 5, itemToScroll: 5,pagination:(data.length > 5)},
+  ];
+  const showArrows = false;
+  const [cards] = useState(item);
   const [courses] = useState(data);
   return (
     <Fragment>
       <Container maxWidth="lg" style={{minHeight: 'calc(100vh - 65px)'}}>
         <div className={`section-5 ${classes.primarySection}`}>
+          
             <Typography className={`section-title`} variant="h2">
               Popular Courses
             </Typography>
             <Box component="div" m={1} className={`${classes.courseWrapper}`}>
+            <Carousel breakPoints={breakPoints} showArrows={showArrows}>
               {
                 courses.map((course,index) =>(
                   <Paper elevation={3} key={index} className={`${classes.courseCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'}`}>    
@@ -121,26 +132,25 @@ const [cards] = useState(item);
                         <Typography variant="subtitle1" color="inherit">
                             {course.title}
                         </Typography>                      
-                      </div>         
-                      <Button href="#contained-buttons" color="inherit">
-                        Course
-                      </Button>
+                      </div>   
                   </Paper>
                 ))
               }
+            </Carousel>
             </Box>
+            
         </div>
         <div  className={`section-2`}>        
         <Grid className={`${classes.gridContainer} ${classes.gridItem}`}  container
              alignItems="center" justify="center" spacing={5}> 
-            <Grid item md={6} sm={12}  className={classes.imgWrapper}>            
+            <Grid item md={7} sm={12}  className={classes.imgWrapper}>            
               <img src="./static/images/course-teaching.png" className={classes.image} alt="course teaching"/>          
             </Grid>
-            <Grid item md={6} sm={12}>   
+            <Grid item md={5} sm={12}>   
               <Grid container direction="column" justify="space-between" spacing={2}>     
                   {
                     cards.map((card,index) =>(    
-                      <Grid item md={10} key={index}>
+                      <Grid item md={12} key={index}>
                           <Paper elevation={3}  className={`${classes.studentCard} ${index === 1 ? classes.primaryBg : 'secondary-bg'} ${classes.voluteerCard}`}>
                               <Grid container>
                                 <Grid item xs={2}>.
@@ -163,6 +173,7 @@ const [cards] = useState(item);
             </Grid>
         </Grid>
   </div>
+
       </Container>        
       
     </Fragment>

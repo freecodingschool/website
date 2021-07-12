@@ -1,19 +1,29 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
   Toolbar,
   makeStyles,
   Container,
-  Button
+  Button,
+  IconButton,
+  Hidden,
+  Drawer
 } from '@material-ui/core';
 import Logo from 'src/components/Logo';
+import {Menu} from '@material-ui/icons';
+
 
 const useStyles = makeStyles((theme) =>({
   root: {
     backgroundColor: theme.palette.background.default
+  },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: '100%',
+      flexShrink: 0,
+    },
   },
   toolbar: {
     height: 64,
@@ -51,14 +61,23 @@ const TopBar = ({ className, ...rest }) => {
       name:'Events',
       path:'/events'
     },
-  ]
+  ];
   return (
     <AppBar
-      className={clsx(classes.root, className)}
+      className={classes.root}
       elevation={1}
       {...rest}>
         <Container maxWidth="lg">
           <Toolbar className={classes.toolbar}>
+            <Hidden smUp>
+              <IconButton
+                edge="start"
+                color="primary"
+                className={classes.menuButton}
+                aria-label="open drawer">
+                <Menu/>
+              </IconButton> 
+            </Hidden>            
               <RouterLink to="/"  className={classes.flexGrow}>
                 <Logo />
               </RouterLink>
