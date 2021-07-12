@@ -6,11 +6,16 @@ import {
   Box,
   Button,
   Checkbox,
+  Grid,
   Container,
   FormHelperText,
   Link,
   TextField,
   Typography,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
@@ -21,13 +26,16 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
+  },
+  formControl:{
+    width:'100%'
   }
 }));
 
 const RegisterView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-
+  const types = ["Student","Parent","Volunteer"]
   return (
     <Page
       className={classes.root}
@@ -46,14 +54,16 @@ const RegisterView = () => {
               firstName: '',
               lastName: '',
               password: '',
+              accountType:types[0].toLowerCase(),
               policy: false
             }}
             validationSchema={
               Yup.object().shape({
                 email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                 firstName: Yup.string().max(255).required('First name is required'),
-                lastName: Yup.string().max(255).required('Last name is required'),
+                lastName: Yup.string().max(255),
                 password: Yup.string().max(255).required('password is required'),
+                accountType:Yup.string().required('Account Type is required'),
                 policy: Yup.boolean().oneOf([true], 'This field must be checked')
               })
             }
@@ -86,30 +96,59 @@ const RegisterView = () => {
                     Use your email to create new account
                   </Typography>
                 </Box>
-                <TextField
-                  error={Boolean(touched.firstName && errors.firstName)}
-                  fullWidth
-                  helperText={touched.firstName && errors.firstName}
-                  label="First name"
-                  margin="normal"
-                  name="firstName"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.firstName}
-                  variant="outlined"
-                />
-                <TextField
-                  error={Boolean(touched.lastName && errors.lastName)}
-                  fullWidth
-                  helperText={touched.lastName && errors.lastName}
-                  label="Last name"
-                  margin="normal"
-                  name="lastName"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.lastName}
-                  variant="outlined"
-                />
+                <Grid container spacing={3}>
+                  <Grid item sm={12} md={7}>
+                      <TextField
+                      error={Boolean(touched.firstName && errors.firstName)}
+                      fullWidth
+                      helperText={touched.firstName && errors.firstName}
+                      label="First name"
+                      margin="normal"
+                      name="firstName"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.firstName}
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item sm={12} md={5}>
+                    <TextField
+                          error={Boolean(touched.lastName && errors.lastName)}
+                          fullWidth
+                          helperText={touched.lastName && errors.lastName}
+                          label="Last name"
+                          margin="normal"
+                          name="lastName"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          value={values.lastName}
+                          variant="outlined"
+                        />
+                    </Grid>
+                </Grid>
+
+              <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="account-type">Account Type</InputLabel>
+              <Select
+                 error={Boolean(touched.accountType && errors.accountType)}
+                 helperText={touched.accountType && errors.accountType}
+                labelId="account-type"
+                id="demo-simple-select-outlined"
+                value={values.accountType}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                label="Account Type"
+              >
+                {
+                  
+                  types.map((type,index) =>(
+                    <MenuItem key={index} value={type.toLowerCase()}>{type}</MenuItem>
+                  ))
+                }
+              </Select>
+            </FormControl>
+               
+                
                 <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
@@ -143,6 +182,8 @@ const RegisterView = () => {
                 >
                   <Checkbox
                     checked={values.policy}
+                    
+                    color="primary"
                     name="policy"
                     onChange={handleChange}
                   />
