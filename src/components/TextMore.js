@@ -58,14 +58,11 @@ const TextMore = ({data}) => {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle>
           <Typography variant="h4" className={classes.title}>{data.title}</Typography>
-          <Typography variant="h6" className={classes.title}>{data.role}</Typography>
-          <Typography variant="h6">{data.designation}</Typography>
-          <Rating
-            name="read-only"
-            value={value}/>
+          <Typography variant="subtitle" className={classes.title}>{data.role}</Typography>
+          <Typography variant="body1">{data.designation}</Typography>
         </DialogTitle>
         <DialogContent>          
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="body1" className={classes.title}>
             {data.desc}
           </Typography>         
         </DialogContent>
