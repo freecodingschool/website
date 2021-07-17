@@ -1,27 +1,29 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import MainLayout from 'src/layouts/MainLayout';
+import DashboardLayout from 'src/layouts/DashboardLayout';
 import NotFoundView from 'src/views/errors/NotFoundView';
 // import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import LoginView from 'src/views/auth/LoginView';
 import SchoolRegisterView from 'src/views/auth/SchoolView';
+import DashboardView from 'src/views/dashboard';
 import EventsView from 'src/views/events/EventsView';
 import HomeView from 'src/views/home/HomeView';
 
 const routes = [
-  // {
-  //   path: 'app',
-  //   element: <DashboardLayout />,
-  //   children: [
-  //     { path: 'account', element: <AccountView /> },
-  //     { path: 'customers', element: <CustomerListView /> },
-  //     { path: 'dashboard', element: <DashboardView /> },
-  //     { path: 'products', element: <ProductListView /> },
-  //     { path: 'settings', element: <SettingsView /> },
-  //     { path: '*', element: <Navigate to="/404" /> }
-  //   ]
-  // },
+  {
+    path: 'app',
+    element: <DashboardLayout />,
+    children: [
+      // { path: 'account', element: <AccountView /> },
+      // { path: 'customers', element: <CustomerListView /> },
+      { path: 'dashboard', element: <DashboardView /> },
+      // { path: 'products', element: <ProductListView /> },
+      // { path: 'settings', element: <SettingsView /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
   {
     path: '/',
     element: <MainLayout />,

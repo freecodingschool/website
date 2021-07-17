@@ -2,6 +2,7 @@ import React from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import axios from 'src/axios';
 import {
   Box,
   Button,
@@ -10,16 +11,13 @@ import {
   Container,
   FormHelperText,
   Link,
-  TextField,
   Typography,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  makeStyles
+  MenuItem,  makeStyles
 } from '@material-ui/core';
+import { useDispatch } from "react-redux";
+import TextField from 'src/components/TextField';
 import Page from 'src/components/Page';
-
+import { authSlice } from 'src/redux/slicers';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -35,7 +33,38 @@ const useStyles = makeStyles((theme) => ({
 const RegisterView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const types = ["Student","Parent","Volunteer"]
+  const dispatch = useDispatch();
+  const roles = ["Student","Parent","Volunteer"];
+  const initialValues = {
+    email: '',
+    firstName: '',
+    lastName: '',
+    password: '',
+    role:roles[0].toUpperCase(),
+    policy: false
+  };
+  const validationSchema = Yup.object().shape({ 
+    email: Yup.string().email('Please enter valid email').max(255).required('Please enter email'),
+    firstName: Yup.string().max(255).required('Please enter first name'),
+    lastName: Yup.string().max(255),
+    password: Yup.string().max(255).required('Please enter password'),
+    role:Yup.string().required('Please eelect your role'),
+    policy: Yup.boolean().oneOf([true], 'Please agree to our terms and conditions')
+  });
+  const Signup = async(data, { setSubmitting }) => {
+    try{
+      const response = await axios({
+        method:"post",
+        data,
+        url:"/user"
+      })
+      dispatch(authSlice.actions.authSuccess(response.data.token))
+      navigate('/app/dashboard', { replace: true });
+    }catch(e){
+      setSubmitting(false);
+      dispatch(authSlice.actions.hasError(e.data.message))
+    }
+  }
   return (
     <Page
       className={classes.root}
@@ -49,27 +78,9 @@ const RegisterView = () => {
       >
         <Container maxWidth="sm">
           <Formik
-            initialValues={{
-              email: '',
-              firstName: '',
-              lastName: '',
-              password: '',
-              accountType:types[0].toLowerCase(),
-              policy: false
-            }}
-            validationSchema={
-              Yup.object().shape({
-                email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                firstName: Yup.string().max(255).required('First name is required'),
-                lastName: Yup.string().max(255),
-                password: Yup.string().max(255).required('password is required'),
-                accountType:Yup.string().required('Account Type is required'),
-                policy: Yup.boolean().oneOf([true], 'This field must be checked')
-              })
-            }
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={Signup}
           >
             {({
               errors,
@@ -100,81 +111,61 @@ const RegisterView = () => {
                   <Grid item sm={12} md={7}>
                       <TextField
                       error={Boolean(touched.firstName && errors.firstName)}
-                      fullWidth
                       helperText={touched.firstName && errors.firstName}
                       label="First name"
-                      margin="normal"
                       name="firstName"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.firstName}
-                      variant="outlined"
                     />
                   </Grid>
                   <Grid item sm={12} md={5}>
                     <TextField
                           error={Boolean(touched.lastName && errors.lastName)}
-                          fullWidth
                           helperText={touched.lastName && errors.lastName}
                           label="Last name"
-                          margin="normal"
                           name="lastName"
                           onBlur={handleBlur}
                           onChange={handleChange}
                           value={values.lastName}
-                          variant="outlined"
                         />
                     </Grid>
                 </Grid>
-
-              <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="account-type">Account Type</InputLabel>
-              <Select
-                 error={Boolean(touched.accountType && errors.accountType)}
-                 helperText={touched.accountType && errors.accountType}
-                labelId="account-type"
-                id="demo-simple-select-outlined"
-                value={values.accountType}
+              <TextField
+                error={Boolean(touched.role && errors.role)}
+                name="role"
+                helperText={touched.role && errors.role}
+                select
+                value={values.role}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                label="Account Type"
-              >
-                {
-                  
-                  types.map((type,index) =>(
-                    <MenuItem key={index} value={type.toLowerCase()}>{type}</MenuItem>
+                label="Role Type">
+                {                  
+                  roles.map((role,index) =>(
+                    <MenuItem key={index} value={role.toUpperCase()}>{role}</MenuItem>
                   ))
                 }
-              </Select>
-            </FormControl>
-               
-                
-                <TextField
-                  error={Boolean(touched.email && errors.email)}
-                  fullWidth
-                  helperText={touched.email && errors.email}
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="email"
-                  value={values.email}
-                  variant="outlined"
-                />
-                <TextField
-                  error={Boolean(touched.password && errors.password)}
-                  fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="password"
-                  value={values.password}
-                  variant="outlined"
-                />
+              </TextField>
+              <TextField
+                error={Boolean(touched.email && errors.email)}
+                helperText={touched.email && errors.email}
+                label="Email Address"
+                name="email"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                type="email"
+                value={values.email}
+              />
+              <TextField
+                error={Boolean(touched.password && errors.password)}
+                helperText={touched.password && errors.password}
+                label="Password"
+                name="password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                type="password"
+                value={values.password}
+              />
                 <Box
                   alignItems="center"
                   display="flex"

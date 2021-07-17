@@ -16,8 +16,10 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 
-const useStyles = makeStyles(() => ({
-  root: {},
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default
+  },
   avatar: {
     width: 60,
     height: 60
@@ -35,7 +37,7 @@ const TopBar = ({
   return (
     <AppBar
       className={clsx(classes.root, className)}
-      elevation={0}
+      elevation={1}
       {...rest}
     >
       <Toolbar>
@@ -53,13 +55,13 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="primary">
             <InputIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>
           <IconButton
-            color="inherit"
+            color="primary"
             onClick={onMobileNavOpen}
           >
             <MenuIcon />
