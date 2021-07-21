@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -37,20 +37,25 @@ const RegisterView = () => {
   const roles = ["Student","Parent","Volunteer"];
   const initialValues = {
     email: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     password: '',
     role:roles[0].toUpperCase(),
     policy: false
   };
   const validationSchema = Yup.object().shape({ 
     email: Yup.string().email('Please enter valid email').max(255).required('Please enter email'),
-    firstName: Yup.string().max(255).required('Please enter first name'),
-    lastName: Yup.string().max(255),
+    first_name: Yup.string().max(255).required('Please enter first name'),
+    last_name: Yup.string().max(255),
     password: Yup.string().max(255).required('Please enter password'),
     role:Yup.string().required('Please eelect your role'),
     policy: Yup.boolean().oneOf([true], 'Please agree to our terms and conditions')
   });
+  useEffect(() => {
+    if(localStorage.getItem("_ut")){
+      navigate('/app/dashboard', { replace: true });
+    }
+  },[])
   const Signup = async(data, { setSubmitting }) => {
     try{
       const response = await axios({
@@ -110,24 +115,24 @@ const RegisterView = () => {
                 <Grid container spacing={3}>
                   <Grid item sm={12} md={7}>
                       <TextField
-                      error={Boolean(touched.firstName && errors.firstName)}
-                      helperText={touched.firstName && errors.firstName}
+                      error={Boolean(touched.first_name && errors.first_name)}
+                      helperText={touched.first_name && errors.first_name}
                       label="First name"
-                      name="firstName"
+                      name="first_name"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      value={values.firstName}
+                      value={values.first_name}
                     />
                   </Grid>
                   <Grid item sm={12} md={5}>
                     <TextField
-                          error={Boolean(touched.lastName && errors.lastName)}
-                          helperText={touched.lastName && errors.lastName}
+                          error={Boolean(touched.last_name && errors.last_name)}
+                          helperText={touched.last_name && errors.last_name}
                           label="Last name"
-                          name="lastName"
+                          name="last_name"
                           onBlur={handleBlur}
                           onChange={handleChange}
-                          value={values.lastName}
+                          value={values.last_name}
                         />
                     </Grid>
                 </Grid>

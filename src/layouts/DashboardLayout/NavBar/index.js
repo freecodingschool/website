@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -12,23 +11,15 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import { useSelector } from "react-redux";
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
   Users as UsersIcon,
 } from "react-feather";
 import NavItem from "./NavItem";
-
-const user = {
-  avatar: "/static/images/avatar_6.png",
-  jobTitle: "Senior Developer",
-  name: "Katarina Smith",
-};
 
 const items = [
   {
@@ -77,7 +68,7 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
-
+  const  {user} = useSelector((store) => store.auth);
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
@@ -90,14 +81,14 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src={user.avatar}
+          src={"/static/images/avatar_6.png"}
           to="/app/account"
         />
         <Typography className={classes.name} color="textPrimary" variant="h5">
-          {user.name}
+          {user?.first_name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          {user?.email}
         </Typography>
       </Box>
       <Divider />

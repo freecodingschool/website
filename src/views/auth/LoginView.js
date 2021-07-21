@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -12,8 +12,6 @@ import {
 } from '@material-ui/core';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
-// import FacebookIcon from 'src/icons/Facebook';
-// import GoogleIcon from 'src/icons/Google';
 import Page from 'src/components/Page';
 import { authSlice } from 'src/redux/slicers';
 import TextField from 'src/components/TextField';
@@ -52,6 +50,11 @@ const LoginView = () => {
       dispatch(authSlice.actions.hasError(e.data.message))
     }
   };
+  useEffect(() => {
+    if(localStorage.getItem("_ut")){
+      navigate('/app/dashboard', { replace: true });
+    }
+  },[])
   return (
     <Page
       className={classes.root}

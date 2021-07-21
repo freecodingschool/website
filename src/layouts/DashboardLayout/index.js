@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
+import { useDispatch } from "react-redux";
+import axios from 'src/axios';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
-
+import { authSlice } from 'src/redux/slicers';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -36,7 +38,26 @@ const useStyles = makeStyles((theme) => ({
 const DashboardLayout = () => {
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const getUser = async()=> {
+    try{
+      const response = await axios({
+        method:"get",
+        url:"/user"
+      });
+      dispatch(authSlice.actions.userSuccess(response.data.user));
+    }catch(e){
+      dispatch(authSlice.actions.hasError(e.data.message))
+    }
+  };
+  useEffect(() => {
+    if(!localStorage.getItem("_ut")){
+      navigate('/login', { replace: true });
+    }else
+    getUser();
 
+  },[])
   return (
     <div className={classes.root}>
       <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
