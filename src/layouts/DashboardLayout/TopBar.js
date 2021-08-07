@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -15,9 +15,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
-
-const useStyles = makeStyles(() => ({
-  root: {},
+import { useDispatch } from "react-redux";
+import { authSlice } from 'src/redux/slicers';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default
+  },
   avatar: {
     width: 60,
     height: 60
@@ -31,11 +34,16 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logout = () => {
+    dispatch(authSlice.actions.logOut());
+    navigate('/login', { replace: true });
+  }
   return (
     <AppBar
       className={clsx(classes.root, className)}
-      elevation={0}
+      elevation={1}
       {...rest}
     >
       <Toolbar>
@@ -53,13 +61,13 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="primary" onClick={logout}>
             <InputIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>
           <IconButton
-            color="inherit"
+            color="primary"
             onClick={onMobileNavOpen}
           >
             <MenuIcon />

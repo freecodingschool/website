@@ -53,10 +53,10 @@ const TopBar = ({ className, ...rest }) => {
     //   name:'Students',
     //   path:'/register'
     // },
-    // {
-    //   name:'Registration',
-    //   path:'/register'
-    // },
+    {
+      name:'Registration',
+      path:'/register'
+    },
     {
       name:'Events',
       path:'/events'
