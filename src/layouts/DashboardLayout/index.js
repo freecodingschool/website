@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Hidden } from '@material-ui/core';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
 import NavBar from './NavBar';
@@ -8,7 +8,7 @@ import TopBar from './TopBar';
 import { authSlice } from 'src/redux/slicers';
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.dark,
+    backgroundColor:"#fff",
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 1 auto',
     overflow: 'hidden',
     paddingTop: 64,
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
-    }
+    // [theme.breakpoints.up('lg')]: {
+    //   paddingLeft: 256
+    // }
   },
   contentContainer: {
     display: 'flex',
@@ -61,10 +61,12 @@ const DashboardLayout = () => {
   return (
     <div className={classes.root}>
       <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <NavBar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
-      />
+      <Hidden mdUp>
+        <NavBar
+          onMobileClose={() => setMobileNavOpen(false)}
+          openMobile={isMobileNavOpen}
+        />
+      </Hidden>    
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>

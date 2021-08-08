@@ -31,7 +31,7 @@ const RegisterView = () => {
   return (
     <Page
       className={classes.root}
-      title="New School Application"
+      title="Freecoding School - New School"
     >
       <Box
         display="flex"

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Community from './Community';
 import Events from './Events';
-import Courses from './Courses';
+import Courses from 'src/components/Courses';
 import Curriculum from './Curriculum';
 import OurCommunities from './OurCommunities';
 import JoinUs from './JoinUs';
@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Community />
-      <Courses />
+      <Courses showSection={true}/>
       <Curriculum/>
       <Events />     
       <OurCommunities />

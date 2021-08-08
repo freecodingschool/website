@@ -4,16 +4,14 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Badge,
   Box,
+  Button,
   Hidden,
   IconButton,
   Toolbar,
   makeStyles
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 import { useDispatch } from "react-redux";
 import { authSlice } from 'src/redux/slicers';
@@ -24,6 +22,15 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: 60,
     height: 60
+  },
+  menuWrapper:{
+    width: 100,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  active:{
+
   }
 }));
 
@@ -33,7 +40,14 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
+  // const [notifications] = useState([]);
+  const menus = [
+    { name:"Dashboard",href: "/app/dashboard"},
+    { name:"Progress",href: "/app/progress"},
+    { name:"Completed",href: "/app/completed"},
+    { name:"Rewards", href: "/app/account",},
+    { name:"Profile",href: "/app/profile"},
+  ]
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
@@ -43,28 +57,10 @@ const TopBar = ({
   return (
     <AppBar
       className={clsx(classes.root, className)}
-      elevation={1}
+      elevation={0}
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
-          <Logo />
-        </RouterLink>
-        <Box flexGrow={1} />
-        <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton color="primary" onClick={logout}>
-            <InputIcon />
-          </IconButton>
-        </Hidden>
         <Hidden lgUp>
           <IconButton
             color="primary"
@@ -73,6 +69,41 @@ const TopBar = ({
             <MenuIcon />
           </IconButton>
         </Hidden>
+        <RouterLink to="/">
+          <Logo />
+        </RouterLink>
+        <Box flexGrow={1} />
+        <Hidden mdDown>
+          {
+            menus.map(({name,href},key) => (
+              <div className={classes.menuWrapper} key={key}>
+                <Button
+                 color="primary" 
+                 activeClassName={classes.active}
+                 component={RouterLink}
+                 to={href} >
+                  {name}
+                </Button>
+              </div>            
+            ))
+          }
+        <div className={classes.menuWrapper}>
+          <Button color="primary" onClick={logout}>
+           Logout
+          </Button>
+        </div>   
+          {/* <IconButton color="primary">
+            <Badge
+              badgeContent={notifications.length}
+              variant="dot"
+            >
+              <NotificationsIcon />
+            </Badge>
+          </IconButton> */}
+          {/* <IconButton color="primary" onClick={logout}>
+            <InputIcon />
+          </IconButton> */}
+        </Hidden>       
       </Toolbar>
     </AppBar>
   );

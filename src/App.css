@@ -1,6 +1,7 @@
 body{
     color:#2F2F2F;
     font-family: Nexa,sans-serif;
+    font-weight: 600;
 }
 .section-title{
     color:#000;
@@ -33,19 +34,21 @@ body{
 
 @font-face {
     font-family: Nexa;
-    src: url(./styles/fonts/nexa-webfont.ttf)
-}
-@font-face {
-    font-family: NexaLight;
-    src: url(./styles/fonts/nexa-light.otf)
-}
-
-@font-face {
-    font-family:  NexaBold;
-    src: url(./styles/fonts/nexa-bold.otf)
-}
-
-@font-face {
-    font-family: NexaHeavy;
-    src: url(./styles/fonts/nexaheavy-webfont.ttf)
-}
+    src: url(./styles/fonts/nexa-webfont.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+    
+  @font-face {
+    font-family: Nexa;
+    src: url(./styles/fonts/nexa-bold.otf);
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: Nexa;
+    src: url(./styles/fonts/nexaheavy-webfont.ttf);
+    font-weight: bold;
+    font-style: normal;
+  }
