@@ -58,7 +58,7 @@ const LoginView = () => {
   return (
     <Page
       className={classes.root}
-      title="Login"
+      title="Freecoding School - Login"
     >
       <Box
         display="flex"
@@ -188,7 +188,7 @@ const LoginView = () => {
                     to="/register"
                     variant="h6"
                   >
-                    Sign up
+                    Sign in
                   </Link>
                 </Typography>
               </form>

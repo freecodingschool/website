@@ -9,7 +9,7 @@ import {
   Button,
   IconButton,
   Hidden,
-  Drawer
+  Box
 } from '@material-ui/core';
 import Logo from 'src/components/Logo';
 import {Menu} from '@material-ui/icons';
@@ -34,25 +34,9 @@ const useStyles = makeStyles((theme) =>({
   }
 }));
 
-const TopBar = ({ className, ...rest }) => {
+const TopBar = ({ className,onMobileNavOpen,...rest }) => {
   const classes = useStyles();
   const menus = [
-    // {
-    //   name:'About Us',
-    //   path:'/about',      
-    // },
-    // {
-    //   name:'Courses',
-    //   path:'/courses'
-    // },
-    // {
-    //   name:'Volunteers',
-    //   path:'/school-register'
-    // },
-    // {
-    //   name:'Students',
-    //   path:'/register'
-    // },
     {
       name:'Registration',
       path:'/register'
@@ -74,6 +58,7 @@ const TopBar = ({ className, ...rest }) => {
                 edge="start"
                 color="primary"
                 className={classes.menuButton}
+                onClick={onMobileNavOpen}
                 aria-label="open drawer">
                 <Menu/>
               </IconButton> 
@@ -81,11 +66,14 @@ const TopBar = ({ className, ...rest }) => {
               <RouterLink to="/"  className={classes.flexGrow}>
                 <Logo />
               </RouterLink>
-              {
-                menus.map((menu,index) => (
-                  <Button component={RouterLink} to={menu.path} color="primary" key={index}>{menu.name}</Button> 
-                ))        
-              }
+              <Box flexGrow={1} />
+              <Hidden mdDown>
+                {
+                  menus.map((menu,index) => (
+                    <Button component={RouterLink} to={menu.path} color="primary" key={index}>{menu.name}</Button> 
+                  ))        
+                }
+              </Hidden>    
             </Toolbar>
         </Container>          
     </AppBar>
@@ -93,7 +81,8 @@ const TopBar = ({ className, ...rest }) => {
 };
 
 TopBar.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  onMobileNavOpen: PropTypes.func
 };
 
 export default TopBar;

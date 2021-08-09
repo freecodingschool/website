@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Outlet } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Hidden } from '@material-ui/core';
 import TopBar from './TopBar';
+import NavBar from './NavBar';
 import Footer from './Footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,10 +33,14 @@ const useStyles = makeStyles((theme) => ({
 
 const MainLayout = () => {
   const classes = useStyles();
-
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   return (
     <div className={classes.root}>
-      <TopBar />
+      <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
+      <NavBar
+        onMobileClose={() => setMobileNavOpen(false)}
+        openMobile={isMobileNavOpen}
+      />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>

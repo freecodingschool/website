@@ -1,10 +1,13 @@
 import React from "react";
-import { TextField, Typography } from "@material-ui/core";
+import Page from 'src/components/Page';
+import Courses from 'src/components/Courses';
+import Introduction from './components/Introduction'
 const Dashboard = () => {
     return(
-        <>
-        <Typography  variant="h2">Dashboard</Typography>
-        </>
+        <Page title="Freecoding School - Dashbaord"> 
+            <Introduction/>
+            <Courses showSection={false}/>
+        </Page>
     )
 }
 export default Dashboard;

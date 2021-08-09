@@ -45,21 +45,21 @@ const useStyles = makeStyles(theme => ({
     title:"Roshini",  
     role:"Parent",
     designation:"Computer Science Professor", 
-    image: './static/images/avatars/avatar_2.png',      
+    image: '/static/images/avatar_6.png',      
     desc:`Our son had  been with FreecodingSchool for a few months now and absolutely enjoys it. He has advanced basic coding skills using Scratch  Programming  quickly and is  now about to start  Python.  The instructors at FreecodingSchool are incredibly talented, kind, and so patient with the students. Its been an amazing experience for my family seeing my 10 years old son skillfully building logical blocks and games that he enjoys playing in his free time. I also like FreecodingSchool empowering message for high school students and their effort to teach high-quality coding classes for free in local schools and communities.
     Thank you FreecodingSchool!`
   },
   {
     title:"Kusuma",  
     role:"Lead Volunteer",
-    image: './static/images/testmonials/kusuma.png',   
+    image: '/static/images/testmonials/kusuma.png',   
     designation:"Software Engineer, Cognizant",  
     desc:`I’ve been volunteering here for a year now, I find this is an amazing platform to help kids learn to code. Teaching high school students to study computer science is always challenging, but the amazing co-volunteers have made my life easy by helping with well-designed course content and sharing interesting ideas to ignite kids’ curiosity. I am impressed with the team and how everyone is here motivated to help high school students in local communities by creating a fun, engaging, and safe environment. I’m happy to see students in my class using GitHub, GoogleColoborate, Online learning platforms like KhanAcademy, Coursera, and more, which are used by CS grads or professional software engineers in their daily work. I wish I had the same opportunity when I was a kid!`
   },
   {
     title:"Mohit R A", 
     role:"Student, Grade 4", 
-    image: './static/images/testmonials/mohit.png',   
+    image: '/static/images/testmonials/mohit.png',   
     designation:"Emmaus Swiss High School",  
     desc:`FreecodingSchool opened up a new world of what I can do when I grow up. I think I can be part of this digital change and help to improve the lives of people with digital transformation across my country.`
   }

@@ -3,7 +3,6 @@ const typography = {
   h1: {
     fontSize: 42,
     lineHeight:'48px',
-    fontFamily:"NexaBold",
   },
   h2: {
     fontSize: 36,
@@ -41,8 +40,8 @@ const typography = {
     fontSize: 12
   },
   button: {
-    fontSize: 16,
-    fontWeight: 400
+    fontSize: 14,
+    fontWeight: 600
   }
 }
 export default typography;
