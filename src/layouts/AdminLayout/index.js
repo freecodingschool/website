@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React,{useState,useEffect} from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { makeStyles, Hidden } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { useDispatch } from "react-redux";
-import axios from 'src/axios';
-import NavBar from './NavBar';
 import TopBar from './TopBar';
+import NavBar from './NavBar';
+import axios from 'src/axios';
 import { authSlice } from 'src/redux/slicers';
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.dark,
+    backgroundColor: theme.palette.background.default,
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
-    width: '100%'
+    width: '100%',
+    paddingTop: 64,
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: 256
+    }
   },
   wrapper: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden',
-    paddingTop: 64,
-    [theme.breakpoints.down('md')]: {
-      paddingLeft: 256
-    }
+    overflow: 'hidden'
   },
   contentContainer: {
     display: 'flex',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const DashboardLayout = () => {
+const MainLayout = () => {
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const dispatch = useDispatch();
@@ -55,15 +55,14 @@ const DashboardLayout = () => {
     if(!localStorage.getItem("_ut")){
       navigate('/login', { replace: true });
     }else
-    getUser();
-
+      getUser();
   },[])
   return (
     <div className={classes.root}>
       <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
       <NavBar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
+         onMobileClose={() => setMobileNavOpen(false)}
+         openMobile={isMobileNavOpen}
       />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
@@ -71,9 +70,9 @@ const DashboardLayout = () => {
             <Outlet />
           </div>
         </div>
-      </div>
+      </div>  
     </div>
   );
 };
 
-export default DashboardLayout;
+export default MainLayout;

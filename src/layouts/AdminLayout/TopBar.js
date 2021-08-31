@@ -17,7 +17,8 @@ import { useDispatch } from "react-redux";
 import { authSlice } from 'src/redux/slicers';
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.background.default,
+    borderBottom:`1px solid ${theme.palette.background.default}`
   },
   avatar: {
     width: 60,
@@ -40,13 +41,12 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
-  // const [notifications] = useState([]);
   const menus = [
-    { name:"Dashboard",href: "/app/dashboard"},
+    // { name:"Dashboard",href: "/app/dashboard"},
     // { name:"Progress",href: "/app/progress"},
     // { name:"Completed",href: "/app/completed"},
     // { name:"Rewards", href: "/app/account",},
-    { name:"Profile",href: "/app/profile"},
+    // { name:"Profile",href: "/app/profile"},
   ]
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ const TopBar = ({
               <div className={classes.menuWrapper} key={key}>
                 <Button
                  color="primary" 
-                 activeClassName={classes.active}
+                 className={classes.active}
                  component={RouterLink}
                  to={href} >
                   {name}

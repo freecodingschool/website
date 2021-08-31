@@ -104,13 +104,13 @@ const RegisterView = () => {
                   >
                     Create new account
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
                   >
                     Use your email to create new account
-                  </Typography>
+                  </Typography> */}
                 </Box>
                 <Grid container spacing={3}>
                   <Grid item sm={12} md={7}>
@@ -214,21 +214,21 @@ const RegisterView = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign up now
+                    Signup
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Have an account?
+                  Already have an account?
                   {' '}
                   <Link
                     component={RouterLink}
                     to="/login"
                     variant="h6"
                   >
-                    Sign in
+                    Signin
                   </Link>
                 </Typography>
               </form>

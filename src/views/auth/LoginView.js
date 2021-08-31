@@ -43,8 +43,11 @@ const LoginView = () => {
         data,
         url:"/user/auth"
       })
-      dispatch(authSlice.actions.authSuccess(response.data.token))
-      navigate('/app/dashboard', { replace: true });
+      dispatch(authSlice.actions.authSuccess(response.data))
+      if(response.data.role === 'ADMIN')
+        navigate('/admin/course', { replace: true });
+      else
+        navigate('/app/dashboard', { replace: true });
     }catch(e){
       setSubmitting(false);
       dispatch(authSlice.actions.hasError(e.data.message))
@@ -87,15 +90,15 @@ const LoginView = () => {
                     color="textPrimary"
                     variant="h2"
                   >
-                    Sign in
+                    Signin
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
-                  </Typography>
+                    Signin on the internal platform
+                  </Typography> */}
                 </Box>
                 {/* <Grid
                   container
@@ -174,7 +177,7 @@ const LoginView = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign in now
+                    Login
                   </Button>
                 </Box>
                 <Typography
@@ -188,7 +191,7 @@ const LoginView = () => {
                     to="/register"
                     variant="h6"
                   >
-                    Sign in
+                    Signup
                   </Link>
                 </Typography>
               </form>

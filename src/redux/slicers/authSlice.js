@@ -13,9 +13,11 @@ export const authSlice = createSlice({
     hasError: (state, action) => {
       state.error = action.payload;
     },
-    authSuccess: (state, action) => {
-      localStorage.setItem("_ut",action.payload)
-      state.token = action.payload;
+    authSuccess: (state, {payload:{token,role}}) => {
+      localStorage.setItem("_ut",token)
+      localStorage.setItem("role",role)
+      state.token = token;
+      state.role = role;
     },
     logOut: (state) => {
       localStorage.removeItem("_ut")
