@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Switch } from '@material-ui/core';
 import axios from 'src/axios';
 import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Button,Link} from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,7 @@ export default function Courses() {
             <TableCell>Days</TableCell>
             <TableCell>Start time</TableCell>
             <TableCell>End time</TableCell>
+            <TableCell>Active</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,6 +51,7 @@ export default function Courses() {
               <TableCell>{row.days.join()}</TableCell>
               <TableCell>{row.start_time}</TableCell>
               <TableCell>{row.end_time}</TableCell>
+              <TableCell>{ <Switch color='primary' /> }</TableCell>
             </TableRow>
           ))}
         </TableBody>
