@@ -44,3 +44,27 @@ const useStyles = makeStyles((theme) => ({
   );
 }
 export default News;
+
+
+
+
+const Signup = () => {
+  const classes = useStyles();
+  return ( 
+    <Fragment>
+     <div  className={`section-5 secondary-bg`}>
+        <Container maxWidth="lg" className={classes.gridContainer}>
+        <Typography variant="h2">
+            Ready to become a FreeCoding School Volunteer ?
+        </Typography>
+        <Button variant="contained" color="primary" size="large" className={classes.homeBtn}
+            href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
+            Join US
+            <ArrowRightAlt />
+        </Button> 
+      </Container>
+      </div>
+    </Fragment>
+  );
+}
+export default News;
