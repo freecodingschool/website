@@ -26,6 +26,11 @@ export default function Courses() {
     })      
     setCourses(response.data.data) 
   }
+  const setStatus = (event, value) => {
+    if (value = true){
+      
+    }
+  }
   return (
     <div className={classes.root}>
       <Button component={Link}  href="new-course" >Add Course</Button>
@@ -51,7 +56,7 @@ export default function Courses() {
               <TableCell>{row.days.join()}</TableCell>
               <TableCell>{row.start_time}</TableCell>
               <TableCell>{row.end_time}</TableCell>
-              <TableCell>{ <Switch color='primary' /> }</TableCell>
+              <TableCell>{ <Switch color='primary' onChange={setStatus} /> }</TableCell>
             </TableRow>
           ))}
         </TableBody>
