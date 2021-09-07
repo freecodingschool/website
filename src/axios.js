@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const HTTP = axios.create({
-    baseURL: 'http://localhost:4044/api',
+    //baseURL: 'http://localhost:4044/api',
+    baseURL:"https://freecodingschool-backend.herokuapp.com/api",
     headers: {
         'Content-Type': 'application/json'
     },

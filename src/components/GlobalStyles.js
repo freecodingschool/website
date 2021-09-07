@@ -20,10 +20,6 @@ const useStyles = makeStyles(() => createStyles({
     },
     a: {
       textDecoration: 'none'
-    },
-    '#root': {
-      height: '100%',
-      width: '100%'
     }
   }
 }));
