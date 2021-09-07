@@ -8,8 +8,10 @@ import {
   Container,
   Link,
   Typography,
+  Snackbar,
   makeStyles
 } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
 import Page from 'src/components/Page';
@@ -23,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(3)
   }
 }));
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 const LoginView = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -36,6 +40,14 @@ const LoginView = () => {
     email: Yup.string().email('Please enter valid email').max(255).required('Please enter email'),
     password: Yup.string().max(255).required('Please enter password'),
   });
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState('');
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
   const SignIn = async(data, { setSubmitting })=> {
     try{
       const response = await axios({
@@ -49,8 +61,9 @@ const LoginView = () => {
       else
         navigate('/app/dashboard', { replace: true });
     }catch(e){
+      setOpen(true);
       setSubmitting(false);
-      dispatch(authSlice.actions.hasError(e.data.message))
+      setMessage(e?.data?.message || 'Something went wrong')
     }
   };
   useEffect(() => {
@@ -197,6 +210,9 @@ const LoginView = () => {
               </form>
             )}
           </Formik>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error">{message}</Alert>
+          </Snackbar>
         </Container>
       </Box>
     </Page>

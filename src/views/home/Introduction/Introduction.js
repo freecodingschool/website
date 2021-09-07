@@ -71,3 +71,4 @@ const Introduction = () => {
   );
 };
 export default Introduction;
+export default Introduction;
