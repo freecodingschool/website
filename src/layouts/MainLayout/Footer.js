@@ -41,7 +41,7 @@ const Footer = props => {
     <div className={classes.root}>
       <Container maxWidth="lg">       
         <Grid container>
-          <Grid item lg={12} xs={12} container direction="row" justify="space-evenly">
+          <Grid item lg={12} xs={12} container direction="row" justifyContent="space-evenly">
            <Grid item lg={4} sm={6} xs={12}>
               <Grid container direction="column" >
                 <Typography variant="body1">San Fransico, USA</Typography>

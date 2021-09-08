@@ -47,7 +47,7 @@ const OurCommunities = () => {
   {
     title:'Students and Parents',
     desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
-    image:'/static/images/communities/Students.png'
+    image:'/static/images/communities/students.png'
   }];
   const [news] = useState(data);  
   return (
