@@ -63,8 +63,5 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^2.5.1",
     "prettier": "^1.19.1"
-  },
-  "useless": {
-    "use": "nouse"
   }
 }
