@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 650,
   },
 }));
+
 export default function Courses() {
   const classes = useStyles();
   const [courses,setCourses] = useState([]);  
@@ -26,11 +27,14 @@ export default function Courses() {
     })      
     setCourses(response.data.data) 
   }
-  const setStatus = (event, value) => {
-    if (value = true){
-      
-    }
-  }
+
+  const setStatus = async(value) => {
+    const response = await axios({
+      method:"PATCH",
+      url:"/course/{active}"
+    })      
+    updatedAt(response.data.value) 
+   }
   return (
     <div className={classes.root}>
       <Button component={Link}  href="new-course" >Add Course</Button>
@@ -56,7 +60,7 @@ export default function Courses() {
               <TableCell>{row.days.join()}</TableCell>
               <TableCell>{row.start_time}</TableCell>
               <TableCell>{row.end_time}</TableCell>
-              <TableCell>{ <Switch color='primary' onChange={setStatus} /> }</TableCell>
+              <TableCell>{ <Switch color='primary' onChange={setStatus} checked={true} /> }</TableCell>
             </TableRow>
           ))}
         </TableBody>
