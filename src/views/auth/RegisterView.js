@@ -27,6 +27,7 @@ const { TermsAndConditionsRequired, FieldRequired, InvalidEmail, maxCharactersEr
   TermsAndConditionsRequired:"Please agree to our terms and conditions",
   maxCharactersError: (field) => `${field || 'Field'} exceed 250 characters`
 }
+const ADMIN = 'ADMIN';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -72,7 +73,8 @@ const RegisterView = () => {
   };
   useEffect(() => {
     if(localStorage.getItem("_ut")){
-      navigate('/app/dashboard', { replace: true });
+      const role = localStorage.getItem('role')
+      navigate(role === ADMIN ? '/admin/course':'/app/dashboard', { replace: true });
     }
   },[])
   const Signup = async(data, { setSubmitting }) => {
