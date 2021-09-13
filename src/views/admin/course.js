@@ -43,7 +43,15 @@ export default function Courses() {
     })      
     setCourses(response.data.data) 
   }
-
+  const getviewCourse = async(row) => {
+    const response = await axios({
+      method:"GET",
+      url:`/course/${row._id}`,
+      data:{
+        title:row.course_name
+      }
+    })
+  }
   const setStatus = async(row) => {
     setLoading(true)
     try{
@@ -82,9 +90,11 @@ export default function Courses() {
         </TableHead>
         <TableBody>
           {courses.map((row,i) => (
-            <TableRow key={i}>
-              <TableCell component="th" scope="row">
+            <TableRow key={row._id}>
+              <TableCell component="th" scope="row" onClick={getviewCourse}>
+                <Link href={`/course/${row._id}`}>
                 {row.course_name}
+                </Link>
               </TableCell>
               <TableCell>{row.description}</TableCell>
               <TableCell>{row.days.join()}</TableCell>
