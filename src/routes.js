@@ -13,8 +13,7 @@ import EventsView from 'src/views/events/EventsView';
 import HomeView from 'src/views/home/HomeView';
 import AddCourseView from './views/admin/add-course';
 import CourseView from './views/admin/course';
-import CourseDescription from './views/admin/view-course';
-import viewCourse from './views/admin/view-course';
+import CourseInfoView from './views/admin/view-course';
 const routes = [
   {
     path: 'app',
@@ -33,8 +32,8 @@ const routes = [
     element: <AdminLayout />,
     children: [
       { path: '/new-course', element: <AddCourseView /> },
-      { path: '/course/:courseId', element: <viewCourse /> },
       { path: '/course', element: <CourseView /> },
+      { path: '/course/:courseId', element: <CourseInfoView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/admin/new-course" /> },
       { path: '*', element: <Navigate to="/404" /> }

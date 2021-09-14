@@ -43,14 +43,9 @@ export default function Courses() {
     })      
     setCourses(response.data.data) 
   }
-  const getviewCourse = async(row) => {
-    const response = await axios({
-      method:"GET",
-      url:`/course/${row._id}`,
-      data:{
-        title:row.course_name
-      }
-    })
+  const getviewCourse = async(ev,row) => {
+    ev.stopPropagation()
+    navigate('/admin/course/'+row._id)
   }
   const setStatus = async(row) => {
     setLoading(true)
@@ -91,7 +86,7 @@ export default function Courses() {
         <TableBody>
           {courses.map((row,i) => (
             <TableRow key={row._id}>
-              <TableCell component="th" scope="row" onClick={getviewCourse}>
+              <TableCell component="th" scope="row" onClick={(ev) => getviewCourse(ev,row)}>
                 <Link href={`/course/${row._id}`}>
                 {row.course_name}
                 </Link>
