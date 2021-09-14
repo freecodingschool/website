@@ -7,19 +7,18 @@ import {
   Drawer,
   Hidden,
   List,
-  Typography,
   makeStyles
 } from '@material-ui/core';
-import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
-} from 'react-feather';
+import { BookIcon, BookOpenIcon } from 'react-feather';
+  
+// AlertCircle as AlertCircleIcon,
+// BarChart as BarChartIcon,
+// Lock as LockIcon,
+// Settings as SettingsIcon,
+// ShoppingBag as ShoppingBagIcon,
+// User as UserIcon,
+// UserPlus as UserPlusIcon,
+//Users as UsersIcon
 import NavItem from './NavItem';
 const useStyles = makeStyles((theme) => ({
   desktopDrawer: {
@@ -34,8 +33,13 @@ const useStyles = makeStyles((theme) => ({
 const items = [
   {
     href: '/admin/course',
-    icon: UserPlusIcon,
-    title: 'Courses'
+    icon: BookIcon,
+    title: 'All Courses'
+  },
+  {
+    href: '/admin/new-course',
+    icon: BookOpenIcon,
+    title: 'New Course'
   }
 ];
 

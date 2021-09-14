@@ -43,18 +43,28 @@ const CourseView = () => {
     course_name: Yup.string().max(255).required('Please enter course name'),
     description: Yup.string().max(255).required('Please enter course description'),
     days:Yup.array().of(Yup.string()).required('Please select atleast a day'),
-    time: Yup.boolean().oneOf([true], 'Please select time')
+    start_time: Yup.boolean().oneOf([true], 'Please select time'),
+    end_time: Yup.boolean().oneOf([true], 'Please select time'),
+    file:Yup.string().max(255).required('Please select course image'),
   });
-  const AddCourse = async(data, { setSubmitting }) => {
-    const response = await axios({
+  const AddCourse = async(values, { setSubmitting }) => {
+    const data = new FormData();
+    data.append('file', values,file);
+    data.append('course_name', values,course_name);
+    data.append('description', values,description);
+    data.append('days', values,days.join());
+    data.append('start_time', values,start_time);
+    data.append('end_time', values,end_time);
+    setSubmitting(true)
+    await axios({
       method:"post",
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       data,
       url:"/course"
     })      
     navigate('/admin/course', { replace: true });    
-  }
-  const handleCheckBox = (e) => {
-
   }
   return (
     <Page
@@ -152,7 +162,20 @@ const CourseView = () => {
                     />
                     </Grid>
               </Grid>              
-             
+              <Button
+                variant="contained"
+                component="label"
+              >
+                Upload File
+                <input
+                  type="file"
+                  onChange={(event) => {
+                    const file = event.target.file;
+                    formik.setFieldValue("file", file);
+                  }}  
+                  hidden
+                />
+              </Button>
                 <Box my={2}>
                   <Button
                     color="primary"
