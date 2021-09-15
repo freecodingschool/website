@@ -5,7 +5,7 @@
   "private": false,
   "engines": {
     "node": ">=14",
-    "npm":">=6"
+    "npm": ">=6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
     "@reduxjs/toolkit": "^1.6.0",
@@ -49,6 +49,7 @@
     "react-elastic-carousel": "^0.11.5",
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.18",
