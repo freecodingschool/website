@@ -19,7 +19,7 @@ const theme = createTheme({
       main:  colors.common.white,
     },
     text: {
-      primary: '#6962ff',//colors.blueGrey[900],
+      primary: '#333',
       secondary: colors.blueGrey[600]
     }
   },
