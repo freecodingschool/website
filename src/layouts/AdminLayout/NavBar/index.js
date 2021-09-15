@@ -9,7 +9,7 @@ import {
   List,
   makeStyles
 } from '@material-ui/core';
-import { BookIcon, BookOpenIcon } from 'react-feather';
+import { Book, BookOpen } from 'react-feather';
   
 // AlertCircle as AlertCircleIcon,
 // BarChart as BarChartIcon,
@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
 const items = [
   {
     href: '/admin/course',
-    icon: BookIcon,
+    icon: Book,
     title: 'All Courses'
   },
   {
     href: '/admin/new-course',
-    icon: BookOpenIcon,
+    icon: BookOpen,
     title: 'New Course'
   }
 ];
