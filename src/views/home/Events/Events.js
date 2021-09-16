@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     alignItems:'flex-end',
     display:'flex'
   },
-  learnMoreBtn:{
+  enrollNowBtn:{
     marginTop: theme.spacing(2)
   }
 }));
@@ -79,6 +79,7 @@ const Programs = () => {
     desc:`In this course, we introduce computer science fundamentals using Scratch’s block-based
      programming environment. This course focuses on event listeners, 
     loops, conditional statements, user input, Cartesian coordinates, variables, and message broadcasting.`,
+    enrollLink: `https://jolk1nmh49o.typeform.com/to/L6ktCd30`,
   },
   {
     title:"Intro to Python",
@@ -89,6 +90,7 @@ const Programs = () => {
      conditional statements, and functions, while also introducing more advanced topics such as lists, sets, 
      dictionaries, and error checking.
      Students practice integrating these concepts in building a series of complex projects `,
+     enrollLink: `https://jolk1nmh49o.typeform.com/to/wzXfpb1e`,
   },
   // {
   //   title:"Introduction to Scratch Programming",
@@ -154,9 +156,9 @@ const Programs = () => {
                             <Typography variant="subtitle1"  className={classes.subtitle}>{event.desc}</Typography>
                             <Grid item xs={12} container direction="row" justify="center" alignItems="center">
                               <Grid item xs={6}>
-                                <Button color="primary" size="large" className={classes.learnMoreBtn}
-                                href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank" >
-                                  Learn more
+                                <Button color="primary" size="large" className={classes.enrollNowBtn}
+                                href={event.enrollLink} target="_blank" >
+                                  Enroll Now
                                   <ArrowRightAlt />
                                 </Button>
                               </Grid>

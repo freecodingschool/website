@@ -9,7 +9,12 @@ import {
   List,
   makeStyles
 } from '@material-ui/core';
+<<<<<<< HEAD
 import { BookIcon, BookOpenIcon } from '@material-ui/icons/Book';
+=======
+import { Book, BookOpen } from 'react-feather';
+  
+>>>>>>> e8bef2f851fb5d51c58fbed5551eca6404f9a00f
 // AlertCircle as AlertCircleIcon,
 // BarChart as BarChartIcon,
 // Lock as LockIcon,
@@ -32,12 +37,12 @@ const useStyles = makeStyles((theme) => ({
 const items = [
   {
     href: '/admin/course',
-    icon: BookIcon,
+    icon: Book,
     title: 'All Courses'
   },
   {
     href: '/admin/new-course',
-    icon: BookOpenIcon,
+    icon: BookOpen,
     title: 'New Course'
   }
 ];

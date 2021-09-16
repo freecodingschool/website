@@ -4,8 +4,14 @@ import {
   useLocation
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, ListItem } from '@material-ui/core';
-
+import { Button, makeStyles, ListItem } from '@material-ui/core';
+const useStyles = makeStyles((theme) => ({
+  title: {
+    marginLeft:8,
+    display:'inline-flex',
+    color:'inherit'
+  }
+}));
 const NavItem = ({
   href,
   icon: Icon,
@@ -13,7 +19,7 @@ const NavItem = ({
   ...rest
 }) => {
   const location = useLocation();
-
+  const classes = useStyles();
   const active = href ? !!matchPath({
     path: href,
     end: false
@@ -50,7 +56,7 @@ const NavItem = ({
         {Icon && (
           <Icon size="20" />
         )}
-        <span>
+        <span className={classes.title}>
           {title}
         </span>
       </Button>

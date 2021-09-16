@@ -25,9 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl:{
     width:'100%'
+  },
+  fileName:{
+    marginTop:10
   }
 }));
-const days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+const days = ['Monday','Tuesday','Wednesday','Thursday','Friday',"Saturday","Sunday"]
 const CourseView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
@@ -36,40 +39,47 @@ const CourseView = () => {
     course_name: '',
     description: '',
     days:[],
-    start_time: '',
-    end_time: ''
+    start_time: '19:00',
+    end_time: '20:00',
+    enroll_link:''
   };
   const validationSchema = Yup.object().shape({ 
     course_name: Yup.string().max(255).required('Please enter course name'),
-    description: Yup.string().max(255).required('Please enter course description'),
+    description: Yup.string().required('Please enter course description'),
     days:Yup.array().of(Yup.string()).required('Please select atleast a day'),
-    start_time: Yup.boolean().oneOf([true], 'Please select time'),
-    end_time: Yup.boolean().oneOf([true], 'Please select time'),
-    file:Yup.string().max(255).required('Please select course image'),
+    start_time: Yup.string().required('Please select time'),
+    end_time:Yup.string().required('Please select time'),
+    enroll_link:Yup.string().required('Please select time'),
+    file:Yup.string().max(255).required('Please select course image')
   });
   const AddCourse = async(values, { setSubmitting }) => {
+
     const data = new FormData();
-    data.append('file', values,file);
-    data.append('course_name', values,course_name);
-    data.append('description', values,description);
-    data.append('days', values,days.join());
-    data.append('start_time', values,start_time);
-    data.append('end_time', values,end_time);
+    data.append('file', values.file);
+    data.append('course_name', values.course_name);
+    data.append('description', values.description);
+    data.append('days', values.days.join());
+    data.append('start_time', values.start_time);
+    data.append('end_time', values.end_time);
+    data.append('enroll_link', values.enroll_link);
+    
+    console.log(values.file)
+    console.log(data)
     setSubmitting(true)
     await axios({
       method:"post",
+      url:"/course",
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      data,
-      url:"/course"
+      data
     })      
-    navigate('/admin/course', { replace: true });    
+    navigate('/admin/course');    
   }
   return (
     <Page
       className={classes.root}
-      title="Freecoding School - Register"
+      title="Freecoding School - Add Course"
     >
       <Box
         display="flex"
@@ -77,7 +87,7 @@ const CourseView = () => {
         height="100%"
         justifyContent="center"
       >
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -97,7 +107,7 @@ const CourseView = () => {
                 <Box mb={3}>
                   <Typography
                     color="textPrimary"
-                    variant="h2"
+                    variant="h5"
                   >
                     Add new Course
                   </Typography>
@@ -122,6 +132,15 @@ const CourseView = () => {
                 onChange={handleChange}
                 value={values.description}
               />
+              <TextField
+                error={Boolean(touched.enroll_link && errors.enroll_link)}
+                helperText={touched.enroll_link && errors.enroll_link}
+                label="Enroll Link"
+                name="enroll_link"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.enroll_link}
+              />
               <FormGroup row>
                 {
                   days.map((day,i)=> (
@@ -141,6 +160,7 @@ const CourseView = () => {
               <Grid container spacing={3}>
                   <Grid item sm={12} md={6}>
                     <TextField
+                     type="time"
                       error={Boolean(touched.start_time && errors.start_time)}
                       helperText={touched.start_time && errors.start_time}
                       label="Start Time"
@@ -148,10 +168,14 @@ const CourseView = () => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.start_time}
+                      inputProps={{
+                        step: 300, // 5 min
+                      }}
                     />
                   </Grid>
                   <Grid item sm={12} md={6}>
                     <TextField
+                     type="time"
                       error={Boolean(touched.end_time && errors.end_time)}
                       helperText={touched.end_time && errors.end_time}
                       label="End Time"
@@ -159,6 +183,9 @@ const CourseView = () => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.end_time}
+                      inputProps={{
+                        step: 300, // 5 min
+                      }}
                     />
                     </Grid>
               </Grid>              
@@ -169,13 +196,13 @@ const CourseView = () => {
                 Upload File
                 <input
                   type="file"
-                  onChange={(event) => {
-                    const file = event.target.file;
-                    formik.setFieldValue("file", file);
+                  onChange={({target:{files}}) => {
+                    setFieldValue("file", files[0]);
                   }}  
                   hidden
                 />
               </Button>
+              {values.file && (<div className={classes.fileName}>{values?.file?.name}</div>)}
                 <Box my={2}>
                   <Button
                     color="primary"
