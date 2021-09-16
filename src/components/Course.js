@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 8,
     color: "#2F2F2F",
     width: "100%",
+    maxWidth:200,
     height: 200,
   },
   courseCardHeader: {

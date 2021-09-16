@@ -97,7 +97,10 @@ const Courses = () => {
     try{
       const {data} = await axios({
         method:"get",
-        url:"/course"
+        url:"/course",
+        params:{
+          active:true
+        }
       })
       setCourses(data.data);
       breakPoints[0].pagination = data.data.length > 1;
