@@ -59,11 +59,11 @@ export default function Courses() {
         }      
       })
       setMsg("Updated Successfully")
-      setLoading(false)
+      setLoading(true)
       setOpen(true)
       setAlertType('success');
     }catch(e){
-      setLoading(false)
+      setLoading(true)
       setAlertType('success');
       setMsg("Something went wrong")
     }        
