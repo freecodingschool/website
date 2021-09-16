@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize:`2.3em`,
     marginTop:'0.5em',
     marginBottom:'0.5em',
-    color:`#6760fe`
+    color:`#6760fe`,
+    fontWeight:'600',
   },
   about:{
     fontSize:`1.1em `,
