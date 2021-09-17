@@ -69,7 +69,7 @@ const ProductCard = ({ className, product, ...rest }) => {
       <Box p={2}>
         <Grid
           container
-          justify="space-between"
+          justifyContent="space-between"
           spacing={2}
         >
           <Grid

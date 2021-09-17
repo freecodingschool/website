@@ -9,6 +9,7 @@ import {
   Box
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
+import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -17,9 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper:{
     minHeight:'200px',
-    padding: theme.spacing(3),
-   // borderRadius: 20,
-    //boxShadow:'0px 0px 77px #0000000F'
+    padding: theme.spacing(3)
   },
   eventHead:{
     display:'inline-flex',
@@ -40,6 +39,8 @@ const useStyles = makeStyles(theme => ({
 
   const Testimonials = () => {
   const classes = useStyles();
+  const width = useWindowSize();
+  const showArrows =  width < 720;
   const data = [    
   {
     title:"Roshini",  
@@ -81,20 +82,19 @@ const useStyles = makeStyles(theme => ({
             FreecodingSchool provides a network of volunteers from top companies and universities to help high schools create sustainable CS and digital education programs in their local community. We connect claasroom teachers with our generous volunteers, through remote and classroom learning.
             </Typography>
         </div>
-        {/* <Grid container justify="space-between" spacing={6}> */}
-        <Box component="div" m={2}>
-          <Carousel breakPoints={breakPoints} showArrows={false}>
+        <Box component="div">
+          <Carousel breakPoints={breakPoints} showArrows={showArrows} itemPadding={[6,8,8,8]}>
             {
               testimonials.map((testimonial,index) => (
                   <Paper elevation={2} className={classes.paper}  key={index}>
-                      <Grid container justify="space-between" alignItems="center" spacing={2} >
+                      <Grid container justifyContent="space-between" alignItems="center" spacing={2} >
                         <Grid item xs={2}>
                           <img src={testimonial.image} alt={testimonial.title} width="100%"/>
                         </Grid>
                         <Grid item xs={10}>
-                          <Typography variant="h4" className={classes.paperTitle}>{testimonial.title}</Typography>
-                          <Typography variant="h6" className={classes.paperTitle}>{testimonial.role}</Typography>
-                          <Typography variant="h6">{testimonial.designation}</Typography>
+                          <Typography variant="h5" className={classes.paperTitle}>{testimonial.title}</Typography>
+                          <Typography variant="body2" className={classes.paperTitle}>{testimonial.role}</Typography>
+                          <Typography variant="body2">{testimonial.designation}</Typography>
                            
                         </Grid>
                         <Grid item xs={10}>

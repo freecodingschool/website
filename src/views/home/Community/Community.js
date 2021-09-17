@@ -108,7 +108,7 @@ const Community = () => {
         <div  className={`section-2 secondary-bg`}>
           <Container maxWidth="lg">
             <Typography className={`secondary-color ${classes.volunteerTitle}`} variant="h3">We are from</Typography>
-              <Grid container direction="row" justify="space-evenly" alignItems="center">
+              <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
                 {
                   volunteers.map((volunteer,i) => (
                     <Grid item xs={12} md={3} key={i}>

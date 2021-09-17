@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user:null,
-  error:null
+  token:null,
+  error:null,
+  first_name:null,
+  last_name:null
 };
 
 export const userSlice = createSlice({
@@ -12,10 +14,25 @@ export const userSlice = createSlice({
     hasError: (state, action) => {
       state.error = action.payload;
     },
+    authSuccess: (state, {payload:{token,role}}) => {
+      localStorage.setItem("_ut",token)
+      localStorage.setItem("role",role)
+      state.token = token;
+      state.role = role;
+    },
+    logOut: () => {
+      localStorage.removeItem("_ut")
+      return initialState
+    },
     userSuccess: (state, action) => {
-      state.user = action.payload;
+      return {
+        ...state,
+        ...action.payload
+      }
     }
   }
 });
 
-export const actions = userSlice.actions;
+
+export const { hasError, authSuccess, logOut, userSuccess } = userSlice.actions;
+export default userSlice.reducer;
