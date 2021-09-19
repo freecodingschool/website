@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     display:'flex',
     padding:'0 4px',
     position:'relative',
+    fontSize:14,
+    fontWeight:400,
+    color:theme.palette.primary.main,
     top:-20,
     backgroundColor:'#fff',
     opacity:1,
@@ -58,7 +61,7 @@ const TextMore = ({data}) => {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle>
           <Typography variant="h4" className={classes.title}>{data.title}</Typography>
-          <Typography variant="subtitle" className={classes.title}>{data.role}</Typography>
+          <Typography variant="body1" className={classes.title}>{data.role}</Typography>
           <Typography variant="body1">{data.designation}</Typography>
         </DialogTitle>
         <DialogContent>          

@@ -6,7 +6,8 @@ import PanToolIcon from "@material-ui/icons/PanTool";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
 import Carousel from "react-elastic-carousel";
 import Course from 'src/components/Course';
-import axios from 'src/axios';
+import { useSelector } from "react-redux";
+import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles((theme) => ({
   titleWrapper: {
     alignItems: "center",
@@ -70,49 +71,30 @@ const item = [
 ];
 const Courses = () => {
   const classes = useStyles();
-  const [courses,setCourses] = useState([]);
-  const showArrows = false;
+  const {courses} = useSelector(state => state.home);
+  const width = useWindowSize();
+  const showArrows =  width < 720;
   const [cards] = useState(item);  
   const breakPoints = [
     {
       width: 360,
       itemsToShow: 1,
       itemsToScroll: 1,
-      pagination: false,
+      pagination: courses?.length > 1,
     },
     {
       width: 762,
       itemsToShow: 4,
       itemToScroll: 4,
-      pagination: false,
+      pagination: courses?.length > 4,
     },
     {
       width: 1024,
       itemsToShow: 5,
       itemToScroll: 5,
-      pagination: false,
+      pagination: courses?.length > 4,
     },
-  ];
-  const getCourses = async() => {
-    try{
-      const {data} = await axios({
-        method:"get",
-        url:"/course",
-        params:{
-          active:true
-        }
-      })
-      setCourses(data.data);
-      breakPoints[0].pagination = data.data.length > 1;
-      breakPoints[1].pagination = data.data.length > 4;
-      breakPoints[2].pagination = data.data.length > 4;
-    }catch(e){
-      setCourses([]);
-    }
-  };
-  useEffect(() => {
-    getCourses()
-  },[])
+  ];  
   return (
     <Fragment>
       <Container maxWidth="lg" style={{ minHeight: "calc(100vh - 65px)" }}>
@@ -122,7 +104,7 @@ const Courses = () => {
             Popular Courses
           </Typography>
           <Box component="div" m={1} className={`${classes.courseWrapper}`}>
-            <Carousel breakPoints={breakPoints} showArrows={showArrows}>
+            <Carousel breakPoints={breakPoints} showArrows={showArrows} itemPadding={[6,8,8,8]}>
               {courses.map((course, index) => (
                 <Course course={course} key={index} isPrimary={index ===1} />
               ))}
@@ -135,7 +117,7 @@ const Courses = () => {
           className={`${classes.gridContainer} ${classes.gridItem}`}
           container
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           spacing={5}
         >
           <Grid item md={7} sm={12} className={classes.imgWrapper}>
@@ -149,7 +131,7 @@ const Courses = () => {
             <Grid
               container
               direction="column"
-              justify="space-between"
+              justifyContent="space-between"
               spacing={2}
             >
               {cards.map((card, index) => (

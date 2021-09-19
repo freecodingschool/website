@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 const Introduction = () => {
     const classes = useStyles();    
-    const  {first_name, last_name} = useSelector((store) => store.auth);
+    const  {first_name, last_name} = useSelector((store) =>store.user);
     return(
         <Container maxWidth="lg" className={classes.root}>
             <Grid container alignItems="center">

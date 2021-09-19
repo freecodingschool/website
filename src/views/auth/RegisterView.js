@@ -17,9 +17,9 @@ import {
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch } from "react-redux";
-import TextField from 'src/components/TextField';
+import TextField from 'src/components/TextField'; 
 import Page from 'src/components/Page';
-import { authSlice } from 'src/redux/slicers';
+import { authSuccess} from 'src/redux/slicers/userSlice';
 // import { TermsAndConditionsRequired, FieldRequired, InvalidEmail, maxCharactersError } from 'src/message';
 const { TermsAndConditionsRequired, FieldRequired, InvalidEmail, maxCharactersError } = {
   FieldRequired:"This field is required",
@@ -84,7 +84,7 @@ const RegisterView = () => {
         data,
         url:"/user"
       })
-      dispatch(authSlice.actions.authSuccess(response.data.token))
+      dispatch(authSuccess(response.data.token))
       navigate('/app/dashboard', { replace: true });
     }catch(e){
       setOpen(true);

@@ -15,7 +15,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
 import Page from 'src/components/Page';
-import { authSlice } from 'src/redux/slicers';
+import { authSuccess} from 'src/redux/slicers/userSlice';
 import TextField from 'src/components/TextField';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +55,7 @@ const LoginView = () => {
         data,
         url:"/user/auth"
       })
-      dispatch(authSlice.actions.authSuccess(response.data))
+      dispatch(authSuccess(response.data))
       if(response.data.role === 'ADMIN')
         navigate('/admin/course', { replace: true });
       else

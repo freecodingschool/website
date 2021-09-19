@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { makeStyles, Hidden } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
-import { authSlice } from 'src/redux/slicers';
+import { userSuccess, hasError} from 'src/redux/slicers/userSlice';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -46,9 +46,9 @@ const DashboardLayout = () => {
         method:"get",
         url:"/user"
       });
-      dispatch(authSlice.actions.userSuccess(response.data.user));
+      dispatch(userSuccess(response.data.data));
     }catch(e){
-      dispatch(authSlice.actions.hasError(e.data.message))
+      dispatch(hasError(e.data.message))
     }
   };
   useEffect(() => {

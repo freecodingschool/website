@@ -67,7 +67,7 @@ const Curriculum = () => {
           <Typography className={`section-title`} variant="h2">
             Curriculum
           </Typography>           
-          <Grid item xs={12} container justify="space-between" spacing={2}>    
+          <Grid item xs={12} container justifyContent="space-between" spacing={2}>    
             {                
               news.map((newsObj,index) =>(    
                 <Grid item xs={12} md={4} key={index} >

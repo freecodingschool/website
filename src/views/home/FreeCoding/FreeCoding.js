@@ -45,7 +45,7 @@ const FreeCoding = () => {
   const classes = useStyles();
   return (
     <section className={classes.section}>
-        <Grid  container direction="row" justify="space-evenly" alignItems="center" spacing={4}>
+        <Grid  container direction="row" justifyContent="space-evenly" alignItems="center" spacing={4}>
           <Grid item xs={12} lg={12}>
               <Typography className={classes.title} variant="h4">
                 Who can join Freecoding School?

@@ -14,7 +14,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from 'src/components/Logo';
 import { useDispatch } from "react-redux";
-import { authSlice } from 'src/redux/slicers';
+import { logOut } from 'src/redux/slicers/userSlice';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
@@ -51,7 +51,7 @@ const TopBar = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
-    dispatch(authSlice.actions.logOut());
+    dispatch(logOut());
     navigate('/login', { replace: true });
   }
   return (

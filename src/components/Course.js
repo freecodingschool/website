@@ -1,27 +1,30 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Paper } from "@material-ui/core";
-import baseUrl from 'src/config'
+import { Typography, Paper,Button } from "@material-ui/core";
+import { ArrowRightAlt, AccessTime } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({ 
   title: {
     paddingTop: "20px",
     paddingLeft: "20px",
   },
-  primaryBg: {
-    backgroundColor: theme.palette.primary.main,
-    color: "#fff !important",
-  },
   courseBody: {
-    height: 110,
-    padding: 8,
+    height: 80,
   },
   courseCard: {
-    margin: 8,
-    padding: 8,
-    color: "#2F2F2F",
+    height: 160,
+    padding:16,
     width: "100%",
-    maxWidth:200,
-    height: 200,
+    position: 'relative',
+    '&::before' :{
+      content: '" "',  
+      background:'#ddd',
+      position: 'absolute',
+      top:0,
+      left: 0,
+      width: '100%',
+      height: 4,
+      background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(23,14,215,1) 30%, rgba(0,212,255,1) 70%)"
+    }
   },
   courseCardHeader: {
     padding: theme.spacing(1),
@@ -40,18 +43,21 @@ const Course = ({course,isPrimary}) => {
       <Paper
       elevation={3}
       key={course._id}
-      className={`${classes.courseCard} ${
-        isPrimary ? classes.primaryBg : "secondary-bg"
-      }`}
+      className={`${classes.courseCard}`}
     >
-      <div className={`${classes.courseCardHeader}`}>
+      {/* <div className={`${classes.courseCardHeader}`}>
         <img src={`${baseUrl}uploads/courses/${course.image_name}`} width="40" alt={course.course_name} />
-      </div>
+      </div> */}
       <div className={classes.courseBody}>
         <Typography variant="subtitle1" color="inherit">
           {course.course_name}
-        </Typography>
+        </Typography>        
       </div>
+      <Button color="primary" size="large" 
+      href={course?.enroll_link} target="_blank" >
+        Enroll Now
+        <ArrowRightAlt />
+      </Button>
     </Paper>
   );
 };

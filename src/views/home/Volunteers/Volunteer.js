@@ -47,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
     <div  className={`section-2 secondary-bg`}>
 
         <Grid className={classes.gridContainer} 
-        container direction="row" justify="space-between" alignItems="flex-start" spacing={2} className={classes.gridItem}> 
-        <Grid item sm={3} direction="row" justify="space-between" alignItems="flex-start" spacing={2}>
+        container direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2} className={classes.gridItem}> 
+        <Grid item sm={3} direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2}>
             
             <Image src="https://ounews.co/wp-content/uploads/2017/11/shutterstock_259018115-e1510570774920.jpg"/>  
         
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
       
             cards.map((card,index) =>(    
 
-        <Grid item md={6} key={cards.index} direction="column" justify="center" alignItems="baseline" spacing={1} className={classes.gridItem}>
+        <Grid item md={6} key={cards.index} direction="column" justifyContent="center" alignItems="baseline" spacing={1} className={classes.gridItem}>
             <Card className={classes.Card1} variant="elevation" >
                 <CardContent>
                     <IconButton >

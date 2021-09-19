@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 const Programs = () => {
   const classes = useStyles();
   return (
-    <Grid className={classes.section} container direction="row" justify="space-between" alignItems="center">
+    <Grid className={classes.section} container direction="row" justifyContent="space-between" alignItems="center">
         <Grid item xs={12} lg={12}>
             <Typography className={classes.title} variant="h4">
                PROGRAMS
@@ -59,7 +59,7 @@ const Programs = () => {
               Freecoding School is powered by collaboration of students, teachers and technology professionals.
             </Typography>
         </Grid>
-        <Grid container direction="row" justify="space-between" alignItems="center" >
+        <Grid container direction="row" justifyContent="space-between" alignItems="center" >
             <Grid item lg={5} sm={6} xl={5} xs={12} className={classes.paper}>
                 <img src={exams} className={classes.imgWidth} alt="Exams" />
                 <Typography variant="h5" className={classes.paperTitle}>STUDENTS</Typography>

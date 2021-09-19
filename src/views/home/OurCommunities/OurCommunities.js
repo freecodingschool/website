@@ -61,7 +61,7 @@ const OurCommunities = () => {
             FreecodingSchool is powered by collaboration of students, teachers and technology professionals.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-evenly" spacing={6}>    
+        <Grid container direction="row" justifyContent="space-evenly" spacing={6}>    
             {                
               news.map((newsObj,index) =>(    
                 <Grid item xs={12} md={4} key={index} >
