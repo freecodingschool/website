@@ -14,6 +14,7 @@ import HomeView from 'src/views/home/HomeView';
 import AddCourseView from './views/admin/add-course';
 import CourseView from './views/admin/course';
 import CourseInfoView from './views/admin/view-course';
+import CourseEdit from './views/admin/edit-course';
 const routes = [
   {
     path: 'app',
@@ -34,6 +35,7 @@ const routes = [
       { path: '/new-course', element: <AddCourseView /> },
       { path: '/course', element: <CourseView /> },
       { path: '/course/:courseId', element: <CourseInfoView /> },
+      { path: '/edit-course/:courseId', element: <CourseEdit /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/admin/new-course" /> },
       { path: '*', element: <Navigate to="/404" /> }

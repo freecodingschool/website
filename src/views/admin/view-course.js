@@ -2,6 +2,11 @@ import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'src/axios';
 import { useParams } from 'react-router-dom'
+import { AccessTime } from '@material-ui/icons';
+import {
+  Grid,
+  Container
+} from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: theme.palette.background.dark,
@@ -11,6 +16,40 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
+  title:{
+    fontSize:`2.3em`,
+    marginTop:'0.5em',
+    marginBottom:'0.5em',
+    color:`#6760fe`
+  },
+  about:{
+    fontSize:`1.1em `,
+    color:`#525252`,
+    fontWeight:`400`,
+    marginTop:'0.5em',
+    marginBottom:'0.2em',
+  },
+  description:{
+    fontSize:'1.5em',
+    color:'#141414',
+    marginTop:'0.1em',
+    marginBottom:'0.5em',
+    fontWeight:`600`,
+  },
+  label:{
+    fontSize:`1.2em `,
+    color:`#292929`,
+    fontWeight:`400`,
+    marginTop:'1.5em',
+    marginBottom:'0.1em',
+  },
+  days:{
+    fontSize:`1.1em `,
+    color:`#141414`,
+    fontWeight:`600`,
+    display:`flex`,
+    marginTop:'0.1em',
+  }
 }));
 export default function viewCourse() {
   const classes = useStyles();
@@ -28,36 +67,35 @@ export default function viewCourse() {
     setCourse(response.data.data) 
   }
     return (
-       <div className={classes.root}>
-        <div>
-          <div>
-            <h1 style={{ color:'#6962ff' }}>About this course</h1>
-          </div>
-          <div style={{ padding: '10px 10px' }}>
-                <div className="course_title">
-                  <h3 style={{ color:'#5c0099'}}>{course.course_name}</h3>
-                </div>
-                      <p style={{ color:'#B8860B' }}>&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</p>
-                  <p style={{ marginTop:'10px'}}>{course.description}</p>
-                  <p>Behind every mouse click and touch-screen tap, there is a computer program that makes things happen.</p>
-                  <p>This course introduces the fundamental building blocks of programming and teaches you how to write fun and useful programs using the Python language.</p>
-              </div><div style={{ padding: '10px 10px' }}>
-                <h3 style={{ color:'#5c0099'}}>What you will Learn</h3>
-                <ul style={{ padding: '10px 10px' }}>
-                    <li>Understand and use the fundamentals of the SAS programming language</li>
-                    <li>Access different types of data (SAS, Excel, or text),then explore and prepare the data </li>
-                    <li>Analyze and report on data and export results to common formats (HTML, PDF, Excel)</li>
-                    <li>Apply SAS programming principles in practical examples</li>
-                </ul>
-            </div><div style={{ padding: '10px 10px' }}>
-                <h3 style={{ color:'#5c0099'}}>Particular days for this course</h3>
-                <p>{course.days}</p>
-            </div><div style={{ padding: '10px 10px' }}>
-                <h3 style={{ color:'#5c0099'}}>Timing of this course</h3>
-                <p>{course?.start_time} - {course?.end_time}</p>
-            </div>
-        </div>
-      </div>  
+      <div className={classes.root}>
+        <Container maxWidth="lg">
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <p className={`${classes.title}`} variant="h5">
+                     {course.course_name}
+                    </p>
+                    <p className={classes.about} variant="h4">
+                    About this course
+                    </p>
+                    <p className={`${classes.description}`}>
+                      {course.description}
+                    </p>
+                    <p className={`${classes.label}`} variant="h5">
+                      Particular days for this course 
+                    </p>
+                    <p className={`${classes.days}`}>
+                      | {course.days} |
+                    </p>
+                    <p className={`${classes.label}`} variant="h5">
+                      Timing of this course
+                    </p>             
+                    <p className={`${classes.days}`}>
+                     <AccessTime />{course?.start_time} - {course?.end_time}
+                    </p>
+                  </Grid>                  
+              </Grid>  
+            </Container>          
+        </div>  
           
     );
 }
