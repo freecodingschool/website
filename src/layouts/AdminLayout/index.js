@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import TopBar from './TopBar';
 import NavBar from './NavBar';
 import axios from 'src/axios';
-import { authSlice } from 'src/redux/slicers';
+import { userSuccess, hasError} from 'src/redux/slicers/userSlice';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
@@ -46,9 +46,9 @@ const MainLayout = () => {
         method:"get",
         url:"/user"
       });
-      dispatch(authSlice.actions.userSuccess(response.data.user));
+      dispatch(userSuccess(response.data.user));
     }catch(e){
-      dispatch(authSlice.actions.hasError(e.data.message))
+      dispatch(hasError(e.data.message))
     }
   };
   useEffect(() => {
