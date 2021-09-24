@@ -5,7 +5,7 @@ import axios from 'src/axios';
 import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Button,Link,IconButton} from '@material-ui/core';
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import { Trash } from 'react-feather';
+import { Trash, Edit } from 'react-feather';
 import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -95,6 +95,10 @@ export default function Courses() {
       setMsg("Something went wrong")
     }        
    }
+   const editCourse = async(row) => {
+    //  ev.stopPropagation()
+    navigate('/admin/edit-course/'+row._id)
+  }
   return (
     <div className={classes.root}>
       <TableContainer component={Paper}>
@@ -121,6 +125,7 @@ export default function Courses() {
               <TableCell>{row.end_time}</TableCell>
               <TableCell >
                 { <Switch onClick={(ev) => ev.stopPropagation()} size="small" color='secondary' onChange={() => setStatus(row)} checked={row.active} disabled={loading}/> }
+                {<IconButton onClick={() => editCourse(row)}  color="secondary" size="small" ><Edit /></IconButton>}
                 <IconButton onClick={(ev) => deleteCourse(ev,row)}  color="secondary" size="small" ><Trash /></IconButton>
               </TableCell>
             </TableRow>
