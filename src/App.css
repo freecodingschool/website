@@ -52,15 +52,3 @@ body{
     font-weight: bold;
     font-style: normal;
   }
-
-  .course_title{
-    width: fit-content;
-    height: 60px;
-    display: flex;
-    padding: 15px 16px;
-    font-size: 1.2rem;
-    text-align: center;
-    align-items: center;
-    border-radius: 0px;
-    background-color: #d5d8ff;
-  }
