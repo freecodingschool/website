@@ -1,21 +1,24 @@
 import React,{useState} from 'react';
-import { makeStyles } from '@material-ui/styles';
 import Carousel from "react-elastic-carousel";
 import {
   Grid,
   Typography,
   Container,
   Paper,
-  Box
+  Button,
+  Box,
+  makeStyles
 } from '@material-ui/core';
-import TextMore from 'src/components/TextMore'
-import useWindowSize from 'src/utils/WindowSize'
+import TextMore from 'src/components/TextMore';
+import useWindowSize from 'src/utils/WindowSize';
+import Feedback from './Feedback';
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
     padding:'20px 0',
     textAlign:'center'
   },
+  
   paper:{
     minHeight:'200px',
     padding: theme.spacing(3)
@@ -34,13 +37,25 @@ const useStyles = makeStyles(theme => ({
   paperTitle:{
     color:"#333",
     marginBottom: '0.5px'
-  }
+  },
+
+  reviewBtn:{
+    width: '200px',
+    display: 'flex',
+    marginLeft:18,
+    [theme.breakpoints.down("md")]: {
+      alignItems:'center',
+      justifyContent: 'center',
+    }
+  },
+  
 }));
 
   const Testimonials = () => {
   const classes = useStyles();
   const width = useWindowSize();
   const showArrows =  width < 720;
+  
   const data = [    
   {
     title:"Roshini",  
@@ -63,8 +78,9 @@ const useStyles = makeStyles(theme => ({
     image: '/static/images/testmonials/mohit.png',   
     designation:"Emmaus Swiss High School",  
     desc:`FreecodingSchool opened up a new world of what I can do when I grow up. I think I can be part of this digital change and help to improve the lives of people with digital transformation across my country.`
-  }
+  },
 ];
+
   const [testimonials] = useState(data);
   const breakPoints = [  
     { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: (data.length > 1) },
@@ -110,7 +126,11 @@ const useStyles = makeStyles(theme => ({
             } 
            </Carousel>
         </Box>
+        <div>
+      <Button variant="contained" color="primary" size="large" className={classes.reviewBtn} href="./Feedback">Click Here</Button>
+      </div>
     </Container>
+    
     </div>
   );
 };
