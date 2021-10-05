@@ -11,6 +11,7 @@ import SchoolRegisterView from 'src/views/auth/SchoolView';
 import DashboardView from 'src/views/dashboard';
 import EventsView from 'src/views/events/EventsView';
 import HomeView from 'src/views/home/HomeView';
+import Feedback from 'src/views/home/Testimonials/Feedback';
 import AddCourseView from './views/admin/add-course';
 import CourseView from './views/admin/course';
 import CourseInfoView from './views/admin/view-course';
@@ -49,6 +50,7 @@ const routes = [
       { path: 'register', element: <RegisterView /> },
       { path: 'school-register', element: <SchoolRegisterView /> },
       { path: 'home', element: <HomeView /> },
+      { path: 'feedback', element: <Feedback /> },
       { path: 'events', element: <EventsView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/home" /> },
