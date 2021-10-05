@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { AccessTime } from '@material-ui/icons';
 import {
   Grid,
+  Typography,
   Container
 } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
@@ -17,38 +18,28 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 650,
   },
   title:{
-    fontSize:`2.3em`,
     marginTop:'0.5em',
     marginBottom:'0.5em',
-    color:`#6760fe`
   },
   about:{
-    fontSize:`1.1em `,
-    color:`#525252`,
     fontWeight:`400`,
     marginTop:'0.5em',
     marginBottom:'0.2em',
   },
   description:{
-    fontSize:'1.5em',
-    color:'#141414',
     marginTop:'0.1em',
     marginBottom:'0.5em',
-    fontWeight:`600`,
   },
   label:{
-    fontSize:`1.2em `,
-    color:`#292929`,
-    fontWeight:`400`,
     marginTop:'1.5em',
     marginBottom:'0.1em',
   },
   days:{
-    fontSize:`1.1em `,
-    color:`#141414`,
-    fontWeight:`600`,
     display:`flex`,
     marginTop:'0.1em',
+    '& icon': {
+      fontSize:14
+    }
   }
 }));
 export default function viewCourse() {
@@ -71,27 +62,27 @@ export default function viewCourse() {
         <Container maxWidth="lg">
               <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <p className={`${classes.title}`} variant="h5">
+                    <Typography className={`${classes.title}`} variant="h5">
                      {course.course_name}
-                    </p>
-                    <p className={classes.about} variant="h4">
+                    </Typography>
+                    <Typography className={classes.about} variant="subtitle1">
                     About this course
-                    </p>
-                    <p className={`${classes.description}`}>
+                    </Typography>
+                    <Typography className={`${classes.description}`}>
                       {course.description}
-                    </p>
-                    <p className={`${classes.label}`} variant="h5">
-                      Particular days for this course 
-                    </p>
-                    <p className={`${classes.days}`}>
+                    </Typography>
+                    <Typography className={`${classes.label}`} variant="subtitle1">
+                      Date 
+                    </Typography>
+                    <Typography className={`${classes.days}`}>
                       | {course.days} |
-                    </p>
-                    <p className={`${classes.label}`} variant="h5">
-                      Timing of this course
-                    </p>             
-                    <p className={`${classes.days}`}>
+                    </Typography>
+                    <Typography className={`${classes.label}`} variant="subtitle1">
+                      Timing
+                    </Typography>             
+                    <Typography className={`${classes.days}`}>
                      <AccessTime />{course?.start_time} - {course?.end_time}
-                    </p>
+                    </Typography>
                   </Grid>                  
               </Grid>  
             </Container>          

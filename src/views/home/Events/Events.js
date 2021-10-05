@@ -11,7 +11,7 @@ import moment from 'moment';
 import { ArrowRightAlt, AccessTime } from '@material-ui/icons';
 import Carousel from "react-elastic-carousel";
 import { useSelector } from "react-redux";
-import useWindowSize from 'src/utils/WindowSize'
+// import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -74,8 +74,8 @@ const useStyles = makeStyles(theme => ({
 
 const Programs = () => {
   const classes = useStyles();
-  const width = useWindowSize();
-  const showArrows =  width < 720;  
+  // const width = useWindowSize();
+  const showArrows =  true//width < 720;  
   const {courses} = useSelector(state => state.home);
   const breakPoints = [
     {

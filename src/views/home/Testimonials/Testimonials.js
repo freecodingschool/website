@@ -9,7 +9,7 @@ import {
   Box
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
-import useWindowSize from 'src/utils/WindowSize'
+// import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -39,8 +39,8 @@ const useStyles = makeStyles(theme => ({
 
   const Testimonials = () => {
   const classes = useStyles();
-  const width = useWindowSize();
-  const showArrows =  width < 720;
+  //const width = useWindowSize();
+  const showArrows = true;// width < 720;
   const data = [    
   {
     title:"Roshini",  
