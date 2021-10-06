@@ -3,16 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'src/axios';
 import { useParams } from 'react-router-dom';
 import { ArrowRightAlt } from '@material-ui/icons';
-import { MdWatchLater } from "react-icons/md";
-import { BiCalendar } from "react-icons/bi";
-import { BsFillPeopleFill,BsFillCameraVideoFill } from "react-icons/bs";
-import {
-  Grid,
-  Button,
-  Container,
-  Typography
-} from '@material-ui/core';
-import typography from 'src/styles/theme/typography';
+//import { MdWatchLater } from "react-icons/md";
+//import { BiCalendar } from "react-icons/bi";
+//import { BsFillPeopleFill,BsFillCameraVideoFill } from "react-icons/bs";
+//import {
+//  Grid,
+//  Button,
+//  Container,
+//  Typography
+//} from '@material-ui/core';
+//import typography from 'src/styles/theme/typography';
 const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: theme.palette.background.dark,
