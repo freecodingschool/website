@@ -7,6 +7,10 @@ import Alert from 'src/components/Alert'
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import { Trash, Edit } from 'react-feather';
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 =======
 import { Trash, Edit } from 'react-feather';
 >>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
@@ -100,6 +104,9 @@ export default function Courses() {
     //  ev.stopPropagation()
     navigate('/admin/edit-course/'+row._id)
   }
+<<<<<<< HEAD
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
+=======
 >>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
   return (
     <div className={classes.root}>

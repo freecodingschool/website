@@ -22,6 +22,9 @@ import {
   Typography,
   Container
 } from '@material-ui/core';
+<<<<<<< HEAD
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
+=======
 >>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -204,6 +207,13 @@ point2 : {
     marginTop:'0.5em',
     marginBottom:'0.5em',
   },
+<<<<<<< HEAD
+=======
+  title:{
+    marginTop:'0.5em',
+    marginBottom:'0.5em',
+  },
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
   about:{
     fontWeight:`400`,
     marginTop:'0.5em',
@@ -224,6 +234,9 @@ point2 : {
       fontSize:14
     }
   }
+<<<<<<< HEAD
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
+=======
 >>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 }));
 export default function viewCourse() {
@@ -242,6 +255,7 @@ export default function viewCourse() {
     setCourse(response.data.data) 
   }
     return (
+<<<<<<< HEAD
 <<<<<<< HEAD
       <>
       <div className={classes.root}>
@@ -414,6 +428,8 @@ export default function viewCourse() {
             </Grid>          
     </div>  */
 =======
+=======
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
       <div className={classes.root}>
         <Container maxWidth="lg">
               <Grid container spacing={3}>
