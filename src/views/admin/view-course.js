@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'src/axios';
+<<<<<<< HEAD
 import { useParams } from 'react-router-dom';
 import { ArrowRightAlt } from '@material-ui/icons';
 //import { MdWatchLater } from "react-icons/md";
@@ -13,12 +14,22 @@ import { ArrowRightAlt } from '@material-ui/icons';
 //  Typography
 //} from '@material-ui/core';
 //import typography from 'src/styles/theme/typography';
+=======
+import { useParams } from 'react-router-dom'
+import { AccessTime } from '@material-ui/icons';
+import {
+  Grid,
+  Typography,
+  Container
+} from '@material-ui/core';
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: theme.palette.background.dark,
     height: '100%',    
     width:'100%',
   },
+<<<<<<< HEAD
   // primarySection:{
   //   alignItems:'center',
   //   justifyContent:'center',
@@ -188,6 +199,32 @@ point2 : {
     textTransform: 'none',
 }
 
+=======
+  title:{
+    marginTop:'0.5em',
+    marginBottom:'0.5em',
+  },
+  about:{
+    fontWeight:`400`,
+    marginTop:'0.5em',
+    marginBottom:'0.2em',
+  },
+  description:{
+    marginTop:'0.1em',
+    marginBottom:'0.5em',
+  },
+  label:{
+    marginTop:'1.5em',
+    marginBottom:'0.1em',
+  },
+  days:{
+    display:`flex`,
+    marginTop:'0.1em',
+    '& icon': {
+      fontSize:14
+    }
+  }
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 }));
 export default function viewCourse() {
   const classes = useStyles();
@@ -205,6 +242,7 @@ export default function viewCourse() {
     setCourse(response.data.data) 
   }
     return (
+<<<<<<< HEAD
       <>
       <div className={classes.root}>
         <div className="container">
@@ -375,5 +413,37 @@ export default function viewCourse() {
               </Typography>
             </Grid>          
     </div>  */
+=======
+      <div className={classes.root}>
+        <Container maxWidth="lg">
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <Typography className={`${classes.title}`} variant="h5">
+                     {course.course_name}
+                    </Typography>
+                    <Typography className={classes.about} variant="subtitle1">
+                    About this course
+                    </Typography>
+                    <Typography className={`${classes.description}`}>
+                      {course.description}
+                    </Typography>
+                    <Typography className={`${classes.label}`} variant="subtitle1">
+                      Date 
+                    </Typography>
+                    <Typography className={`${classes.days}`}>
+                      | {course.days} |
+                    </Typography>
+                    <Typography className={`${classes.label}`} variant="subtitle1">
+                      Timing
+                    </Typography>             
+                    <Typography className={`${classes.days}`}>
+                     <AccessTime />{course?.start_time} - {course?.end_time}
+                    </Typography>
+                  </Grid>                  
+              </Grid>  
+            </Container>          
+        </div>  
+          
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
     );
 }

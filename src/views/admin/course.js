@@ -6,6 +6,10 @@ import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Button
 import Alert from 'src/components/Alert'
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+<<<<<<< HEAD
+=======
+import { Trash, Edit } from 'react-feather';
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -68,6 +72,35 @@ export default function Courses() {
       setMsg("Something went wrong")
     }        
    }
+<<<<<<< HEAD
+=======
+   const deleteCourse = async(ev,row) => {
+     ev.stopPropagation()
+    setLoading(true)
+    try{    
+      await axios({
+        method:"delete",
+        url:`/course`,        
+        data:{
+          id:row._id
+        }      
+      })
+      setCourses(courses.filter(({_id}) => _id !== row._id))
+      setMsg("Delete Successfully")
+      setLoading(false)
+      setOpen(true)
+      setAlertType('success');      
+    }catch(e){
+      setLoading(false)
+      setAlertType('success');
+      setMsg("Something went wrong")
+    }        
+   }
+   const editCourse = async(row) => {
+    //  ev.stopPropagation()
+    navigate('/admin/edit-course/'+row._id)
+  }
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
   return (
     <div className={classes.root}>
       <Button onClick={() => navigate('/admin/new-course')}>Add Course</Button>
@@ -95,7 +128,15 @@ export default function Courses() {
               <TableCell>{row.days.join()}</TableCell>
               <TableCell>{row.start_time}</TableCell>
               <TableCell>{row.end_time}</TableCell>
+<<<<<<< HEAD
               <TableCell>{ <Switch color='primary' onChange={() => setStatus(row)} checked={row.active} disabled={loading}/> }</TableCell>
+=======
+              <TableCell >
+                { <Switch onClick={(ev) => ev.stopPropagation()} size="small" color='secondary' onChange={() => setStatus(row)} checked={row.active} disabled={loading}/> }
+                {<IconButton onClick={() => editCourse(row)}  color="secondary" size="small" ><Edit /></IconButton>}
+                <IconButton onClick={(ev) => deleteCourse(ev,row)}  color="secondary" size="small" ><Trash /></IconButton>
+              </TableCell>
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
             </TableRow>
           ))}
         </TableBody>
