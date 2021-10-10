@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import axios from 'src/axios';
-import {
+import RichTextEditor from 'src/components/RichTextEditor';
+  import {
   Box,
   Button,
   Checkbox,
@@ -16,6 +17,8 @@ import {
 import { useDispatch } from "react-redux";
 import TextField from 'src/components/TextField';
 import Page from 'src/components/Page';
+import { FormLabel } from 'react-bootstrap';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -28,8 +31,15 @@ const useStyles = makeStyles((theme) => ({
   },
   fileName:{
     marginTop:10
+  },
+  formLabel:{
+    fontWeight:'0.1em',
+    marginTop:'20px',
+    color:'grey',
+    fontSize:'1em',
   }
 }));
+
 const days = ['Monday','Tuesday','Wednesday','Thursday','Friday',"Saturday","Sunday"]
 const CourseView = () => {
   const classes = useStyles();
@@ -38,18 +48,30 @@ const CourseView = () => {
   const initialValues = {
     course_name: '',
     description: '',
+    instructor: '',
     days:[],
     start_time: '19:00',
     end_time: '20:00',
-    enroll_link:''
+    enroll_link:'',
+    readings: '',
+    content: '',
+    requirements:'',
+    learning:'',
+    about:'',
   };
   const validationSchema = Yup.object().shape({ 
     course_name: Yup.string().max(255).required('Please enter course name'),
     description: Yup.string().required('Please enter course description'),
+    instructor: Yup.string().max(255).required('Please enter instructor name'),
     days:Yup.array().of(Yup.string()).required('Please select atleast a day'),
     start_time: Yup.string().required('Please select time'),
     end_time:Yup.string().required('Please select time'),
     enroll_link:Yup.string().required('Please select time'),
+    readings: Yup.string().required('Please enter Readings'),
+    content: Yup.string().required('Please enter content'),
+    requirements: Yup.string().required('Please enter requirements'),
+    learning: Yup.string().required('Please enter learning'),
+    about: Yup.string().required('Please enter about '),
     file:Yup.string().max(255).required('Please select course image')
   });
   const AddCourse = async(values, { setSubmitting }) => {
@@ -58,10 +80,16 @@ const CourseView = () => {
     data.append('file', values.file);
     data.append('course_name', values.course_name);
     data.append('description', values.description);
+    data.append('instructor', values.instructor);
     data.append('days', values.days.join());
     data.append('start_time', values.start_time);
     data.append('end_time', values.end_time);
     data.append('enroll_link', values.enroll_link);
+    data.append('readings', values.readings);
+    data.append('content', values.content);
+    data.append('requirements', values.requirements);
+    data.append('learning', values.learning);
+    data.append('about', values.about);
     
     console.log(values.file)
     console.log(data)
@@ -76,7 +104,7 @@ const CourseView = () => {
     })      
     navigate('/admin/course');    
   }
-  return (
+  return ( 
     <Page
       className={classes.root}
       title="Freecoding School - Add Course"
@@ -133,6 +161,15 @@ const CourseView = () => {
                 value={values.description}
               />
               <TextField
+                  error={Boolean(touched.instructor && errors.instructor)}
+                  helperText={touched.instructor && errors.instructor}
+                  label="Instructor Name"
+                  name="instructor"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.instructor}
+              />
+              <TextField
                 error={Boolean(touched.enroll_link && errors.enroll_link)}
                 helperText={touched.enroll_link && errors.enroll_link}
                 label="Enroll Link"
@@ -157,6 +194,7 @@ const CourseView = () => {
                   ))
                 }               
               </FormGroup>
+              
               <Grid container spacing={3}>
                   <Grid item sm={12} md={6}>
                     <TextField
@@ -188,7 +226,58 @@ const CourseView = () => {
                       }}
                     />
                     </Grid>
-              </Grid>              
+              </Grid> 
+              <FormLabel className={classes.formLabel}>What you will learn?</FormLabel>
+              <RichTextEditor
+                  error={Boolean(touched.learning && errors.learning)}
+                  helperText={touched.learning && errors.learning}
+                  label="What you will learn?"
+                  name="learning"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.learning}
+              />
+              <FormLabel className={classes.formLabel}>Who this course is for?</FormLabel>
+              <RichTextEditor
+                  error={Boolean(touched.about && errors.about)}
+                  helperText={touched.about && errors.about}
+                  label="Who this course is for?"
+                  name="about"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.about}
+              />
+              <FormLabel className={classes.formLabel}>Course Content</FormLabel>
+              <RichTextEditor
+                  error={Boolean(touched.content && errors.content)}
+                  helperText={touched.content && errors.content}
+                  label="Course Content"
+                  name="content"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.content}
+              />
+              <FormLabel className={classes.formLabel}>Reading</FormLabel>
+              <RichTextEditor
+                  error={Boolean(touched.readings && errors.readings)}
+                  helperText={touched.readings && errors.readings}
+                  label="Readings"
+                  name="Readings"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.readings}
+              />
+              <FormLabel className={classes.formLabel}>Requirements</FormLabel>
+              <RichTextEditor
+                  error={Boolean(touched.requirements && errors.requirements)}
+                  helperText={touched.requirements && errors.requirements}
+                  label="Requirements"
+                  name="Requirements"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.requirements}
+              />
+
               <Button
                 variant="contained"
                 component="label"
@@ -217,6 +306,7 @@ const CourseView = () => {
               </form>
             )}
           </Formik>
+          
         </Container>
       </Box>
     </Page>

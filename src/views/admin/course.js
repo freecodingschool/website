@@ -2,10 +2,18 @@ import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Switch } from '@material-ui/core';
 import axios from 'src/axios';
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Button,Link,IconButton} from '@material-ui/core';
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Button,Link} from '@material-ui/core';
+import Alert from 'src/components/Alert'
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 import { Trash, Edit } from 'react-feather';
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
+=======
+import { Trash, Edit } from 'react-feather';
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
 import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -14,11 +22,8 @@ const useStyles = makeStyles((theme) => ({
     padding:theme.spacing(2)
   },
   table: {
-    minWidth: 650
+    minWidth: 650,
   },
-  row:{
-    cursor:'pointer'
-  }
 }));
 
 export default function Courses() {
@@ -40,16 +45,14 @@ export default function Courses() {
     getCourses(); 
   },[])
   const getCourses = async() => {
-    setLoading(true)
     const response = await axios({
       method:"GET",
       url:"/course"
-    })     
-    setLoading(false) 
+    })      
     setCourses(response.data.data) 
   }
-  const getviewCourse = async(row) => {
-    //  ev.stopPropagation()
+  const getviewCourse = async(ev,row) => {
+    ev.stopPropagation()
     navigate('/admin/course/'+row._id)
   }
   const setStatus = async(row) => {
@@ -73,6 +76,8 @@ export default function Courses() {
       setMsg("Something went wrong")
     }        
    }
+<<<<<<< HEAD
+=======
    const deleteCourse = async(ev,row) => {
      ev.stopPropagation()
     setLoading(true)
@@ -99,45 +104,48 @@ export default function Courses() {
     //  ev.stopPropagation()
     navigate('/admin/edit-course/'+row._id)
   }
+<<<<<<< HEAD
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
+=======
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
   return (
     <div className={classes.root}>
+      <Button onClick={() => navigate('/admin/new-course')}>Add Course</Button>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="course table">
         <TableHead>
           <TableRow>
             <TableCell>Course Name</TableCell>
-            {/* <TableCell>Description</TableCell> */}
+            <TableCell>Description</TableCell>
             <TableCell>Days</TableCell>
             <TableCell>Start time</TableCell>
             <TableCell>End time</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell>Active</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {courses.map((row) => (
-            <TableRow key={row._id} onClick={(ev) => getviewCourse(row)} className={classes.row}>
-              <TableCell scope="row">
+          {courses.map((row,i) => (
+            <TableRow key={row._id}>
+              <TableCell component="th" scope="row" onClick={(ev) => getviewCourse(ev,row)}>
+                <Link href={`/course/${row._id}`}>
                 {row.course_name}
+                </Link>
               </TableCell>
-              {/* <TableCell>{row.description}</TableCell> */}
+              <TableCell>{row.description}</TableCell>
               <TableCell>{row.days.join()}</TableCell>
               <TableCell>{row.start_time}</TableCell>
               <TableCell>{row.end_time}</TableCell>
+<<<<<<< HEAD
+              <TableCell>{ <Switch color='primary' onChange={() => setStatus(row)} checked={row.active} disabled={loading}/> }</TableCell>
+=======
               <TableCell >
                 { <Switch onClick={(ev) => ev.stopPropagation()} size="small" color='secondary' onChange={() => setStatus(row)} checked={row.active} disabled={loading}/> }
                 {<IconButton onClick={() => editCourse(row)}  color="secondary" size="small" ><Edit /></IconButton>}
                 <IconButton onClick={(ev) => deleteCourse(ev,row)}  color="secondary" size="small" ><Trash /></IconButton>
               </TableCell>
+>>>>>>> 787082c82b3142b0cb891919e40a9adf383511c9
             </TableRow>
           ))}
-          {
-          courses?.length === 0 &&
-          (<TableRow className={classes.row}>
-              <TableCell colSpan="5" align="center">
-                No courses added
-              </TableCell>
-          </TableRow>)
-          }
         </TableBody>
       </Table>
       </TableContainer>

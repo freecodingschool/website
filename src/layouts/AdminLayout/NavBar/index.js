@@ -9,7 +9,7 @@ import {
   List,
   makeStyles
 } from '@material-ui/core';
-import { Book, BookOpen } from 'react-feather';
+import { Book, BookOpen } from '@material-ui/icons/Book';
   
 // AlertCircle as AlertCircleIcon,
 // BarChart as BarChartIcon,
