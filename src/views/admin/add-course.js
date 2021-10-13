@@ -11,13 +11,13 @@ import RichTextEditor from 'src/components/RichTextEditor';
   Container,
   Typography,
   FormControlLabel,
+  FormLabel,
   Grid,
   FormGroup,makeStyles
 } from '@material-ui/core';
 import { useDispatch } from "react-redux";
 import TextField from 'src/components/TextField';
 import Page from 'src/components/Page';
-import { FormLabel } from 'react-bootstrap';
 
 const useStyles = makeStyles((theme) => ({
   root: {
