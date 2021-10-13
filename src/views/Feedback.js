@@ -17,7 +17,7 @@ import {
 import MuiAlert from '@material-ui/lab/Alert';
 
 import { useNavigate } from 'react-router';
-import axios from 'axios';
+import axios from 'src/axios';
 import TextField from 'src/components/TextField';
 import Page from 'src/components/Page';
 import { Formik } from 'formik';
@@ -64,16 +64,20 @@ function Alert(props) {
 const Feedback = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const designations = ["Student","Parent","Volunteer"];
+  const roles = ["Student","Parent","Volunteer"];
   const initialValues ={
     name:'',
-    designation:designations[0].toUpperCase(),
+    designation:"",
+    email:'',
+    role:"STUDENT",
     org_or_school:'',
     review:'',
   };
   const validationSchema = Yup.object().shape({
     name:Yup.string().max(255).required('Please enter your name'),
-    designation:Yup.string().max(255).required('Please select you role'),
+    email:Yup.string().max(20).required('Please enter your email'),
+    role:Yup.string().required('Please enter you role'),
+    designation:Yup.string().max(255).required('Please enter you designation'),
     org_or_school:Yup.string().max(255).required('Please enter your organization name'),
     review:Yup.string().max(255).required('Please provide additional comments or suggestions...'),
   });
@@ -129,34 +133,46 @@ const Feedback = () => {
                       onChange={handleChange}
                       value={values.name}
                     />
+                     <TextField 
+                      error={Boolean(touched.email && errors.email)}
+                      helperText={touched.email && errors.email}
+                      label="Email"
+                      name="email"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.email}
+                    />
                     <FormControl>
                     <Grid container spacing={2}>
                         <Grid className={classes.grid1} item xs={3.5} lg={4.5}>
-                        <FormLabel>Role</FormLabel>
+                          <FormLabel>Role</FormLabel>
                         </Grid>
                         <Grid item xs lg>
                         <RadioGroup row
-                        error={Boolean(touched.designation && errors.designation)}
-                        helperText={touched.designation && errors.designation}
-                        label="Your Role"
-                        name="designation"
-                        onBlur={handleBlur}
+                        error={Boolean(touched.role && errors.role)}
+                        helperText={touched.role && errors.role}
+                        label="Your Role"  name="role" onBlur={handleBlur}
                         onChange={handleChange}
-                        className={classes.radioBtn}
-                        value={values.designation}> 
+                        className={classes.radioBtn} value={values.role}> 
                         {
-                          designations.map((designation,index) => (
-                            <FormControlLabel key={index} value={designation.toUpperCase()} control={<Radio/>} label={designation}>{designation}</FormControlLabel>
+                          roles.map((role,index) => (
+                            <FormControlLabel key={index} value={role.toUpperCase()} control={<Radio color="primary"/>} label={role}>{role}</FormControlLabel>
                           ))
                         }
-                            {/* <FormControlLabel value="student" control={ <Radio/> } label="Student"/>
-                            <FormControlLabel value="volunteer" control={ <Radio/> } label="Volunteer"/>
-                            <FormControlLabel value="parent" control={ <Radio/> } label="Parent"/> */}
                         </RadioGroup>
                     
                         </Grid>
                     </Grid>
                     </FormControl>
+                    <TextField 
+                      error={Boolean(touched.designation && errors.designation)}
+                      helperText={touched.designation && errors.designation}
+                      label="Designation"
+                      name="designation"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.designation}
+                    />
                     <TextField 
                       error={Boolean(touched.org_or_school && errors.org_or_school)}
                       helperText={touched.org_or_school && errors.org_or_school}
