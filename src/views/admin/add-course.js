@@ -96,6 +96,7 @@ const CourseView = () => {
     setSubmitting(true)
     await axios({
       method:"post",
+      data, 
       url:"/course",
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -118,7 +119,7 @@ const CourseView = () => {
         <Container maxWidth="lg">
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            validateOnBlur={validationSchema}
             onSubmit={AddCourse}
           >
             {({
