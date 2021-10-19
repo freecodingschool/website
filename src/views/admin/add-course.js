@@ -96,6 +96,7 @@ const CourseView = () => {
     setSubmitting(true)
     await axios({
       method:"post",
+      data, 
       url:"/course",
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -118,7 +119,7 @@ const CourseView = () => {
         <Container maxWidth="lg">
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            validateOnBlur={validationSchema}
             onSubmit={AddCourse}
           >
             {({
@@ -227,7 +228,7 @@ const CourseView = () => {
                     />
                     </Grid>
               </Grid> 
-              <FormLabel className={classes.formLabel}>What you will learn?</FormLabel>
+              <Typography className={classes.formLabel}>What you will learn?</Typography>
               <RichTextEditor
                   error={Boolean(touched.learning && errors.learning)}
                   helperText={touched.learning && errors.learning}
@@ -237,7 +238,7 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.learning}
               />
-              <FormLabel className={classes.formLabel}>Who this course is for?</FormLabel>
+              <Typography className={classes.formLabel}>Who this course is for?</Typography>
               <RichTextEditor
                   error={Boolean(touched.about && errors.about)}
                   helperText={touched.about && errors.about}
@@ -247,7 +248,7 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.about}
               />
-              <FormLabel className={classes.formLabel}>Course Content</FormLabel>
+              <Typography className={classes.formLabel}>Course Content</Typography>
               <RichTextEditor
                   error={Boolean(touched.content && errors.content)}
                   helperText={touched.content && errors.content}
@@ -257,7 +258,7 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.content}
               />
-              <FormLabel className={classes.formLabel}>Reading</FormLabel>
+              <Typography className={classes.formLabel}>Reading</Typography>
               <RichTextEditor
                   error={Boolean(touched.readings && errors.readings)}
                   helperText={touched.readings && errors.readings}
@@ -267,7 +268,7 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.readings}
               />
-              <FormLabel className={classes.formLabel}>Requirements</FormLabel>
+              <Typography className={classes.formLabel}>Requirements</Typography>
               <RichTextEditor
                   error={Boolean(touched.requirements && errors.requirements)}
                   helperText={touched.requirements && errors.requirements}
