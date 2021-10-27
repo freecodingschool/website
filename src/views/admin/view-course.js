@@ -119,7 +119,7 @@ export default function viewCourse() {
                     </Grid>
                     </Grid>
                     <Grid container spacing={3}>
-                    <Grid container md={6}>
+                    <Grid item md={6}>
                     <Grid item md={12}>
                     <Typography className={`${classes.course_schedule}`} variant="subtitle1">
                       Instructor : {course.instructor} 
@@ -135,7 +135,7 @@ export default function viewCourse() {
                       Platform : ZOOM 
                     </Typography>             
                     </Grid></Grid>  
-                    <Grid container md={6}>
+                    <Grid item md={6}>
                     <Grid item md={12}>
                     <Button variant="contained" color="primary" size="large" className={`${classes.enrollBtn}`} href="https://forms.gle/1CSaz5JA4zJe2UHu9" target="_blank">
                         Enroll now <ArrowRightAlt />

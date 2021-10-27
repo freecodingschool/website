@@ -7,6 +7,7 @@ import {
   Container
 } from '@material-ui/core';
 import {Twitter,Instagram,ArrowRightAlt,Facebook} from '@material-ui/icons';
+import { padding } from '@mui/system';
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',
@@ -55,9 +56,8 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         justifyContent: 'center',
         marginBottom: theme.spacing(2),
-        alignItems:'center'
-    },
-    paddingBottom:'25px'
+        alignItems:'center',
+    }
   },
   iconWrapper:{
     marginTop:10,
@@ -75,7 +75,6 @@ const Community = () => {
     './static/images/volunteers/UCBerkeley.png',
     './static/images/volunteers/IITTirupati.png',
     './static/images/volunteers/ATT.png',
-
   ]
   return (
     <Fragment>

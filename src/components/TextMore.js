@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 const TextMore = ({data}) => {
   const [open, setOpen] = React.useState(false);
-  const description = data.desc.split(" ");
+  const description = data.review.split(" ");
   const classes = useStyles();
   const [value] = React.useState(4);
   const showMore = () => {
@@ -47,26 +47,26 @@ const TextMore = ({data}) => {
         (description.length > 20) ? (
           <>
           <Typography component="span" variant="body2" className={`secondary-color`}>       
-              <span className={classes.description}>{data.desc}</span> 
+              <span className={classes.description}>{data.review}</span> 
           </Typography>
           <span onClick={showMore} className={classes.showMoreBtn}>Show more</span>
           </>
         ):(
           <div className={`${classes.description} desc secondary-color`}>       
-              <span>{data.desc}</span> 
+              <span>{data.review}</span> 
           </div>
         )
       }
       
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle>
-          <Typography variant="h4" className={classes.title}>{data.title}</Typography>
+          <Typography variant="h4" className={classes.name}>{data.name}</Typography>
           <Typography variant="body1" className={classes.title}>{data.role}</Typography>
           <Typography variant="body1">{data.designation}</Typography>
         </DialogTitle>
         <DialogContent>          
-          <Typography variant="body1" className={classes.title}>
-            {data.desc}
+          <Typography variant="body1" className={classes.name}>
+            {data.review}
           </Typography>         
         </DialogContent>
       
