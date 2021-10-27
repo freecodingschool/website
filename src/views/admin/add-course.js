@@ -11,7 +11,6 @@ import RichTextEditor from 'src/components/RichTextEditor';
   Container,
   Typography,
   FormControlLabel,
-  FormLabel,
   Grid,
   FormGroup,makeStyles
 } from '@material-ui/core';
@@ -76,6 +75,7 @@ const CourseView = () => {
   });
   const AddCourse = async(values, { setSubmitting }) => {
 
+
     const data = new FormData();
     data.append('file', values.file);
     data.append('course_name', values.course_name);
@@ -93,17 +93,17 @@ const CourseView = () => {
     
     console.log(values.file)
     console.log(data)
-    setSubmitting(true)
-    await axios({
-      method:"post",
-      data, 
-      url:"/course",
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      data
-    })      
-    navigate('/admin/course');    
+    setSubmitting(false)
+    // await axios({
+    //   method:"post",
+    //   data, 
+    //   url:"/course",
+    //   data,
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    // })      
+    // navigate('/admin/course');    
   }
   return ( 
     <Page
@@ -238,7 +238,7 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.learning}
               />
-              <Typography className={classes.formLabel}>Who this course is for?</Typography>
+              {/* <Typography className={classes.formLabel}>Who this course is for?</Typography>
               <RichTextEditor
                   error={Boolean(touched.about && errors.about)}
                   helperText={touched.about && errors.about}
@@ -277,8 +277,7 @@ const CourseView = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.requirements}
-              />
-
+              /> */}
               <Button
                 variant="contained"
                 component="label"
@@ -307,7 +306,6 @@ const CourseView = () => {
               </form>
             )}
           </Formik>
-          
         </Container>
       </Box>
     </Page>

@@ -26,10 +26,13 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
+    "@mui/material": "^5.0.4",
     "@popperjs/core": "^2.10.2",
     "@reduxjs/toolkit": "^1.6.0",
     "axios": "^0.21.1",

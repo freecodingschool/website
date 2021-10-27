@@ -75,7 +75,7 @@ const Feedback = () => {
   };
   const validationSchema = Yup.object().shape({
     name:Yup.string().max(255).required('Please enter your name'),
-    email:Yup.string().max(20).required('Please enter your email'),
+    email:Yup.string().max(50).required('Please enter your email'),
     role:Yup.string().required('Please enter you role'),
     designation:Yup.string().max(255).required('Please enter you designation'),
     org_or_school:Yup.string().max(255).required('Please enter your organization name'),
