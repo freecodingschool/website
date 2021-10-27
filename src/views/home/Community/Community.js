@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         marginBottom: theme.spacing(2),
         alignItems:'center',
-    },
+    }
   },
   iconWrapper:{
     marginTop:10,
@@ -71,6 +71,10 @@ const Community = () => {
     './static/images/volunteers/vit.png',
     './static/images/volunteers/cts.png',
     './static/images/volunteers/comcast.png',
+    './static/images/volunteers/Oracle.png',
+    './static/images/volunteers/UCBerkeley.png',
+    './static/images/volunteers/IITTirupati.png',
+    './static/images/volunteers/ATT.png',
   ]
   return (
     <Fragment>
