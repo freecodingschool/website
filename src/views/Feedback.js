@@ -24,37 +24,28 @@ import { Formik } from 'formik';
 
 const useStyles = makeStyles(theme => ({
   root: {
-      backgroundColor: theme.palette.background.dark,
-      height: '100%',
-      paddingBottom: theme.spacing(3),
-      paddingTop: theme.spacing(3)
-    },
-
+    backgroundColor: theme.palette.background.dark,
+    height: '100%',
+    paddingBottom: theme.spacing(3),
+    paddingTop: theme.spacing(3)
+  },
   title:{
     fontSize:'30px'
   },
-
   subTitle:{
     fontSize:'18px'
   },
-
   cancelBtn:{
     marginLeft:'20px',
     color:'#fff'
   },
-
   label: {
       paddingTop: theme.spacing(3),
   },
-
-  radioBtn: {
-      display:'block'
-  },
-  grid1:{
+  wrapper:{
     marginTop:'10px',
-    width:'auto'
+    width:"100%"
   }
-
 }));
 
 function Alert(props) {
@@ -108,7 +99,7 @@ const Feedback = () => {
   return (
     <Page className={classes.root} title="Freecoding School - Feedback Form">
       <Box display="flex" height="100%" justifyContent="center">
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={AddFeeback}>
             {({
               errors,
@@ -121,8 +112,8 @@ const Feedback = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box>
-                  <Typography className={classes.title}>Feedback Form</Typography>
-                  <Typography className={classes.subTitle}>"Please help us with what do you think about freecoding.</Typography>
+                  <Typography className={classes.title}>Feedback</Typography>
+                  <Typography className={classes.subTitle}>Please help us with what do you think about freecoding.</Typography>
                 </Box>
                 <TextField 
                       error={Boolean(touched.name && errors.name)}
@@ -142,18 +133,17 @@ const Feedback = () => {
                       onChange={handleChange}
                       value={values.email}
                     />
-                    <FormControl>
-                    <Grid container spacing={2}>
-                        <Grid className={classes.grid1} item xs={3.5} lg={4.5}>
+                    <FormControl className={classes.wrapper}>
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item>
                           <FormLabel>Role</FormLabel>
                         </Grid>
-                        <Grid item xs lg>
+                        <Grid item>
                         <RadioGroup row
                         error={Boolean(touched.role && errors.role)}
                         helperText={touched.role && errors.role}
                         label="Your Role"  name="role" onBlur={handleBlur}
-                        onChange={handleChange}
-                        className={classes.radioBtn} value={values.role}> 
+                        onChange={handleChange} value={values.role}> 
                         {
                           roles.map((role,index) => (
                             <FormControlLabel key={index} value={role.toUpperCase()} control={<Radio color="primary"/>} label={role}>{role}</FormControlLabel>
