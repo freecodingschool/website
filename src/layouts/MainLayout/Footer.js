@@ -41,7 +41,7 @@ const Footer = props => {
     <div className={classes.root}>
       <Container maxWidth="lg">       
         <Grid container>
-          <Grid item lg={12} xs={12} container direction="row" justify="space-evenly">
+          <Grid item lg={12} xs={12} container direction="row" justifyContent="space-evenly">
            <Grid item lg={4} sm={6} xs={12}>
               <Grid container direction="column" >
                 <Typography variant="body1">San Fransico, USA</Typography>
@@ -81,7 +81,7 @@ const Footer = props => {
               </Grid>
            </Grid>
            <Grid item lg={12} xs={12}>
-              <Grid container direction="row" justify="space-evenly">
+              <Grid container direction="row" justifyContent="space-evenly">
                   <Grid item md={6} xs={12} >
                     <Typography variant="body1">
                       &copy;{' '} 2021 Freecoding School Not for Profit Organization

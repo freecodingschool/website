@@ -44,7 +44,7 @@ const Introduction = () => {
       event.target.pauseVideo();
   }
   return (
-    <Grid className={classes.section} container direction="row" justify="space-evenly" alignItems="center">
+    <Grid className={classes.section} container direction="row" justifyContent="space-evenly" alignItems="center">
         <Grid item xs={12} lg={12}>
             <Typography className={classes.title} variant="h4">
                Computer Science
@@ -70,4 +70,5 @@ const Introduction = () => {
     </Grid>
   );
 };
+export default Introduction;
 export default Introduction;

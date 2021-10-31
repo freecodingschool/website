@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { makeStyles, Hidden } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { useDispatch } from "react-redux";
 import axios from 'src/axios';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
-import { authSlice } from 'src/redux/slicers';
+import { userSuccess, hasError} from 'src/redux/slicers/userSlice';
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor:"#fff",
+    backgroundColor: theme.palette.background.dark,
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 1 auto',
     overflow: 'hidden',
     paddingTop: 64,
-    // [theme.breakpoints.up('lg')]: {
-    //   paddingLeft: 256
-    // }
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: 256
+    }
   },
   contentContainer: {
     display: 'flex',
@@ -46,9 +46,9 @@ const DashboardLayout = () => {
         method:"get",
         url:"/user"
       });
-      dispatch(authSlice.actions.userSuccess(response.data.user));
+      dispatch(userSuccess(response.data.data));
     }catch(e){
-      dispatch(authSlice.actions.hasError(e.data.message))
+      dispatch(hasError(e.data.message))
     }
   };
   useEffect(() => {
@@ -61,12 +61,10 @@ const DashboardLayout = () => {
   return (
     <div className={classes.root}>
       <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <Hidden mdUp>
-        <NavBar
-          onMobileClose={() => setMobileNavOpen(false)}
-          openMobile={isMobileNavOpen}
-        />
-      </Hidden>    
+      <NavBar
+        onMobileClose={() => setMobileNavOpen(false)}
+        openMobile={isMobileNavOpen}
+      />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>

@@ -23,7 +23,7 @@ const Events = () => {
   return (
     <Grid  container 
             direction="row"
-            justify="space-evenly"
+            justifyContent="space-evenly"
             alignContent = "center"
             className={classes.root} 
           >

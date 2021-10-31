@@ -1,2 +1,6 @@
-export {authSlice} from './authSlice';
-export {userSlice} from './userSlice';
+import userReducer from './userSlice';
+import homeReducer from './homeSlice';
+export default ({
+    user:userReducer,
+    home:homeReducer
+});

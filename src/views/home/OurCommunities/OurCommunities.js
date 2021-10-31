@@ -47,7 +47,7 @@ const OurCommunities = () => {
   {
     title:'Students and Parents',
     desc:"Students who are interested in bringing CS classes to their school can become advocates to create change by sharing their interest with teachers, administrators and parents, and introducing them to the FreecodingSchool.",
-    image:'/static/images/communities/Students.png'
+    image:'/static/images/communities/students.png'
   }];
   const [news] = useState(data);  
   return (
@@ -61,7 +61,7 @@ const OurCommunities = () => {
             FreecodingSchool is powered by collaboration of students, teachers and technology professionals.
             </Typography>
         </div>
-        <Grid container direction="row" justify="space-evenly" spacing={6}>    
+        <Grid container direction="row" justifyContent="space-evenly" spacing={6}>    
             {                
               news.map((newsObj,index) =>(    
                 <Grid item xs={12} md={4} key={index} >

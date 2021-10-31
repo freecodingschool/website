@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import { Container, Typography, Grid, Paper, Box,   makeStyles } from "@material-ui/core";
+import { Container, Typography, Grid, makeStyles } from "@material-ui/core";
 import { useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 const Introduction = () => {
     const classes = useStyles();    
-    const  {first_name, last_name} = useSelector((store) => store.auth);
+    const  {first_name, last_name} = useSelector((store) =>store.user);
     return(
         <Container maxWidth="lg" className={classes.root}>
             <Grid container alignItems="center">

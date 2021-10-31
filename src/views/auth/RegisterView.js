@@ -11,13 +11,23 @@ import {
   Container,
   FormHelperText,
   Link,
+  Snackbar,
   Typography,
   MenuItem,  makeStyles
 } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import { useDispatch } from "react-redux";
-import TextField from 'src/components/TextField';
+import TextField from 'src/components/TextField'; 
 import Page from 'src/components/Page';
-import { authSlice } from 'src/redux/slicers';
+import { authSuccess} from 'src/redux/slicers/userSlice';
+// import { TermsAndConditionsRequired, FieldRequired, InvalidEmail, maxCharactersError } from 'src/message';
+const { TermsAndConditionsRequired, FieldRequired, InvalidEmail, maxCharactersError } = {
+  FieldRequired:"This field is required",
+  InvalidEmail:'you entered invalid email',
+  TermsAndConditionsRequired:"Please agree to our terms and conditions",
+  maxCharactersError: (field) => `${field || 'Field'} exceed 250 characters`
+}
+const ADMIN = 'ADMIN';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -29,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
     width:'100%'
   }
 }));
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 const RegisterView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
@@ -44,16 +56,25 @@ const RegisterView = () => {
     policy: false
   };
   const validationSchema = Yup.object().shape({ 
-    email: Yup.string().email('Please enter valid email').max(255).required('Please enter email'),
-    first_name: Yup.string().max(255).required('Please enter first name'),
-    last_name: Yup.string().max(255),
-    password: Yup.string().max(255).required('Please enter password'),
-    role:Yup.string().required('Please eelect your role'),
-    policy: Yup.boolean().oneOf([true], 'Please agree to our terms and conditions')
+    email: Yup.string().email(InvalidEmail).max(255).required(FieldRequired),
+    first_name: Yup.string().max(255,maxCharactersError('First name')).required(FieldRequired),
+    last_name: Yup.string().max(255,maxCharactersError('Last name')),
+    password: Yup.string().required(FieldRequired).max(255,maxCharactersError('Password')),
+    role:Yup.string().required(FieldRequired),
+    policy: Yup.boolean().oneOf([true],TermsAndConditionsRequired)
   });
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState('');
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
   useEffect(() => {
     if(localStorage.getItem("_ut")){
-      navigate('/app/dashboard', { replace: true });
+      const role = localStorage.getItem('role')
+      navigate(role === ADMIN ? '/admin/course':'/app/dashboard', { replace: true });
     }
   },[])
   const Signup = async(data, { setSubmitting }) => {
@@ -63,11 +84,12 @@ const RegisterView = () => {
         data,
         url:"/user"
       })
-      dispatch(authSlice.actions.authSuccess(response.data.token))
+      dispatch(authSuccess(response.data.token))
       navigate('/app/dashboard', { replace: true });
     }catch(e){
+      setOpen(true);
       setSubmitting(false);
-      dispatch(authSlice.actions.hasError(e.data.message))
+      setMessage(e?.data?.message || 'Something went wrong')
     }
   }
   return (
@@ -104,13 +126,6 @@ const RegisterView = () => {
                   >
                     Create new account
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
-                    Use your email to create new account
-                  </Typography>
                 </Box>
                 <Grid container spacing={3}>
                   <Grid item sm={12} md={7}>
@@ -144,7 +159,7 @@ const RegisterView = () => {
                 value={values.role}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                label="Role Type">
+                label="Are you">
                 {                  
                   roles.map((role,index) =>(
                     <MenuItem key={index} value={role.toUpperCase()}>{role}</MenuItem>
@@ -214,26 +229,29 @@ const RegisterView = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign up now
+                    Signup
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Have an account?
+                  Already have an account?
                   {' '}
                   <Link
                     component={RouterLink}
                     to="/login"
                     variant="h6"
                   >
-                    Sign in
+                    Signin
                   </Link>
                 </Typography>
               </form>
             )}
           </Formik>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error">{message}</Alert>
+          </Snackbar>
         </Container>
       </Box>
     </Page>

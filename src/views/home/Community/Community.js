@@ -7,6 +7,7 @@ import {
   Container
 } from '@material-ui/core';
 import {Twitter,Instagram,ArrowRightAlt,Facebook} from '@material-ui/icons';
+import { padding } from '@mui/system';
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',
@@ -55,7 +56,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("md")]: {
         justifyContent: 'center',
         marginBottom: theme.spacing(2),
-        alignItems:'center'
+        alignItems:'center',
     }
   },
   iconWrapper:{
@@ -69,7 +70,11 @@ const Community = () => {
     './static/images/volunteers/illinois.png',
     './static/images/volunteers/vit.png',
     './static/images/volunteers/cts.png',
-    './static/images/volunteers/comcast.png'
+    './static/images/volunteers/comcast.png',
+    './static/images/volunteers/Oracle.png',
+    './static/images/volunteers/UCBerkeley.png',
+    './static/images/volunteers/IITTirupati.png',
+    './static/images/volunteers/ATT.png',
   ]
   return (
     <Fragment>
@@ -108,7 +113,7 @@ const Community = () => {
         <div  className={`section-2 secondary-bg`}>
           <Container maxWidth="lg">
             <Typography className={`secondary-color ${classes.volunteerTitle}`} variant="h3">We are from</Typography>
-              <Grid container direction="row" justify="space-evenly" alignItems="center">
+              <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
                 {
                   volunteers.map((volunteer,i) => (
                     <Grid item xs={12} md={3} key={i}>
