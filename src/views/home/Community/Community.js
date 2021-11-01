@@ -7,7 +7,7 @@ import {
   Container
 } from '@material-ui/core';
 import {Twitter,Instagram,ArrowRightAlt,Facebook} from '@material-ui/icons';
-import { padding } from '@mui/system';
+import Carousel from "react-elastic-carousel";
 const useStyles = makeStyles(theme => ({
   primarySection:{
     alignItems:'center',
@@ -66,6 +66,8 @@ const useStyles = makeStyles(theme => ({
 }));
 const Community = () => {
   const classes = useStyles();
+  const showArrows =  true//width < 720;  
+  
   const volunteers = [
     './static/images/volunteers/illinois.png',
     './static/images/volunteers/vit.png',
@@ -76,6 +78,26 @@ const Community = () => {
     './static/images/volunteers/IITTirupati.png',
     './static/images/volunteers/ATT.png',
   ]
+  const breakPoints = [
+    {
+      width: 360,
+      itemsToShow: 1,
+      itemsToScroll: 1,
+      pagination: volunteers?.length > 1,
+    },
+    {
+      width: 762,
+      itemsToShow:2,
+      itemToScroll:2,
+      pagination: volunteers?.length > 4,
+    },
+    {
+      width: 1024,
+      itemsToShow:3,
+      itemToScroll:3,
+      pagination: volunteers?.length > 8,
+    },
+  ];
   return (
     <Fragment>
         <div className={`section-5 ${classes.primarySection}`} style={{minHeight: 'calc(100vh - 65px)'}}>  
@@ -114,6 +136,7 @@ const Community = () => {
           <Container maxWidth="lg">
             <Typography className={`secondary-color ${classes.volunteerTitle}`} variant="h3">We are from</Typography>
               <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
+              <Carousel breakPoints={breakPoints} showArrows={showArrows} itemPadding={[6,8,8,8]}>
                 {
                   volunteers.map((volunteer,i) => (
                     <Grid item xs={12} md={3} key={i}>
@@ -123,6 +146,7 @@ const Community = () => {
                     </Grid>
                   ))       
                 }
+                </Carousel>
               </Grid>
           </Container>
         </div> 
