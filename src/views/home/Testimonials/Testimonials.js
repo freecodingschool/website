@@ -59,6 +59,10 @@ const useStyles = makeStyles(theme => ({
 const Testimonials = () => {
   const classes = useStyles();
   const [reviews, setReviews] = useState([]);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   useEffect(() => {
     getReviews();
   },[])
@@ -69,6 +73,10 @@ const Testimonials = () => {
     })
     setReviews(response.data.data)
   }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   return(
     <div className={`section-5`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container max-width="lg">
