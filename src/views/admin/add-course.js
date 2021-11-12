@@ -94,18 +94,6 @@ const CourseView = () => {
     console.log(values.file)
     console.log(data)
     setSubmitting(false)
-<<<<<<< Updated upstream
-    // await axios({
-    //   method:"post",
-    //   data, 
-    //   url:"/course",
-    //   data,
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   },
-    // })      
-    // navigate('/admin/course');    
-=======
     await axios({
       method:"post",
       url:"/course",
@@ -115,7 +103,6 @@ const CourseView = () => {
       },
     })      
     navigate('/admin/course');    
->>>>>>> Stashed changes
   }
   return ( 
     <Page
@@ -240,59 +227,6 @@ const CourseView = () => {
                     />
                     </Grid>
               </Grid> 
-<<<<<<< Updated upstream
-              <Typography className={classes.formLabel}>What you will learn?</Typography>
-              <RichTextEditor
-                  error={Boolean(touched.learning && errors.learning)}
-                  helperText={touched.learning && errors.learning}
-                  label="What you will learn?"
-                  name="learning"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.learning}
-              />
-              {/* <Typography className={classes.formLabel}>Who this course is for?</Typography>
-              <RichTextEditor
-                  error={Boolean(touched.about && errors.about)}
-                  helperText={touched.about && errors.about}
-                  label="Who this course is for?"
-                  name="about"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.about}
-              />
-              <Typography className={classes.formLabel}>Course Content</Typography>
-              <RichTextEditor
-                  error={Boolean(touched.content && errors.content)}
-                  helperText={touched.content && errors.content}
-                  label="Course Content"
-                  name="content"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.content}
-              />
-              <Typography className={classes.formLabel}>Reading</Typography>
-              <RichTextEditor
-                  error={Boolean(touched.readings && errors.readings)}
-                  helperText={touched.readings && errors.readings}
-                  label="Readings"
-                  name="Readings"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.readings}
-              />
-              <Typography className={classes.formLabel}>Requirements</Typography>
-              <RichTextEditor
-                  error={Boolean(touched.requirements && errors.requirements)}
-                  helperText={touched.requirements && errors.requirements}
-                  label="Requirements"
-                  name="Requirements"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.requirements}
-              /> */}
-=======
->>>>>>> Stashed changes
               <Button
                 variant="contained"
                 component="label"
