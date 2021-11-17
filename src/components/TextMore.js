@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 const TextMore = ({data}) => {
   const [open, setOpen] = React.useState(false);
-  const description = data.review.split(" ");
+  const description = data.split(" ");
   const classes = useStyles();
   const [value] = React.useState(4);
   const showMore = () => {
@@ -47,13 +47,13 @@ const TextMore = ({data}) => {
         (description.length > 20) ? (
           <>
           <Typography component="span" variant="body2" className={`secondary-color`}>       
-              <span className={classes.description}>{data.review}</span> 
+              <span className={classes.description}>{data}</span> 
           </Typography>
           <span onClick={showMore} className={classes.showMoreBtn}>Show more</span>
           </>
         ):(
           <div className={`${classes.description} desc secondary-color`}>       
-              <span>{data.review}</span> 
+              <span>{data}</span> 
           </div>
         )
       }

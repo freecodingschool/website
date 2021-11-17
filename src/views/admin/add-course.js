@@ -94,16 +94,15 @@ const CourseView = () => {
     console.log(values.file)
     console.log(data)
     setSubmitting(false)
-    // await axios({
-    //   method:"post",
-    //   data, 
-    //   url:"/course",
-    //   data,
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   },
-    // })      
-    // navigate('/admin/course');    
+    await axios({
+      method:"post",
+      url:"/course",
+      data,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+    })      
+    navigate('/admin/course');    
   }
   return ( 
     <Page

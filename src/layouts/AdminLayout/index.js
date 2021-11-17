@@ -48,7 +48,7 @@ const MainLayout = () => {
       });
       dispatch(userSuccess(response.data.user));
     }catch(e){
-      dispatch(hasError(e.data.message))
+      // dispatch(hasError(e.data.message))
     }
   };
   useEffect(() => {

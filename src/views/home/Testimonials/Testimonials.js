@@ -1,6 +1,4 @@
-import React,{useState,useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import axios from 'src/axios';
+import React,{useEffect, useState} from 'react';
 import Carousel from "react-elastic-carousel";
 import {
   Grid,
@@ -11,7 +9,9 @@ import {
   Box,
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
-// import useWindowSize from 'src/utils/WindowSize'
+import { useNavigate } from 'react-router';
+import axios from 'src/axios';
+import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -68,7 +68,8 @@ const Testimonials = () => {
     })
     setReviews(response.data.data)
   }
-  const showArrows = true;
+  //   //const width = useWindowSize();
+  const showArrows = true;// width < 720;
   const breakPoints = [  
     { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: (reviews.length > 1) },
     { width: 762 ,itemsToShow: 2, itemToScroll: 2,pagination:(reviews.length > 2) },
@@ -87,8 +88,9 @@ const Testimonials = () => {
         </div>
         <Box component="div">
           <Carousel breakPoints={breakPoints} showArrows={showArrows} itemPadding={[6,8,8,8]}>
-            {reviews.map((row,i) => (
-                  <Paper elevation={2} className={classes.paper}  key={row._id}>
+            {
+              reviews.map((row,i) => (
+                  <Paper elevation={2} className={classes.paper}  key={i}>
                       <Grid container justifyContent="space-between" alignItems="center" spacing={2} >
                         <Grid item xs={2}>
                           <img src="https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e" alt={row.name} width="100%"/>
@@ -97,18 +99,20 @@ const Testimonials = () => {
                           <Typography variant="h5" className={classes.paperTitle}>{row.name}</Typography>
                           <Typography variant="body2" className={classes.paperTitle}>{row.role}</Typography>
                           <Typography variant="body2">{row.designation}</Typography>
+                           
                         </Grid>
                         <Grid item xs={10}>
-                          {
-                            row.review.split(" ").length &&
-                            <TextMore data={row} />
-                          }
+                          {/* {
+                            row.review.split(" ").length && */}
+                            <TextMore data={row.review} />
+                          {/* } */}
                         </Grid>
                       </Grid>    
                   </Paper>
-              ))}
-              </Carousel>          
-        </Box>     
+              ))
+          } 
+          </Carousel>
+        </Box>
       </Container>
       <Container max-width="md">
         <div className={classes.reviewWrapper}> 
