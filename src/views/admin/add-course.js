@@ -94,18 +94,6 @@ const CourseView = () => {
     console.log(values.file)
     console.log(data)
     setSubmitting(false)
-<<<<<<< Updated upstream
-    // await axios({
-    //   method:"post",
-    //   data, 
-    //   url:"/course",
-    //   data,
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   },
-    // })      
-    // navigate('/admin/course');    
-=======
     await axios({
       method:"post",
       url:"/course",
@@ -115,7 +103,6 @@ const CourseView = () => {
       },
     })      
     navigate('/admin/course');    
->>>>>>> Stashed changes
   }
   return ( 
     <Page
@@ -240,7 +227,6 @@ const CourseView = () => {
                     />
                     </Grid>
               </Grid> 
-<<<<<<< Updated upstream
               <Typography className={classes.formLabel}>What you will learn?</Typography>
               <RichTextEditor
                   error={Boolean(touched.learning && errors.learning)}
@@ -291,8 +277,6 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.requirements}
               /> */}
-=======
->>>>>>> Stashed changes
               <Button
                 variant="contained"
                 component="label"
