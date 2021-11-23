@@ -7,6 +7,7 @@ import {
   Paper,
   Button,
   Box,
+  makeStyles
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
 import { useNavigate } from 'react-router';
