@@ -227,8 +227,6 @@ const CourseView = () => {
                     />
                     </Grid>
               </Grid> 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
               <Typography className={classes.formLabel}>What you will learn?</Typography>
               <RichTextEditor
                   error={Boolean(touched.learning && errors.learning)}
@@ -279,10 +277,6 @@ const CourseView = () => {
                   onChange={handleChange}
                   value={values.requirements}
               /> */}
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               <Button
                 variant="contained"
                 component="label"

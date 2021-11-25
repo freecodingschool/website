@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import MainLayout from 'src/layouts/MainLayout';
-// import DashboardLayout from 'src/layouts/DashboardLayout';
+import DashboardLayout from 'src/layouts/DashboardLayout';
 import AdminLayout from 'src/layouts/AdminLayout';
 import NotFoundView from 'src/views/errors/NotFoundView';
 // import ProductListView from 'src/views/product/ProductListView';
@@ -16,12 +16,8 @@ import AddCourseView from './views/admin/add-course';
 import CourseView from './views/admin/course';
 import CourseInfoView from './views/admin/view-course';
 import CourseEdit from './views/admin/edit-course';
-import DashboardLayout from './views/dashboard/DashboardLayout';
-import Dashboard from './views/dashboard/components/body/Dashboard';
-import Account from './views/dashboard/components/body/Account';
-import Notification from './views/dashboard/components/body/Notification';
-import Courses from './views/dashboard/components/body/Courses';
-import Logout from './views/dashboard/components/body/Logout';
+// import DashboardLayout from './views/dashboard/DashboardLayout';
+import Account from './views/admin/account';
 
 
 // import MyProfile from './views/dashboard/MyProfile';
@@ -30,11 +26,11 @@ const routes = [
     path: 'app',
     element: <DashboardLayout />,
     children: [
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'account', element: <Account /> },
-      { path: 'notification', element: <Notification /> },
-      { path: 'courses', element: <Courses /> },
-      { path: 'logout', element: <Logout /> },
+      // { path: 'dashboard', element: <Dashboard /> },
+      // { path: 'account', element: <Account /> },
+      // { path: 'notification', element: <Notification /> },
+      // { path: 'courses', element: <Courses /> },
+      // { path: 'logout', element: <Logout /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
@@ -42,6 +38,7 @@ const routes = [
     path: '/admin',
     element: <AdminLayout />,
     children: [
+      { path: '/account', element: <Account /> },
       { path: '/new-course', element: <AddCourseView /> },
       { path: '/course', element: <CourseView /> },
       { path: '/course/:courseId', element: <CourseInfoView /> },
@@ -56,7 +53,7 @@ const routes = [
     element: <MainLayout />,
     children: [
       { path: 'login', element: <LoginView /> },
-      { path: 'register', element: <RegisterView /> },
+      // { path: 'register', element: <RegisterView /> },
       // { path: 'my-profile', element: <MyProfile /> },
       { path: 'school-register', element: <SchoolRegisterView /> },
       { path: 'home', element: <HomeView /> },

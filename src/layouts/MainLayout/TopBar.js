@@ -37,10 +37,10 @@ const useStyles = makeStyles((theme) =>({
 const TopBar = ({ className,onMobileNavOpen,...rest }) => {
   const classes = useStyles();
   const menus = [
-    {
-      name:'Registration',
-      path:'/register'
-    },
+    // {
+    //   name:'Registration',
+    //   path:'/register'
+    // },
     {
       name:'Events',
       path:'/events'

@@ -11,16 +11,9 @@ import {
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
 import { useNavigate } from 'react-router';
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import axios from 'src/axios';
-import { makeStyles } from "@material-ui/core/styles";
-=======
-=======
->>>>>>> Stashed changes
-import axios from 'axios';
 // import useWindowSize from 'src/utils/WindowSize'
->>>>>>> Stashed changes
+
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -67,14 +60,6 @@ const useStyles = makeStyles(theme => ({
 const Testimonials = () => {
   const classes = useStyles();
   const [reviews, setReviews] = useState([]);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
   useEffect(() => {
     getReviews();
   },[])
@@ -85,8 +70,6 @@ const Testimonials = () => {
     })
     setReviews(response.data.data)
   }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   //   //const width = useWindowSize();
   const showArrows = true;// width < 720;
   const breakPoints = [  
@@ -94,12 +77,6 @@ const Testimonials = () => {
     { width: 762 ,itemsToShow: 2, itemToScroll: 2,pagination:(reviews.length > 2) },
     { width: 1024 ,itemsToShow: 3, itemToScroll: 3,pagination:(reviews.length > 3)},
   ];
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
   return(
     <div className={`section-5`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container max-width="lg">
@@ -126,24 +103,16 @@ const Testimonials = () => {
                            
                         </Grid>
                         <Grid item xs={10}>
-<<<<<<< Updated upstream
-                          {/* {
-                            row.review.split(" ").length && */}
-                            <TextMore data={row.review} />
-                          {/* } */}
-=======
                           {
                             row.review.split(" ").length &&
                             <TextMore data={row.review} />
                           }
->>>>>>> Stashed changes
                         </Grid>
                       </Grid>    
                   </Paper>
               ))
-<<<<<<< Updated upstream
           } 
-          </Carousel>
+          <Carousel />
         </Box>
       </Container>
       <Container max-width="md">
@@ -151,25 +120,15 @@ const Testimonials = () => {
               <Typography  className={classes.subtitle} variant="h5"> 
               Please help us with what so you think  </Typography>
               <Button color="primary" size="large" className={classes.reviewBtn} href="/feedback">Review</Button>
-=======
-            } 
-        </Box>
+        </div>
         <div>
          <Button variant="contained" color="primary" size="large" className={classes.reviewBtn} href="/feedback">Click Here</Button>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
         </div>
       </Container>
     </div>
   )
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 
 //   const Testimonials = () => {
 //   const classes = useStyles();
@@ -264,10 +223,5 @@ const Testimonials = () => {
     
 //     </div>
 //   );
-// };
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 export default Testimonials;
