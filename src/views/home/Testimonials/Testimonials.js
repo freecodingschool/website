@@ -12,7 +12,6 @@ import {
 import TextMore from 'src/components/TextMore'
 import { useNavigate } from 'react-router';
 import axios from 'src/axios';
-import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',

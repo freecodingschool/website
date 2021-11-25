@@ -2,7 +2,7 @@ import React, {} from 'react'
 import { AppBar, Toolbar, Typography, makeStyles, Box, Hidden, IconButton } from '@material-ui/core';
 import Profile from './navtabs/Profile';
 import Notifications from './navtabs/Notifications';
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
 import Logo from 'src/components/Logo';
 
 const useStyles = makeStyles((theme) => ({
