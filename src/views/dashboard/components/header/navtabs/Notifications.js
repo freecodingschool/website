@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Box, Badge, IconButton, ListItem, ListItemIcon, ListItemText, Menu, List, makeStyles } from '@material-ui/core';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({

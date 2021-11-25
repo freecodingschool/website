@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Box, Button, ListItem, ListItemIcon, Menu, MenuItem, makeStyles } from '@material-ui/core';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 // import profileImage from 'https://trendsinusa.com/wp-content/uploads/2018/01/Anonymous-hacker-profile-picture.jpg';
 
 const useStyles = makeStyles((theme) => ({
