@@ -9,7 +9,7 @@ import {
   List,
   makeStyles
 } from '@material-ui/core';
-import { Book, BookOpen } from '@material-ui/icons/Book';
+import { AccountBox, LibraryBooks, Add } from '@material-ui/icons';
   
 // AlertCircle as AlertCircleIcon,
 // BarChart as BarChartIcon,
@@ -33,13 +33,18 @@ const useStyles = makeStyles((theme) => ({
 const items = [
   {
     href: '/admin/course',
-    icon: Book,
+    icon: LibraryBooks,
     title: 'All Courses'
   },
   {
     href: '/admin/new-course',
-    icon: BookOpen,
+    icon: Add,
     title: 'New Course'
+  },
+  {
+    href: '/admin/account',
+    icon: AccountBox,
+    title: 'Account'
   }
 ];
 
