@@ -11,7 +11,8 @@ import {
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
 import { useNavigate } from 'react-router';
-import axios from 'src/axios';
+import axios from 'axios';
+// import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
     alignItems:'center',
@@ -68,13 +69,6 @@ const Testimonials = () => {
     })
     setReviews(response.data.data)
   }
-  //   //const width = useWindowSize();
-  const showArrows = true;// width < 720;
-  const breakPoints = [  
-    { width: 360,itemsToShow: 1, itemsToScroll: 1, pagination: (reviews.length > 1) },
-    { width: 762 ,itemsToShow: 2, itemToScroll: 2,pagination:(reviews.length > 2) },
-    { width: 1024 ,itemsToShow: 3, itemToScroll: 3,pagination:(reviews.length > 3)},
-  ];
   return(
     <div className={`section-5`} style={{minHeight: 'calc(100vh - 65px)'}}>
       <Container max-width="lg">
@@ -109,8 +103,7 @@ const Testimonials = () => {
                       </Grid>    
                   </Paper>
               ))
-          } 
-          <Carousel />
+            } 
         </Box>
       </Container>
       <Container max-width="md">
@@ -121,7 +114,6 @@ const Testimonials = () => {
         </div>
         <div>
          <Button variant="contained" color="primary" size="large" className={classes.reviewBtn} href="/feedback">Click Here</Button>
-
         </div>
       </Container>
     </div>
@@ -221,5 +213,6 @@ const Testimonials = () => {
     
 //     </div>
 //   );
+// };
 
 export default Testimonials;
