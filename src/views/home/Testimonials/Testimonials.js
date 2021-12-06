@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import TextMore from 'src/components/TextMore'
 import { useNavigate } from 'react-router';
-import axios from 'axios';
+import axios from 'src/axios';
 // import useWindowSize from 'src/utils/WindowSize'
 const useStyles = makeStyles(theme => ({
   titleWrapper:{
