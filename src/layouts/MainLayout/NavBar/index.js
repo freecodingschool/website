@@ -38,6 +38,30 @@ const navs = [
       href:'/events',
       icon: UsersIcon,
     },
+    {
+      title:'Courses',
+      key:'Courses',
+      href:'/events',
+      icon: UsersIcon,
+    },
+    {
+      title:'Volunteers',
+      key:'Volunteers',
+      href:'/events',
+      icon: UsersIcon,
+    },
+    {
+      title:'Professionals',
+      key:'Professionals',
+      href:'/events',
+      icon: UsersIcon,
+    },
+    {
+      title:'Students',
+      key:'Students',
+      href:'/events',
+      icon: UsersIcon,
+    },
 ];
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
