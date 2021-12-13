@@ -69,7 +69,7 @@ const LoginView = () => {
   useEffect(() => {
     if(localStorage.getItem("_ut")){
       const role = localStorage.getItem('role')
-      navigate(role === ADMIN ? '/admin/course':'/app/dashboard', { replace: true });
+      navigate(role === 'ADMIN' ? '/admin/course':'/app/dashboard', { replace: true });
     }
   },[])
   return (

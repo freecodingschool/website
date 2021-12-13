@@ -70,7 +70,7 @@ const Feedback = () => {
     role:Yup.string().required('Please enter you role'),
     designation:Yup.string().max(255).required('Please enter you designation'),
     org_or_school:Yup.string().max(255).required('Please enter your organization name'),
-    review:Yup.string().max(255).required('Please provide additional comments or suggestions...'),
+    review:Yup.string().max(1000).required('Please provide additional comments or suggestions...'),
   });
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState('');
@@ -178,7 +178,7 @@ const Feedback = () => {
                       label="Please provide additional comments or suggestions..."
                       name="review"
                       multiline
-                      rows={4}
+                      rows={3}
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.review}
