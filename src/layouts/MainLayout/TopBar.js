@@ -45,22 +45,22 @@ const TopBar = ({ className,onMobileNavOpen,...rest }) => {
       name:'Events',
       path:'/events'
     },
-    {
-      name:'Courses',
-      path:'/events'
-    },
-    {
-      name:'Volunteers',
-      path:'/events'
-    },
-    {
-      name:'Professionals',
-      path:'/events'
-    },
-    {
-      name:'Students',
-      path:'/events'
-    },
+    // {
+    //   name:'Courses',
+    //   path:'/events'
+    // },
+    // {
+    //   name:'Volunteers',
+    //   path:'/events'
+    // },
+    // {
+    //   name:'Professionals',
+    //   path:'/events'
+    // },
+    // {
+    //   name:'Students',
+    //   path:'/events'
+    // },
   ];
   return (
     <AppBar
