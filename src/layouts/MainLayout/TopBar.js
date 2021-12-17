@@ -45,6 +45,9 @@ const TopBar = ({ className,onMobileNavOpen,...rest }) => {
       name:'Events',
       path:'/events'
     },
+
+
+    
     // {
     //   name:'Courses',
     //   path:'/events'
