@@ -48,7 +48,7 @@ const DashboardLayout = () => {
       });
       dispatch(userSuccess(response.data.data));
     }catch(e){
-      dispatch(hasError(e.data.message))
+     // dispatch(hasError(e.data.message))
     }
   };
   useEffect(() => {
